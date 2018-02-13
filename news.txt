@@ -1,5 +1,0 @@
-this is a test
-will the line endings work right
-I don't really know
-cos I think git is quite shite
-
