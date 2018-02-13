@@ -1,4 +1,4 @@
-Cross-compiling ArduCopter Blue on Arch Linux x64 (and using pacaur instead of yaourt):
+# Cross-compiling ArduCopter Blue on Arch Linux x64 (and using pacaur instead of yaourt):
 
 gpg --recv-keys 79BE3E4300411886 38DBBDC86092693E 79C43DFBF1CF2187
 pacaur -S arm-linux-gnueabihf-gcc  # <--- Note that I'm using pacaur instead of yaourt. Also, ensure you haven't set any C/C++ env variables.
