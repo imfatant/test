@@ -25,13 +25,14 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
         sudo apt-get -y update
         sudo apt-get -y dist-upgrade
         sudo apt-get install -y connman git cpufrequtils
-6) Blah ... : `cd /opt/scripts && git pull`
+6) Update Git: `cd /opt/scripts && git pull`
 7) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
-kernel
-cpufreq
-8) Alter /boot/uEnv.txt so that the correct device tree binary is used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
-9) Reboot now by typing: `sudo reboot`
-10) Set up Connman for WiFi. My method makes for easier automation in a script later on:
+8) Specify Ti real-time kernel 4_9: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
+9) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
+10) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
+11) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
+12) Reboot now: `sudo reboot`
+13) Set up Connman for WiFi. My method makes for easier automation in a script later on:
 
         mkdir -p /var/lib/connman
         
@@ -43,4 +44,4 @@ cpufreq
         Passphrase = <your WiFi password>
         
         systemctl enable connman
-11) 
+14) 
