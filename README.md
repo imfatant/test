@@ -18,8 +18,8 @@ Only necessary steps are shown. Information found elsewhere may indicate extra s
     
     If you have established a serial link (in a terminal program like Minicom), the process is more difficult, especially as the console image does not contain connman (for WiFi). In the end, I chose to use a USB-to-Ethernet dongle I had lying around as I could plug this into the BBBlue and then connect it directly to my router. Note that I had to supply extra power to the BBBlue via its 2s LiPo connector for the dongle to work. The BBBlue enumerates it as device 'usb2'. I then typed:
         
-        ip link set dev usb2 up
-        ifup usb2
+        sudo ip link set dev usb2 up
+        sudo ifup usb2
     It may be necessary to ...
     
     Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
