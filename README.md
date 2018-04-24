@@ -146,8 +146,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         git submodule update --init --recursive
         ./waf configure --board=blue  # <--- BeagleBone Blue.
         ./waf
-         scp ./build/blue/bin/* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
-    Log in to the BBBlue and copy the executable(s) from /home/debian to /usr/bin/ardupilot.
+         scp ./build/blue/bin/ardu* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
+    Log in to the BBBlue and copy the executable(s) from /home/debian to /usr/bin/ardupilot with: `sudo cp /home/debian/ardu* /usr/bin/ardupilot`
     
 20) To get ArduPilot going, choose which flavour you want and type either:
 
