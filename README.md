@@ -20,4 +20,9 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
     
     Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
 
-5) 
+5) Update and install everything. Type:
+        sudo apt-get -y update
+        sudo apt-get -y dist-upgrade
+        sudo apt-get install -y connman git
+
+6) 
