@@ -56,7 +56,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 14) Reboot again now: `reboot`
 
 # Part 2.
-15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working.
+15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working. And by the way, if you used a USB-to-Ethernet dongle in Step 4, unplug it now, and hopefully your green LED will go on, too.
 
 16) ...
 
