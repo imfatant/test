@@ -65,11 +65,11 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         GPS="-B /dev/ttyS2"
     This is a pretty typical config. It means the following:
     
-    Switch -C links ArduPilot's Telem1 serial port (SERIAL1) with the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to this. It is the bidirectional datalink with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
+    Switch -C links ArduPilot's Telem1 serial port (SERIAL1) with the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to UART1. It is the bidirectional datalink with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
     
     Switch -A links ArduPilot's Console serial port (SERIAL0) with a protocol, IP address and port number of one's choosing. For example, this allows me to have MAVLink data coming over WiFi for test purposes. Really useful, since it seems to be reliably auto-sensed by ground control station software like Mission Planner and QGroundControl.
     
-    Switch -B links ArduPilot's GPS serial port (SERIAL3) with the BBBlue's UART2 (the UART named 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to this.
+    Switch -B links ArduPilot's GPS serial port (SERIAL3) with the BBBlue's UART2 (the UART named 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to UART2.
     
     Other possibilities exist, namely:
     
@@ -90,7 +90,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         [Service]
         EnvironmentFile=/etc/default/ardupilot
         ExecStartPre=/usr/bin/ardupilot/ap
-        ExecStart=/usr/bin/ardupilot/arduplane \\\\\\\$TELEM1 \\\\\\\$TELEM2 \\\\\\\$GPS
+        ExecStart=/usr/bin/ardupilot/arduplane $TELEM1 $TELEM2 $GPS
 
         Restart=on-failure
         RestartSec=1
@@ -108,7 +108,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         [Service]
         EnvironmentFile=/etc/default/ardupilot
         ExecStartPre=/usr/bin/ardupilot/ap
-        ExecStart=/usr/bin/ardupilot/arducopter \\\\\\\$TELEM1 \\\\\\\$TELEM2 \\\\\\\$GPS
+        ExecStart=/usr/bin/ardupilot/arducopter $TELEM1 $TELEM2 $GPS
 
         Restart=on-failure
         RestartSec=1
