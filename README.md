@@ -32,20 +32,23 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 10) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
 11) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 12) Reboot now: `sudo reboot`
-13) Now it's time to set up Connman for WiFi. My method makes for easier automation in a script later on as it does not rely on you knowing the Connman hash beforehand. You will need to supply your SSID and your WiFi password. :
+13) It's time to set up Connman for WiFi. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
 
-su
- (enter password 'root')
-connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
-
-        mkdir -p /var/lib/connman
-        
+        su
+        (enter password 'root')
+        connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
+    The response will be a hash that'll look something like 'wifi_38d269e099a8_4254487562342d4355434b_managed_psk'. If you see nothing, try it again. You probably made a typo.
+    Now we're going to enter a file directly from the keyboard (stdin) using cat, one line at a time:
+    
         cat >/var/lib/connman/wifi.config
-        [service_\$(connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+')]
+        [service_<your hash>]
         Type = wifi
         Security = wpa2
         Name = <your SSID>
         Passphrase = <your WiFi password>
-        
+        (press Ctrl D)
+    Finally, type:
+
         systemctl enable connman
+
 14) 
