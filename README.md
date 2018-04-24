@@ -58,6 +58,24 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 # Part 2.
 15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working. And by the way, if you used a USB-to-Ethernet dongle in Step 4, unplug it now, and hopefully your green LED will go on, too.
 
-16) ...
+16) Now we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot configuration environment file, /etc/default/ardupilot:
+        
+        TELEM1="-C /dev/ttyO1"
+        TELEM2="-A udp:192.168.0.13:14550"
+        GPS="-B /dev/ttyS2"
+    This is a pretty typical config. It means the following:
+    
+    Switch -C links ArduPilot's Telem1 serial port (SERIAL xxx) with the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to this. It is the bidirectional datalink with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
+    
+    Switch -A links ArduPilot's Console serial port (SERIAL xxx) with an IP address and port number of my choosing. For example, this allows me to have MAVLink data coming over WiFi for test purposes. Really useful, since it seems to be reliably auto-sensed by ground control station software like Mission Planner and QGroundControl.
+    
+    Switch -B links ArduPilot's GPS serial port (SERIAL xxx) with the BBBlue's UART2 (the UART named 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to this.
 
+    Second, the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
+    
+    And one for ArduCopter, /lib/systemd/system/arducopter.service:
+    
+    
+    
+    ...
 -- Imf
