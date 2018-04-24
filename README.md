@@ -73,13 +73,12 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     Other possibilities exist, namely:
     
-    Switch -A ---> SERIAL0
-    Switch -B ---> SERIAL3
-    Switch -C ---> SERIAL1
-    Switch -D ---> SERIAL2
-    Switch -E ---> SERIAL4
-    Switch -F ---> SERIAL5
-
+        Switch -A ---> SERIAL0
+        Switch -B ---> SERIAL3
+        Switch -C ---> SERIAL1
+        Switch -D ---> SERIAL2
+        Switch -E ---> SERIAL4
+        Switch -F ---> SERIAL5
 17) Next we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
     
     And one for ArduCopter, /lib/systemd/system/arducopter.service:
