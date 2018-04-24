@@ -115,7 +115,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
         [Install]
         WantedBy=multi-user.target
-18) Here's what I call the ArduPilot hardware config file, /usr/bin/ardupilot/ap, which is run by the services prior to running the arduplane or arducopter executables:
+18) Here's what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/ap, which is run by the services prior to running the arduplane or arducopter executables:
 
         #!/bin/bash
         # ap
