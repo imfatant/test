@@ -10,6 +10,6 @@ Only necessary steps are indicated here. Information found elsewhere may indicat
 
 4) Hopefully, you now find yourself logged into the debian user account and at the command prompt. The next task is to update and install some software using an available internet connection. Usually, at this stage, you'll share your computer's internet connection with the BBBlue, and so you must tell the Blue about this.
 
-    If you are SSHing to 192.168.7.2, then type (at the BBlue's command prompt): `sudo /sbin/route add default gw 192.168.7.1`
-    
-    If you are using a serial link, ... 
+        If you are SSHing to 192.168.7.2, type (at the BBlue's command prompt): `sudo /sbin/route add default gw 192.168.7.1`
+        
+        If you are using a serial link, ... 
