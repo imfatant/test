@@ -25,4 +25,11 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
         sudo apt-get -y update
         sudo apt-get -y dist-upgrade
         sudo apt-get install -y connman git
-6) Blah ...
+6) Blah ... :
+
+        cd /opt/scripts && git pull
+
+7) Blah ... :
+
+        sudo /opt/scripts/tools/grow_partition.sh
+8) 
