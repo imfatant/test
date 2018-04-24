@@ -153,6 +153,6 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     Or:
 
         sudo systemctl enable arducopter.service
-    After you reboot, your ArduPilot should start automatically.
+    After you reboot, your ArduPilot should inflate automatically.
     
 -- Imf
