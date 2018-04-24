@@ -51,5 +51,5 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     Finally, type:
 
         systemctl enable connman
-14) Reboot again now: `sudo reboot`
+14) Reboot again now: `reboot`
 15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working.
