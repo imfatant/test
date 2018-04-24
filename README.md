@@ -71,7 +71,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     Switch -B links ArduPilot's GPS serial port (SERIAL xxx) with the BBBlue's UART2 (the UART named 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to this.
 
-    Second, the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
+17) Next we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
     
     And one for ArduCopter, /lib/systemd/system/arducopter.service:
     
