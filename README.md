@@ -27,6 +27,8 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
         sudo apt-get install -y connman git cpufrequtils
 6) Blah ... : `cd /opt/scripts && git pull`
 7) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
+kernel
+cpufreq
 8) Alter /boot/uEnv.txt so that the correct device tree binary is used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
 9) Reboot now by typing: `sudo reboot`
 10) Set up Connman for WiFi. My method makes for easier automation in a script later on:
