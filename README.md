@@ -127,6 +127,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         /usr/bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state:
     You should use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
     
-19) ... 
+19) # systemctl enable arduplane.service
+# systemctl enable arducopter.service... 
     
 -- Imf
