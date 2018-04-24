@@ -16,7 +16,7 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
 
     If you are SSHing to 192.168.7.2, you can your share your computer's internet connection with the BBBlue very simply by typing (at the BBBlue's command prompt): `sudo /sbin/route add default gw 192.168.7.1`
     
-    If you have established a serial link (in a terminal program like Minicom), the process is more difficult, especially as the console image does not include connman (for WiFi). In the end, I chose to use a USB-to-Ethernet dongle I had lying around (http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL) as I could plug this into the BBBlue and then connect it directly to my router. Note that I had to supply extra power to the BBBlue via its 2s LiPo connector for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for the command `ip link` to show that the device is up).
+    If you have established a serial link (in a terminal program like Minicom), the process is more difficult, especially as the console image does not include Connman (for WiFi). In the end, I chose to use a USB-to-Ethernet dongle I had lying around (http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL) as I could plug this into the BBBlue and then connect it directly to my router. Note that I had to supply extra power to the BBBlue via its 2s LiPo connector for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for the command `ip link` to show that the device is up).
     
     Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
 
@@ -25,11 +25,20 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
         sudo apt-get -y update
         sudo apt-get -y dist-upgrade
         sudo apt-get install -y connman git
-6) Blah ... :
+6) Blah ... : `cd /opt/scripts && git pull`
+7) Maximize the microSD card's existing /dev/mmcblk0p1 partition: `sudo /opt/scripts/tools/grow_partition.sh`
+8) Alter /boot/uEnv.txt so that the correct dtb is used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
+9) Reboot now by typing: `sudo reboot`
+10) Set up Connman for WiFi. My method makes for easier automation in a script later on:
 
-        cd /opt/scripts && git pull
-
-7) Maximize the microSD card's existing partition:
-
-        sudo /opt/scripts/tools/grow_partition.sh
-8) 
+        mkdir -p /var/lib/connman
+        
+        cat >/var/lib/connman/wifi.config
+        [service_\$(connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+')]
+        Type = wifi
+        Security = wpa2
+        Name = <your SSID>
+        Passphrase = <your WiFi password>
+        
+        systemctl enable connman
+11) 
