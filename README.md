@@ -115,7 +115,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
         [Install]
         WantedBy=multi-user.target
-18) Here's what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/ap, which is run by the services prior to running the ArduPlane or ArduCopter executables:
+18) Pause for a moment to create a directory: `sudo mkdir -p /usr/bin/ardupilot`
+    Then carry on with what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/ap, which is run by the services prior to running the ArduPlane or ArduCopter executables:
 
         #!/bin/bash
         # ap
