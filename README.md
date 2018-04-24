@@ -2,6 +2,8 @@ My continuously updated (as of 24/04/2018, UK date format) beginner's guide for 
 
 Only necessary steps are shown. Information found elsewhere may indicate extra steps that are no longer necessary due to the software having been updated.
 
+0) Before I begin, I want to stress that supplying adequate power to the BeageBone Blue is a must. Typically, we'll be attaching quite a few peripherals to it, and many will not behave correctly without enough juice.
+
 1) Go to https://rcn-ee.net/rootfs/bb.org/testing/ and select the directory named with the latest date. Then click on the stretch-console directory. You'll see a number of files here. Download the file named something like bone-debian-V.V-console-armhf-20YY-MM-DD-1gb.img.xz. This is what's known as the 'console' image. It's a very minimal image of Debian with only the bare essentials. An alternative is the 'IoT' image (IoT = Internet of Things) which comes with additional software and can make for a more comfortable experience if you are very new to Linux. It's available from the same site.
 
     At the time of writing, I'm using bone-debian-9.4-console-armhf-2018-04-22-1gb.img.xz.
