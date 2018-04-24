@@ -124,7 +124,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         /usr/bin/echo 80 >/sys/class/gpio/export
         /usr/bin/echo out >/sys/class/gpio/gpio80/direction
         /usr/bin/echo 1 >/sys/class/gpio/gpio80/value
-        /usr/bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state:
+        /usr/bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
     You may want to use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
     
 19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables and place them in the /usr/bin/ardupilot directory. Depending on the situation, this may mean building them from scratch. Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick explains the process for the BBBMINI (based on a BeagleBone Black) here: https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md. For now, I will run through the process of cross-compiling them on a relatively powerful desktop PC running Arch Linux (using pacaur rather than yaourt), which is a lot faster:
