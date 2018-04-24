@@ -127,7 +127,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         /usr/bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state:
     You may want to use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
     
-19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables and place them in the /usr/bin/ardupilot directory. Depending on the situation, this may mean building them from scratch. Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick explains the process for the BBBMINI (based on a BeagleBone Black) here: https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md. For now, I will quickly run through the process of cross-compiling them on a relatively powerful PC running Arch Linux (using pacaur rather than yaourt):
+19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables and place them in the /usr/bin/ardupilot directory. Depending on the situation, this may mean building them from scratch. Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick explains the process for the BBBMINI (based on a BeagleBone Black) here: https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md. For now, I will run through the process of cross-compiling them on a relatively powerful desktop PC running Arch Linux (using pacaur rather than yaourt), which is a lot faster:
 
         gpg --recv-keys 79BE3E4300411886 38DBBDC86092693E 79C43DFBF1CF2187
         pacaur -S arm-linux-gnueabihf-gcc  # <--- Note that I'm using pacaur instead of yaourt. Also, ensure you haven't set any C/C++ env variables.
