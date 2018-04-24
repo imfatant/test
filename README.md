@@ -47,8 +47,9 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         Security = wpa2
         Name = <your SSID>
         Passphrase = <your WiFi password>
-        (press Ctrl D)
+        (press Ctrl-D to exit back to the prompt)
     Finally, type:
 
         systemctl enable connman
 14) Reboot again now: `sudo reboot`
+15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working.
