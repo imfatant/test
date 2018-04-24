@@ -125,9 +125,16 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         /usr/bin/echo out >/sys/class/gpio/gpio80/direction
         /usr/bin/echo 1 >/sys/class/gpio/gpio80/value
         /usr/bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state:
-    You should use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
+    You may want to use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
     
-19) # systemctl enable arduplane.service
-# systemctl enable arducopter.service... 
+19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables and place them in the /usr/bin/ardupilot directory. Depending on what/who you know or don't know, this may mean building them from scratch. Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick explains the process for the BBBMINI here: https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md. For now, I will quickly run through the process of cross-compiling them on a relatively powerful PC running Arch Linux:
+
+20) To get ArduPilot going, choose which flavour you want and type either:
+
+        sudo systemctl enable arduplane.service
+    Or:
+
+        sudo systemctl enable arducopter.service
+    After you reboot, your ArduPilot should start automatically.
     
 -- Imf
