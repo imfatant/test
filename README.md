@@ -26,11 +26,11 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo apt-get -y dist-upgrade
         sudo apt-get install -y cpufrequtils connman git
 6) Update Git: `cd /opt/scripts && git pull`
-7) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
-8) Specify Ti real-time kernel 4_9: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
-9) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
-10) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
-11) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
+7) Specify Ti real-time kernel 4_9: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
+8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
+9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
+10) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
+11) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 12) Reboot now: `sudo reboot`
 13) Set up Connman for WiFi. My method makes for easier automation in a script later on as it does not rely on you knowing the Connman hash beforehand. You will need to supply <your SSID> and <your WiFi password>. Do not use quotes:
 
