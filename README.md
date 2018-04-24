@@ -20,7 +20,7 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
     
     Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
 
-5) Update and install all required software:
+5) Update and install all required supporting software:
 
         sudo apt-get -y update
         sudo apt-get -y dist-upgrade
@@ -29,7 +29,7 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
 
         cd /opt/scripts && git pull
 
-7) Blah ... :
+7) Maximize the microSD card's existing partition:
 
         sudo /opt/scripts/tools/grow_partition.sh
 8) 
