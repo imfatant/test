@@ -24,7 +24,7 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
 
         sudo apt-get -y update
         sudo apt-get -y dist-upgrade
-        sudo apt-get install -y connman git cpufrequtils
+        sudo apt-get install -y cpufrequtils connman git
 6) Update Git: `cd /opt/scripts && git pull`
 7) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 8) Specify Ti real-time kernel 4_9: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
