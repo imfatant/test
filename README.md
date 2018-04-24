@@ -6,7 +6,7 @@ Only necessary steps are indicated here. Information found elsewhere may indicat
 
 2) Now you will need to copy the image to a microSD card. Whether are you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/). It's very easy to use and it works!
 
-3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It is beyond the scope of this document to detail ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to debian@192.168.7.2, password 'temppwd') or establishing a serial link over a COM port. More information can be found here: https://beagleboard.org/blue.
+3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It is beyond the scope of this document to detail ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port (user 'debian', password 'temppwd)'. More information can be found here: https://beagleboard.org/blue.
 
 4) Hopefully, you now find yourself logged into the debian user account and at the command prompt.
 
