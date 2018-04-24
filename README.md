@@ -18,5 +18,5 @@ Only necessary steps are shown. Information found elsewhere may indicate extra s
         
         ip link set dev usb2 up
         ifup usb2
-It may be necessary to ...
+    It may be necessary to ...
 
