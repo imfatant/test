@@ -1,6 +1,6 @@
 This is my continuously updated (as of 24/04/2018, UK date format) beginner's guide for setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). This guide is based upon a similar one at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these guys.
 
-Only necessary steps are shown. Information found elsewhere may indicate steps that are no longer necessary due to the software having been updated, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
+Only necessary steps are shown, excepting that I install Git for the sake of convenience. Information found elsewhere may indicate steps that are no longer necessary due to the software having been updated, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
 
 0) Before I begin, I want to stress that supplying adequate power to the BeageBone Blue is a must. Typically, we'll be attaching quite a few peripherals to it, and they'll not behave correctly without enough juice.
 
@@ -32,7 +32,7 @@ Only necessary steps are shown. Information found elsewhere may indicate steps t
 10) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
 11) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
 12) Reboot now: `sudo reboot`
-13) Set up Connman for WiFi. My method makes for easier automation in a script later on:
+13) Set up Connman for WiFi. My method makes for easier automation in a script later on as it does not rely on you knowing the Connman hash beforehand. You will need to supply <your SSID> and <your WiFi password>. Do not use quotes:
 
         mkdir -p /var/lib/connman
         
