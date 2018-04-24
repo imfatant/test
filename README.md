@@ -81,10 +81,52 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         Switch -F ---> SERIAL5
 17) Next we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
     
+        [Unit]
+        Description=ArduPlane Service
+        After=networking.service
+        StartLimitIntervalSec=0
+        Conflicts=arducopter.service ardupilot.service ardurover.service
+
+        [Service]
+        EnvironmentFile=/etc/default/ardupilot
+        ExecStartPre=/usr/bin/ardupilot/ap
+        ExecStart=/usr/bin/ardupilot/arduplane \\\\\\\$TELEM1 \\\\\\\$TELEM2 \\\\\\\$GPS
+
+        Restart=on-failure
+        RestartSec=1
+
+        [Install]
+        WantedBy=multi-user.target
     And one for ArduCopter, /lib/systemd/system/arducopter.service:
     
+        [Unit]
+        Description=ArduCopter Service
+        After=networking.service
+        StartLimitIntervalSec=0
+        Conflicts=arduplane.service ardupilot.service ardurover.service
+
+        [Service]
+        EnvironmentFile=/etc/default/ardupilot
+        ExecStartPre=/usr/bin/ardupilot/ap
+        ExecStart=/usr/bin/ardupilot/arducopter \\\\\\\$TELEM1 \\\\\\\$TELEM2 \\\\\\\$GPS
+
+        Restart=on-failure
+        RestartSec=1
+
+        [Install]
+        WantedBy=multi-user.target
+18) Here's what I call the ArduPilot hardware config file, /usr/bin/ardupilot/ap, which is run by the services prior to running the arduplane or arducopter executables:
+
+        #!/bin/bash
+        # ap
+        # ArduPilot hardware config.
+
+        /usr/bin/echo 80 >/sys/class/gpio/export
+        /usr/bin/echo out >/sys/class/gpio/gpio80/direction
+        /usr/bin/echo 1 >/sys/class/gpio/gpio80/value
+        /usr/bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state:
+    You should use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
     
-    
-    ...
+19) ... 
     
 -- Imf
