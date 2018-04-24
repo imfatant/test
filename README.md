@@ -1,7 +1,9 @@
+# ArduPilot Blue
 This is my continuously updated (as of 24/04/2018, UK date format) beginner's guide for setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). This guide is based upon a similar one at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these guys.
 
 Only necessary steps are shown, excepting that I install Git for the sake of convenience. Information found elsewhere may indicate steps that are no longer necessary due to the software having been updated, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
 
+# Part 1
 0) Before I begin, I want to stress that supplying adequate power to the BeageBone Blue is a must. Typically, we'll be attaching quite a few peripherals to it, and they'll not behave correctly without enough juice.
 
 1) Go to https://rcn-ee.net/rootfs/bb.org/testing/ and select the directory named with the latest date. Then click on the stretch-console directory. You'll see a number of files here. Download the file named something like bone-debian-V.V-console-armhf-20YY-MM-DD-1gb.img.xz. This is what's known as the 'console' image. It's a very minimal image of Debian with only the bare essentials. An alternative is the 'IoT' image (IoT = Internet of Things) which comes with additional software and can make for a more comfortable experience if you are very new to Linux. It's available from the same site.
@@ -52,4 +54,6 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
         systemctl enable connman
 14) Reboot again now: `reboot`
+
+# Part 2
 15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working.
