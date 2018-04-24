@@ -50,5 +50,4 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     Finally, type:
 
         systemctl enable connman
-
-14) 
+14) Reboot again now: `sudo reboot`
