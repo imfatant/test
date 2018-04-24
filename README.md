@@ -9,6 +9,6 @@ Only necessary steps are indicated here. Information found elsewhere may indicat
 3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It is beyond the scope of this document to detail ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port (user 'debian', password 'temppwd)'. More information can be found here: https://beagleboard.org/blue.
 
 4) Hopefully, you now find yourself logged into the debian user account and at the command prompt. The next task is to update and install some software using an available internet connection. Usually, at this stage, you'll share your computer's internet connection with the BBBlue, and so you must tell the Blue about this.
-  If you are SSHing to 192.168.7.2, then type (at the BBlue's command prompt): `sudo /sbin/route add default gw 192.168.7.1`
-  If you are using a serial link, ...
+        If you are SSHing to 192.168.7.2, then type (at the BBlue's command prompt): `sudo /sbin/route add default gw 192.168.7.1`
+        If you are using a serial link, ...
 
