@@ -58,7 +58,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 # Part 2.
 15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working. And by the way, if you used a USB-to-Ethernet dongle in Step 4, unplug it now, and hopefully your green LED will go on, too.
 
-16) Now we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot configuration environment file, /etc/default/ardupilot:
+16) Now we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
         
         TELEM1="-C /dev/ttyO1"
         TELEM2="-A udp:192.168.0.13:14550"
