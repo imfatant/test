@@ -19,4 +19,5 @@ Only necessary steps are shown. Information found elsewhere may indicate extra s
         ip link set dev usb2 up
         ifup usb2
     It may be necessary to ...
-    Whichever way you choose to get an internet connection up, you can verify it's fucntioning by typing: `ping -c 3 www.google.com`
+    
+    Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
