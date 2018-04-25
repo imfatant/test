@@ -8,7 +8,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
 1) Go to https://rcn-ee.net/rootfs/bb.org/testing/ and select the directory named with the latest date. Then click on the stretch-console directory. You'll see a number of files here. Download the file named something like bone-debian-V.V-console-armhf-20YY-MM-DD-1gb.img.xz. This is what's known as the 'console' image. It's a very minimal image of Debian with only the bare essentials. An alternative is the 'IoT' image (IoT = Internet of Things) which comes with additional software and can make for a more comfortable experience if you are very new to Linux. It's available from the same site.
 
-    At the time of writing, I'm using bone-debian-9.4-console-armhf-2018-04-22-1gb.img.xz.
+    At the time of writing, I'm using bone-debian-9.4-console-armhf-2018-03-25-1gb.img.xz.
 
 2) Now you'll need to copy the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
 
