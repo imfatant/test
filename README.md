@@ -12,7 +12,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     At the time of writing, I'm using https://rcn-ee.net/rootfs/bb.org/testing/2018-03-25/stretch-console/bone-debian-9.4-console-armhf-2018-03-25-1gb.img.xz.
 
-2) Now you'll need to copy the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
+2) Now you'll need to flash the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
 
 3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It is beyond the scope of this document to detail ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port (user 'debian', password 'temppwd)'. More information can be found here: https://beagleboard.org/blue.
 
