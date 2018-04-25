@@ -18,7 +18,10 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 4) Hopefully, you now find yourself logged into the debian user account and at the command prompt. The next task is to update and install some software using an available internet connection.
 
-    If you are SSHing to 192.168.7.2, you can your share your computer's internet connection with the BBBlue very simply by typing (at the BBBlue's command prompt): `sudo /sbin/route add default gw 192.168.7.1`
+    If you are SSHing to 192.168.7.2, you can your share your computer's internet connection with the BBBlue very simply by typing (at the BBBlue's command prompt):
+    
+       sudo /sbin/route add default gw 192.168.7.1
+       echo "nameserver 8.8.8.8" | sudo tee -a resolv.conf >/dev/null
     
     If you have established a serial link (in a terminal program like Minicom or PuTTY), the process is more difficult, especially as the console image does not include Connman (for WiFi). In the end, I chose to use a USB-to-Ethernet dongle I had lying around (http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL) as I could plug this into the BBBlue and then connect it directly to my router. Note that I had to supply extra power to the BBBlue via its 2s LiPo connector for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for the command `ip link` to show that the device is up).
     
@@ -26,9 +29,9 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 5) Update and install all required supporting software:
 
-        sudo apt-get -y update
-        sudo apt-get -y dist-upgrade
-        sudo apt-get install -y cpufrequtils connman git
+       sudo apt-get -y update
+       sudo apt-get -y dist-upgrade
+       sudo apt-get install -y cpufrequtils connman git
 6) Update Git: `cd /opt/scripts && git pull`
 7) Specify Ti real-time kernel 4_9. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
