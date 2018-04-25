@@ -34,7 +34,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 10) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
 11) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 12) Reboot now: `sudo reboot`
-13) It's time to set up Connman for WiFi. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
+13) It's time to set up Connman for WiFi access. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
 
         sudo -s
         connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
