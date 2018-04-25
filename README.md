@@ -91,7 +91,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Switch -D ---> SERIAL2
         Switch -E ---> SERIAL4
         Switch -F ---> SERIAL5
-    Consult the official ArduPilot documentation for more details: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
+    Consult the official ArduPilot documentation for more details on how the various serial ports are mapped: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
     
 17) Next, we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
     
