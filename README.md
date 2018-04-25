@@ -50,9 +50,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         Name = <your SSID>
         Passphrase = <your WiFi password>
         (press Ctrl-D to exit back to the prompt)
-    Finally, type:
+    Finally, type: `systemctl enable connman`
 
-        systemctl enable connman
 14) Reboot again now: `reboot`
 
 # Part 2.
