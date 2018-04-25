@@ -129,7 +129,9 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
     You may want to use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
     
-19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Depending on your situation, this may mean building them from scratch. Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick explains the process for the BBBMINI (based on a BeagleBone Black) here: https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md. Here, I will run through the process of cross-compiling them on a relatively powerful desktop x64 PC running Arch Linux, which is a lot faster:
+19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Depending on your situation, this may mean building them from scratch. Do not be initmated, this is not too difficult. Plus it means you'll be able build your own ArduPilot software whenever it's updated.
+
+Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick explains the process for the BBBMINI (based on a BeagleBone Black) here: https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md. He also provides information on cross-compiling on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which is my bias when it comes to Linux distros):
 
         sudo pacman -Syu
         gpg --recv-keys 79BE3E4300411886 38DBBDC86092693E 79C43DFBF1CF2187
