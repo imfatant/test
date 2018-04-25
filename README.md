@@ -121,7 +121,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
         #!/bin/bash
         # ap
-        # ArduPilot hardware config.
+        # ArduPilot hardware configuration.
 
         /bin/echo 80 >/sys/class/gpio/export
         /bin/echo out >/sys/class/gpio/gpio80/direction
