@@ -21,7 +21,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     If you are SSHing to 192.168.7.2, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
         sudo /sbin/route add default gw 192.168.7.1
-        echo "nameserver 8.8.8.8" | sudo tee -a resolv.conf >/dev/null
+        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
     You can then tell your Linux computer to share with the BBBlue by typing (at the computer's command prompt):
     
         sudo sysctl net.ipv4.ip_forward=1
