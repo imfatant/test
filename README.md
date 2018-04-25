@@ -143,6 +143,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sed -i 's/yaourt -S --noconfirm --needed/pacaur -S --noconfirm --noedit/g' ./Tools/scripts/install-prereqs-arch.sh  # <--- Skip if using yaourt.
         git commit -a --allow-empty-message -m ''  # <--- The lazy option.
         ./Tools/scripts/install-prereqs-arch.sh
+        git fetch --prune  # <--- Updates the repository.
         git checkout Copter-3.5.5  # <--- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.8.4
         git submodule update --init --recursive
         ./waf configure --board=blue  # <--- BeagleBone Blue.
