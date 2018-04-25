@@ -22,7 +22,13 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
         sudo /sbin/route add default gw 192.168.7.1
         echo "nameserver 8.8.8.8" | sudo tee -a resolv.conf >/dev/null
+    You can then tell your computer to share with the BBBlue by typing (at the computer's command prompt):
     
+        sudo sysctl net.ipv4.ip_forward=1
+        sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
+        sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+        sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
+       
     If you have established a serial link (in a terminal program like Minicom or PuTTY), the process is more difficult, especially as the console image does not include Connman (for WiFi). In the end, I chose to use a USB-to-Ethernet dongle I had lying around (http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL) as I could plug this into the BBBlue and then connect it directly to my router. Note that I had to supply extra power to the BBBlue via its 2s LiPo connector or its jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for the command `ip link` to show that the device is up).
     
     Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
