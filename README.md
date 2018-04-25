@@ -28,7 +28,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
         sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
         sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
-    (On my Arch Linux desktop PC, eno1 is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and enp0s20u7 is the name the OS has assigned to the BBBlue.)
+    On my Arch Linux desktop PC, eno1 is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and enp0s20u7 is the name the OS has assigned to the BBBlue.
     
     If you are using a Windows computer, you can tell it to share with the BBBlue by fast-forwarding to about 5:00 of this Derek Molloy video http://derekmolloy.ie/beaglebone/getting-started-usb-network-adapter-on-the-beaglebone/. ;)
     
