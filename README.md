@@ -20,14 +20,14 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     If you are SSHing to 192.168.7.2, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
-        sudo /sbin/route add default gw 192.168.7.1
-        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
+       sudo /sbin/route add default gw 192.168.7.1
+       echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
     You can then tell your Linux computer to share with the BBBlue by typing (at the computer's command prompt):
     
-        sudo sysctl net.ipv4.ip_forward=1
-        sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
-        sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-        sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
+       sudo sysctl net.ipv4.ip_forward=1
+       sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
+       sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+       sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
     On my Arch Linux desktop x64 PC, eno1 is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and enp0s20u7 is the name the OS has assigned to the BBBlue.
     
     If you are using a Windows computer, you can tell it to share with the BBBlue by fast-forwarding to about 5:00 of this Derek Molloy video: http://derekmolloy.ie/beaglebone/getting-started-usb-network-adapter-on-the-beaglebone/. ;)
@@ -38,9 +38,9 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 5) Update and install all required supporting software:
 
-        sudo apt-get -y update
-        sudo apt-get -y dist-upgrade
-        sudo apt-get install -y cpufrequtils connman git
+       sudo apt-get -y update
+       sudo apt-get -y dist-upgrade
+       sudo apt-get install -y cpufrequtils connman git
 6) Update Git: `cd /opt/scripts && git pull`
 7) Specify Ti real-time kernel 4_9. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
@@ -50,8 +50,8 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 12) Reboot now: `sudo reboot`
 13) It's time to set up Connman for WiFi access. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
 
-        sudo -s
-        connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
+       sudo -s
+       connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
     The response will be a hash that'll look something like 'wifi_38d279e099a8_4254487562142d4355434b_managed_psk'. If you see nothing, try it again - you probably made a typo.
     
     Now, using this hash, we're going to enter a file directly from the keyboard (stdin) using cat, one line at a time:
