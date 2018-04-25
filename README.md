@@ -18,7 +18,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 4) Hopefully, you now find yourself logged into the debian user account and at the command prompt. The next task is to update and install some software using an available internet connection.
 
-    If you are SSHing to 192.168.7.2, you can your share your computer's internet connection with the BBBlue very simply by typing (at the BBBlue's command prompt):
+    If you are SSHing to 192.168.7.2, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
        sudo /sbin/route add default gw 192.168.7.1
        echo "nameserver 8.8.8.8" | sudo tee -a resolv.conf >/dev/null
