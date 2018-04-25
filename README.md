@@ -99,7 +99,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Description=ArduPlane Service
         After=networking.service
         StartLimitIntervalSec=0
-        Conflicts=arducopter.service ardupilot.service ardurover.service
+        Conflicts=arducopter.service ardurover.service
 
         [Service]
         EnvironmentFile=/etc/default/ardupilot
@@ -117,7 +117,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Description=ArduCopter Service
         After=networking.service
         StartLimitIntervalSec=0
-        Conflicts=arduplane.service ardupilot.service ardurover.service
+        Conflicts=arduplane.service ardurover.service
 
         [Service]
         EnvironmentFile=/etc/default/ardupilot
