@@ -36,8 +36,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 12) Reboot now: `sudo reboot`
 13) It's time to set up Connman for WiFi. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
 
-        su
-        (enter password 'root')
+        sudo -s
         connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
     The response will be a hash that'll look something like 'wifi_38d279e099a8_4254487562142d4355434b_managed_psk'. If you see nothing, try it again - you probably made a typo.
     
