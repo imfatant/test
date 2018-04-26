@@ -16,7 +16,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It's beyond the scope of this document to detail all the ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port (user 'debian', password 'temppwd)'. More information can be found here: https://beagleboard.org/blue.
 
-    BeagleBone drivers come with Windows 10, but not with every Linux distribution. If you're experiencing problems with Linux, do this:
+    BeagleBone drivers come with Windows 10, but Linux distribution can be fiddly. If you're experiencing problems with Linux, do this:
 
        sudo -s
        cat >/etc/udev/rules.d/73-beaglebone.rules <<EOF
