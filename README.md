@@ -91,18 +91,18 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         GPS="-B /dev/ttyS2"
     This is a pretty typical config. It breaks down like this:
     
-    Switch -C links ArduPilot's Telem1 serial port (SERIAL1, default 57600) with the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to UART1. It is the bidirectional datalink with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
+    Switch -C links ArduPilot's "Telem1" serial port (SERIAL1, default 57600) with the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to UART1. It is the bidirectional datalink with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
     
-    Switch -A links ArduPilot's Console serial port (SERIAL0, default 115200) with a protocol, IP address and port number of one's choosing. For example, this allows me to have MAVLink data coming over WiFi for test purposes. Really useful, especially since it seems to be reliably auto-sensed by ground control station software like Mission Planner and QGroundControl.
+    Switch -A links ArduPilot's "Console" serial port (SERIAL0, default 115200) with a protocol, IP address and port number of one's choosing. For example, this allows me to have MAVLink data coming over WiFi for test purposes. Really useful, especially since it seems to be reliably auto-sensed by ground control station software like Mission Planner and QGroundControl.
     
-    Switch -B links ArduPilot's GPS serial port (SERIAL3, default 57600) with the BBBlue's UART2 (the UART named 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to UART2.
+    Switch -B links ArduPilot's "GPS" serial port (SERIAL3, default 57600) with the BBBlue's UART2 (the UART named 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to UART2.
     
     Other possibilities exist, namely:
     
-        Switch -A ---> Console, SERIAL0, default 115200
-        Switch -B ---> GPS, SERIAL3, default 57600
-        Switch -C ---> Telem1, SERIAL1, default 57600
-        Switch -D ---> Telem2, SERIAL2, default 38400
+        Switch -A ---> "Console", SERIAL0, default 115200
+        Switch -B ---> "GPS", SERIAL3, default 57600
+        Switch -C ---> "Telem1", SERIAL1, default 57600
+        Switch -D ---> "Telem2", SERIAL2, default 38400
         Switch -E ---> Unnamed, SERIAL4, default 38400
         Switch -F ---> Unnamed, SERIAL5, default 57600
     Consult the official ArduPilot documentation for more details on the various serial ports: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
