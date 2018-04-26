@@ -68,7 +68,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 14) Reboot again now: `reboot`
 
 # Part 2
-15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router. Try SSHing to the BBBlue using its WiFi IP address. 192.168.7.2 will still work as well.
+15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router and looking there. Try SSHing to the BBBlue using its WiFi IP address. 192.168.7.2 will still work as well.
 
     By the way, if you used a USB-to-Ethernet dongle in Step 4, you may need to unplug it now, and hopefully your green LED will go on, too.
 
