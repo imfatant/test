@@ -14,7 +14,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
 2) Now you'll need to flash the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
 
-3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It's beyond the scope of this document to detail all the ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port (user 'debian', password 'temppwd)'. More information can be found here: https://beagleboard.org/blue.
+3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It's beyond the scope of this document to detail all the ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port in a program like Minicom or PuTTY (user 'debian', password 'temppwd)'. More information can be found here: https://beagleboard.org/blue.
 
     BeagleBone drivers come with Windows 10, but Linux distributions can be fiddly. If you're experiencing problems with Linux, do this:
 
@@ -30,7 +30,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 4) Hopefully, you now find yourself logged in to the debian user account and at the command prompt. The next task is to update and install some software using an available internet connection.
 
-    If you are SSHing to 192.168.7.2, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
+    You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
        sudo /sbin/route add default gw 192.168.7.1
        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
@@ -42,9 +42,9 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
     On my Arch Linux desktop x64 PC, 'eno1' is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and 'enp0s20u7' is the name the OS shows for the BBBlue. Use `ip link` to find the corresponding names for your devices.
     
-    If you are using a Windows computer, you can tell it to share with the BBBlue by fast-forwarding to about 5:00 of this Derek Molloy video: http://derekmolloy.ie/beaglebone/getting-started-usb-network-adapter-on-the-beaglebone/. ;)
+    If you are using a Windows computer, you can tell it to share with the BBBlue by fast-forwarding to about 5:00 of this Derek Molloy video: http://derekmolloy.ie/beaglebone/getting-started-usb-network-adapter-on-the-beaglebone/.
     
-    If you have established a serial link (in a terminal program like Minicom or PuTTY), the process is more involved, especially as the console image does not include connman (for WiFi). In the end, I chose to use a USB-to-Ethernet dongle I had lying around (http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL) as I could plug this into the BBBlue and then connect it directly to my router. Note that I had to supply extra power to the BBBlue via its 2s LiPo connector or its jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
+    If, for whatever reason, internet sharing isn't an option, another possibility is a USB-to-Ethernet dongle like this one: http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL). One can plug this into the BBBlue and then connect it directly to the router. Note that, in my case, I had to supply extra power to the BBBlue via its 2s LiPo connector or its jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
     
     Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
 
