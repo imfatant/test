@@ -99,12 +99,12 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     Other possibilities exist, namely:
     
-        Switch -A ---> SERIAL0, default 115200
-        Switch -B ---> SERIAL3, default 57600
-        Switch -C ---> SERIAL1, default 57600
-        Switch -D ---> SERIAL2, default 38400
-        Switch -E ---> SERIAL4, default 38400
-        Switch -F ---> SERIAL5, default 57600
+        Switch -A ---> Console, SERIAL0, default 115200
+        Switch -B ---> GPS, SERIAL3, default 57600
+        Switch -C ---> Telem1, SERIAL1, default 57600
+        Switch -D ---> Telem2, SERIAL2, default 38400
+        Switch -E ---> Unnamed, SERIAL4, default 38400
+        Switch -F ---> Unnamed, SERIAL5, default 57600
     Consult the official ArduPilot documentation for more details on the various serial ports: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
     
 17) Next, we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
