@@ -117,7 +117,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
         [Service]
         EnvironmentFile=/etc/default/ardupilot
-        ExecStartPre=/usr/bin/ardupilot/ap
+        ExecStartPre=/usr/bin/ardupilot/aphw
         ExecStart=/usr/bin/ardupilot/arduplane $TELEM1 $TELEM2 $GPS
 
         Restart=on-failure
@@ -135,7 +135,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
         [Service]
         EnvironmentFile=/etc/default/ardupilot
-        ExecStartPre=/usr/bin/ardupilot/ap
+        ExecStartPre=/usr/bin/ardupilot/aphw
         ExecStart=/usr/bin/ardupilot/arducopter $TELEM1 $TELEM2 $GPS
 
         Restart=on-failure
@@ -155,7 +155,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         /bin/echo out >/sys/class/gpio/gpio80/direction
         /bin/echo 1 >/sys/class/gpio/gpio80/value
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
-    You may want to use `sudo chmod 0744 /usr/bin/ardupilot/ap` to set permissions for this file.
+    You may want to use `sudo chmod 0744 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
 19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Depending on your situation, this may mean building them from scratch. Do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own ArduPilot software whenever it's updated.
 
