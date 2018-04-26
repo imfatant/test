@@ -145,10 +145,10 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         WantedBy=multi-user.target
 18) Pause for a moment to create a directory: `sudo mkdir -p /usr/bin/ardupilot`
     
-    Then, carry on with creating what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/ap, which is run by the services prior to running the ArduPlane or ArduCopter executables:
+    Then, carry on with creating what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/aphw, which is run by the services prior to running the ArduPlane or ArduCopter executables:
 
         #!/bin/bash
-        # ap
+        # aphw
         # ArduPilot hardware configuration.
 
         /bin/echo 80 >/sys/class/gpio/export
