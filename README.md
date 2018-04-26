@@ -19,27 +19,12 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     BeagleBone drivers come with Windows 10, but not with every Linux distribution. If you're experiencing problems with Linux, do this:
 
        sudo -s
-       
        cat >/etc/udev/rules.d/73-beaglebone.rules <<EOF
-       ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", \
-       ATTRS{idVendor}=="0403", ATTRS{idProduct}=="a6d0", \
-       DRIVER=="", RUN+="/sbin/modprobe -b ftdi_sio"
-
-       ACTION=="add", SUBSYSTEM=="drivers", \
-       ENV{DEVPATH}=="/bus/usb-serial/drivers/ftdi_sio", \
-       ATTR{new_id}="0403 a6d0"
-
-       ACTION=="add", KERNEL=="ttyUSB*", \
-       ATTRS{interface}=="BeagleBone", \
-       ATTRS{bInterfaceNumber}=="00", \
-       SYMLINK+="beaglebone-jtag"
-
-       ACTION=="add", KERNEL=="ttyUSB*", \
-       ATTRS{interface}=="BeagleBone", \
-       ATTRS{bInterfaceNumber}=="01", \
-       SYMLINK+="beaglebone-serial"
+       ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="a6d0", DRIVER=="", RUN+="/sbin/modprobe -b ftdi_sio"
+       ACTION=="add", SUBSYSTEM=="drivers", ENV{DEVPATH}=="/bus/usb-serial/drivers/ftdi_sio", ATTR{new_id}="0403 a6d0"
+       ACTION=="add", KERNEL=="ttyUSB*", ATTRS{interface}=="BeagleBone", ATTRS{bInterfaceNumber}=="00", SYMLINK+="beaglebone-jtag"
+       ACTION=="add", KERNEL=="ttyUSB*", ATTRS{interface}=="BeagleBone", ATTRS{bInterfaceNumber}=="01", SYMLINK+="beaglebone-serial"
        EOF
-
        udevadm control --reload-rules
        exit
 
