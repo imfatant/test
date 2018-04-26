@@ -1,9 +1,9 @@
-#ArduPilot Blue - a beginner's guide
+# ArduPilot Blue - a beginner's guide
 This is my continuously updated (as of 24/04/2018, DD/MM/20YY) beginner's guide for setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). This guide is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these guys, and others too @ https://gitter.im/mirkix/BBBMINI, for their superb work!
 
 I take a minimalistic approach. Only necessary steps are shown, excepting that I install Git for the sake of convenience. Information found elsewhere may indicate steps that are no longer necessary due to the software having been updated, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
 
-#Part 1
+# Part 1
 0) Before I begin, I want to stress that supplying the BeagleBone Blue with adequate power is a must. Typically, we'll be attaching quite a few peripherals to it, and they'll not behave correctly without enough juice.
 
 1) Go to https://rcn-ee.net/rootfs/bb.org/testing/ and select the directory named with the latest date. Then click on the stretch-console subdirectory. You'll see a number of files here. Download the file named something like 'bone-debian-V.V-console-armhf-20YY-MM-DD-1gb.img.xz'. This is what's known as the 'console' image. It's a very minimal distribution of Debian with only the bare essentials. An alternative is the 'IoT' image (IoT = Internet of Things) which comes with additional software and can make for a more comfortable experience if you are very new to Linux. It's available from the same site.
@@ -67,7 +67,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 14) Reboot again now: `reboot`
 
-#Part 2
+# Part 2
 15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working. And by the way, if you used a USB-to-Ethernet dongle in Step 4, you may need to unplug it now, and hopefully your green LED will go on, too.
 
 16) Now we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
@@ -175,7 +175,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         sudo systemctl enable arducopter.service
     After you reboot, your ArduPilot should inflate automatically.
 
-#Part 3
+# Part 3
 Coming soon..
 
 -- Imf
