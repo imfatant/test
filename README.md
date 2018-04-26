@@ -16,6 +16,33 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It is beyond the scope of this document to detail ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port (user 'debian', password 'temppwd)'. More information can be found here: https://beagleboard.org/blue.
 
+    I should mention that BeagleBone drivers come with Windows 10, but not with every Linux distribution. If you're experiencing problems with Linux, do this:
+
+       sudo -s
+       
+       cat >/etc/udev/rules.d/73-beaglebone.rules <<EOF
+       ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", \
+       ATTRS{idVendor}=="0403", ATTRS{idProduct}=="a6d0", \
+       DRIVER=="", RUN+="/sbin/modprobe -b ftdi_sio"
+
+       ACTION=="add", SUBSYSTEM=="drivers", \
+       ENV{DEVPATH}=="/bus/usb-serial/drivers/ftdi_sio", \
+       ATTR{new_id}="0403 a6d0"
+
+       ACTION=="add", KERNEL=="ttyUSB*", \
+       ATTRS{interface}=="BeagleBone", \
+       ATTRS{bInterfaceNumber}=="00", \
+       SYMLINK+="beaglebone-jtag"
+
+       ACTION=="add", KERNEL=="ttyUSB*", \
+       ATTRS{interface}=="BeagleBone", \
+       ATTRS{bInterfaceNumber}=="01", \
+       SYMLINK+="beaglebone-serial"
+       EOF
+
+       udevadm control --reload-rules
+       exit
+
 4) Hopefully, you now find yourself logged in to the debian user account and at the command prompt. The next task is to update and install some software using an available internet connection.
 
     If you are SSHing to 192.168.7.2, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
