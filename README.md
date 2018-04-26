@@ -176,6 +176,6 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     After you reboot, your ArduPilot should inflate automatically.
 
 # Part 3
-Coming soon..
+Coming is soon.. Also a revision to include ArduRover and ArduTracker!
 
 -- Imf
