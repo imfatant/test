@@ -28,7 +28,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        udevadm control --reload-rules
        exit
 
-4) Hopefully, you now find yourself logged in to the debian user account and at the command prompt. The next task is to update and install some software using an available internet connection.
+4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. The next task is to update and install some software using an available internet connection.
 
     You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
