@@ -46,7 +46,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     If, for whatever reason, internet sharing isn't an option, another possibility is a USB-to-Ethernet dongle like this one: http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL). One can plug this into the BBBlue and then connect it directly to the router. Note that, in my case, I had to supply extra power to the BBBlue via its 2s LiPo connector or its jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
     
-    'But wait!', you may be thinking, 'Surely I can just use the BBBlue's WiFi to connect to my router and get internet access that way?' Absolutely, you can, but that's beacause you've used the IoT image, which has all the software necessary to do this out of the box. The downside is that it contains a lot of superfluous stuff. If you want to do this, skip ahead to Steps 13 and 14, and then do Steps 5 through to 12.
+    "But wait!", you may be thinking, "Surely I can just use the BBBlue's onboard WiFi fucntionality to connect to my router and get internet access that way?" Absolutely, you can, but that's beacause you've used the IoT image, which has all the software necessary to do this out of the box. The downside is that it also contains a lot of superfluous stuff. If you're happy with this, skip ahead to Steps 13 and 14, and then do Steps 5 through to 12.
     
     Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
 
