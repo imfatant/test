@@ -192,6 +192,11 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     After you reboot, your ArduPilot should inflate automatically.
 
 # Part 3
-Is coming soon.. Also a revision to include ArduRover and ArduTracker!
+Let's talk about the peripherals now. A basic minimum configuration is likely to include:
+- an R/C receiver.
+    - a GPS receiver (with or without integrated compass).
+    - a radio modem for telemetry, particularly at longer ranges. 
+
+... (in the process of writing) ...
 
 -- Imf
