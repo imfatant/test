@@ -40,11 +40,11 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
        sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
        sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
-    On my Arch Linux desktop x64 PC, 'eno1' is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and 'enp0s20u7' is the name the OS shows for the BBBlue. Use `ip link` to find the corresponding names for your devices.
+    On my Arch Linux desktop x64 PC, 'eno1' is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and 'enp0s20u7' is the name the OS assigns the BBBlue. Use `ip link` to find the corresponding names for your devices.
     
     If you are using a Windows computer, you can tell it to share with the BBBlue by fast-forwarding to about 5:00 of this Derek Molloy video: http://derekmolloy.ie/beaglebone/getting-started-usb-network-adapter-on-the-beaglebone/.
     
-    If, for whatever reason, internet sharing isn't an option, another possibility is a USB-to-Ethernet dongle like this one: http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL). One can plug this into the BBBlue and then connect it directly to the router. Note that, in my case, I had to supply extra power to the BBBlue via its 2s LiPo connector or its jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
+    If, for whatever reason, internet sharing isn't an option, another possibility is a USB-to-Ethernet dongle like this one: http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL). One can plug this into the BBBlue and then connect it directly to the router. Note that, in my case, I had to supply extra power to the BBBlue via its 2s LiPo connector or jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
     
     "But wait!", you may be thinking, "Surely I can just use the BBBlue's onboard WiFi to connect to my router and get internet access that way?" Absolutely, you can, but you must use the IoT image, which has all the software necessary to do this out of the box. The downside is that it also contains a lot of superfluous stuff. If you're happy with this, skip ahead to Steps 13 and 14, and then do Steps 5 through to 12.
     
