@@ -93,7 +93,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         GPS="-B /dev/ttyS2"
     This is a pretty typical config. It breaks down like this:
     
-    Switch -C maps ArduPilot's "Telem1" serial port (SERIAL1, default 57600) to the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to UART1. It is the bidirectional datalink with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
+    Switch -C maps ArduPilot's "Telem1" serial port (SERIAL1, default 57600) to the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to UART1. It is the bidirectional data link with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
     
     Switch -A maps ArduPilot's "Console" serial port (SERIAL0, default 115200) to a protocol, IP address and port number of one's choosing. For example, this allows me to have MAVLink data coming over WiFi for test purposes. Really useful, especially since it seems to be reliably auto-sensed by ground control station software like Mission Planner and QGroundControl.
     
@@ -195,9 +195,9 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 Let's talk about connecting the peripherals now. A basic minimum configuration is likely to include:
 - An R/C receiver.
 - A GPS receiver (with or without integrated compass).
-- A radio modem for a bidirectional datalink, particularly at longer ranges.
+- A radio modem for a bidirectional data link, particularly at longer ranges.
 
-The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio datalink is recommended. Also bear in mind the type and placement of antennas that these items use.
+The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that these items use.
 
 [dlkhdlfd] (./docs/bbblue_pinouts.jpg)
 
