@@ -199,7 +199,7 @@ Let's talk about connecting the peripherals now. A basic minimum configuration i
 
 The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio datalink is recommended. Also bear in mind the type and placement of antennas that these items use.
 
-[Here's a quickstart chart for the BBBlue's pinouts (save the file and open it in an appropriate image viewer for better resolution: (/bbblue_pinouts.jpg)
+[dlkhdlfd] (docs/bbblue_pinouts.jpg)
 
 ... (in the process of writing) ...
 
