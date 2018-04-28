@@ -192,10 +192,10 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     After you reboot, your ArduPilot should inflate automatically.
 
 # Part 3
-Let's talk about the peripherals now. A basic minimum configuration is likely to include:
-- an R/C receiver.
-- a GPS receiver (with or without integrated compass).
-- a radio modem for a bidirectional datalink, particularly at longer ranges.
+Let's talk about connecting the peripherals now. A basic minimum configuration is likely to include:
+- An R/C receiver.
+- A GPS receiver (with or without integrated compass).
+- A radio modem for a bidirectional datalink, particularly at longer ranges.
 
 The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio datalink is recommended. Also bear in mind the type and placement of antennas that these items use.
 
