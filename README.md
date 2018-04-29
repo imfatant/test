@@ -45,7 +45,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         (press Ctrl-D to exit back to the prompt)
     Wait a second and a prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router and looking there. Try SSHing to the BBBlue using its WiFi IP address. 192.168.7.2 will still work as well.
     
-    If you can't get it to work, you have options. You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
+    If you can't get WiFi to work, you still have options. You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
        sudo /sbin/route add default gw 192.168.7.1
        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
