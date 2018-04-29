@@ -78,7 +78,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
 
-16) When the BBBlue comes back up, we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
+13) When the BBBlue comes back up, we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
         
         TELEM1="-C /dev/ttyO1"
         TELEM2="-A udp:192.168.0.13:14550"
@@ -101,7 +101,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Switch -F ---> Unnamed, SERIAL5, default 57600
     Consult the official ArduPilot documentation for more details on the various serial ports: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
     
-17) Next, we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
+14) Next, we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
     
         [Unit]
         Description=ArduPlane Service
@@ -137,7 +137,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
         [Install]
         WantedBy=multi-user.target
-18) Pause for a moment to create a directory: `sudo mkdir -p /usr/bin/ardupilot`
+15) Pause for a moment to create a directory: `sudo mkdir -p /usr/bin/ardupilot`
     
     Then, carry on with creating what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/aphw, which is run by the services prior to running the ArduPlane or ArduCopter executables:
 
@@ -151,7 +151,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
     You may want to use `sudo chmod 0744 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
-19) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Depending on your situation, this may mean building them from scratch. Do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own ArduPilot software whenever it's updated.
+16) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Depending on your situation, this may mean building them from scratch. Do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own ArduPilot software whenever it's updated.
 
     Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick explains the process for the BBBMINI (based on a BeagleBone Black) here: https://github.com/mirkix/BBBMINI/blob/master/doc/software/software.md. Fortunately, he also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
 
@@ -175,7 +175,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
          scp ./build/blue/bin/ardu* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
     Log in to the BBBlue and copy the executable(s) from /home/debian to /usr/bin/ardupilot with: `sudo cp /home/debian/ardu* /usr/bin/ardupilot`
     
-20) To get ArduPilot going, choose which flavour you want and type either:
+17) To get ArduPilot going, choose which flavour you want and type either:
 
         sudo systemctl enable arduplane.service
     Or:
@@ -184,15 +184,15 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     After you reboot, your ArduPilot should inflate automatically.
 
 ## Part 3 - Connecting the peripherals
-A basic minimum configuration is likely to include:
+18) A basic minimum configuration is likely to include:
 - An R/C receiver.
 - A GPS receiver (with or without integrated compass).
 - A radio modem for a bidirectional data link, particularly at longer ranges.
 
-The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that all these items use.
+    The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that all these items use.
 
-A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution): https://github.com/imfatant/test/blob/master/docs/bbblue_pinouts.jpg. I will refer to it in the following paragraphs.
+    A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution): https://github.com/imfatant/test/blob/master/docs/bbblue_pinouts.jpg. I will refer to it in the following paragraphs.
 
-Let's talk about the R/C receiver first. FrSky equipment, like the X-RSR, XR4SB or R9 Slim can be powered off any 5V pin and a GND. All that remains is to connect the receiver's SBUS OUT ... (in the process of writing) ... note to self: improve pinout diagram ...
+    Let's talk about the R/C receiver first. FrSky equipment, like the X-RSR, XR4SB or R9 Slim can be powered off any 5V pin and a GND. All that remains is to connect the receiver's SBUS OUT ... (in the process of writing) ... note to self: improve pinout diagram ...
 
 -- Imf
