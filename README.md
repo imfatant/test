@@ -28,7 +28,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        udevadm control --reload-rules
        exit
 
-4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. The next task is to update and install some software using an available internet connection, so it's time to set up connman for WiFi access. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
+4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. The next job is to update and install some software using an available internet connection, so it's time to set up connman for WiFi access. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
 
         sudo -s
         connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
