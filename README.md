@@ -185,9 +185,9 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 ## Part 3 - Connecting the peripherals
 18) A basic minimum configuration is likely to include:
-- An R/C receiver.
-- A GPS receiver (with or without integrated compass).
-- A radio modem for a bidirectional data link, particularly at longer ranges.
+    - An R/C receiver.
+    - A GPS receiver (with or without integrated compass).
+    - A radio modem for a bidirectional data link, particularly at longer ranges.
 
     The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that all these items use.
 
