@@ -10,7 +10,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     Don't assume that the latest image is the best, or even that it works. Afterall, this is the 'testing' repository, so be warned. However, I will endeavour to keep abreast of what seems to be the latest functional image and mention it here.
 
-    At the time of writing, I'm using https://rcn-ee.net/rootfs/bb.org/testing/2018-04-22/stretch-console/bone-debian-9.4-console-armhf-2018-04-22-1gb.img.xz
+    At the time of writing, I'm using https://rcn-ee.net/rootfs/bb.org/testing/2018-04-22/stretch-console/bone-debian-9.4-console-armhf-2018-04-22-1gb.img.xz.
     
 2) Now you'll need to flash the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
 
@@ -199,7 +199,7 @@ A basic minimum configuration is likely to include:
 
 The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that all these items use.
 
-A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution): https://github.com/imfatant/test/blob/master/docs/bbblue_pinouts.jpg
+A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution): https://github.com/imfatant/test/blob/master/docs/bbblue_pinouts.jpg.
 
 ... (in the process of writing) ...
 
