@@ -28,41 +28,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        udevadm control --reload-rules
        exit
 
-4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. The next task is to update and install some software using an available internet connection.
-
-    You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
-    
-       sudo /sbin/route add default gw 192.168.7.1
-       echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
-    You can then tell your Linux computer to share with the BBBlue by typing (at the computer's command prompt):
-    
-       sudo sysctl net.ipv4.ip_forward=1
-       sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
-       sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-       sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
-    On my Arch Linux desktop x64 PC, 'eno1' is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and 'enp0s20u7' is the name assigned to the BBBlue. Use `ip link` to find the corresponding names for your devices.
-    
-    If you are using a Windows computer, you can tell it to share with the BBBlue by fast-forwarding to about 5:00 of this Derek Molloy video: http://derekmolloy.ie/beaglebone/getting-started-usb-network-adapter-on-the-beaglebone/.
-    
-    If, for whatever reason, internet sharing isn't an option, another possibility is a USB-to-Ethernet dongle like this one: http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL). One can plug this into the BBBlue and then connect it directly to the router. Note that, in my case, I had to supply extra power to the BBBlue via its 2s LiPo connector or jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
-    
-    "But wait!", you may be thinking, "Surely I can just use the BBBlue's onboard WiFi to connect to my router and get internet access that way?" Absolutely, you can, but you must use the IoT image, which has all the software necessary to do this out of the box. The downside is that it also contains a lot of superfluous stuff. If you're happy with this, skip ahead to Steps 13 and 14, and then do Steps 5 through to 12.
-    
-    Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
-
-5) Update and install all required supporting software:
-
-       sudo apt-get -y update
-       sudo apt-get -y dist-upgrade
-       sudo apt-get install -y cpufrequtils connman git
-6) Update Git: `cd /opt/scripts && git pull`
-7) Specify Ti real-time kernel 4_9. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
-8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
-9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
-10) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
-11) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
-12) Reboot now: `sudo reboot`
-13) It's time to set up connman for WiFi access. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
+4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. The next task is to update and install some software using an available internet connection, so it's time to set up connman for WiFi access. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
 
         sudo -s
         connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
@@ -77,16 +43,42 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Name = <your SSID>
         Passphrase = <your WiFi password>
         (press Ctrl-D to exit back to the prompt)
-    Finally, type: `systemctl enable connman`
+    Wait a second and a prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router and looking there. Try SSHing to the BBBlue using its WiFi IP address. 192.168.7.2 will still work as well.
+    
+    If you can't get it to work, you have options. You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
+    
+       sudo /sbin/route add default gw 192.168.7.1
+       echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
+    You can then tell your Linux computer to share with the BBBlue by typing (at the computer's command prompt):
+    
+       sudo sysctl net.ipv4.ip_forward=1
+       sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
+       sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+       sudo iptables -A FORWARD -i enp0s20u7 -o eno1 -j ACCEPT
+    On my Arch Linux desktop x64 PC, 'eno1' is the name of the Ethernet adapter connected to my router (and the connection I'll be sharing), and 'enp0s20u7' is the name assigned to the BBBlue. Use `ip link` to find the corresponding names for your devices.
+    
+    If you are using a Windows computer, you can tell it to share with the BBBlue by fast-forwarding to about 5:00 of this Derek Molloy video: http://derekmolloy.ie/beaglebone/getting-started-usb-network-adapter-on-the-beaglebone/.
+    
+    If internet sharing isn't an option, another possibility is a USB-to-Ethernet dongle like this one: http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL). One can plug this into the BBBlue and then connect it directly to the router. Note that, in my case, I had to supply extra power to the BBBlue via its 2s LiPo connector or jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
+    
+    Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
 
-14) Reboot again now: `reboot`
+5) Update and install all required supporting software:
+
+       sudo apt-get -y update
+       sudo apt-get -y dist-upgrade
+       sudo apt-get install -y cpufrequtils git
+6) Update Git: `cd /opt/scripts && git pull`
+7) Specify Ti real-time kernel 4_9. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
+8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
+9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
+10) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
+11) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
+12) Reboot now: `sudo reboot`
 
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
-15) When the BBBlue comes back up, you should notice that a prominent green LED is lit, signifying that WiFi is working. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router and looking there. Try SSHing to the BBBlue using its WiFi IP address. 192.168.7.2 will still work as well.
 
-    By the way, if you used a USB-to-Ethernet dongle in Step 4, you may need to unplug it now, and hopefully your green LED will go on, too.
-
-16) Now we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
+16) When the BBBlue comes back up, we need to create a few text files. Use your favourite text editor (with sudo). Personally, I like nano. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
         
         TELEM1="-C /dev/ttyO1"
         TELEM2="-A udp:192.168.0.13:14550"
