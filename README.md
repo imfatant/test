@@ -67,8 +67,9 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        gateway 192.168.7.1
     Finally, reboot the BBBlue with: `sudo reboot`
     
-    After powering up, type: `sudo ifup wlan0` 
-    You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
+    After powering up, type: `sudo ifup wlan0`. The green LED should come on. You're connected.
+    
+    If WiFi isn't an option, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
        sudo /sbin/route add default gw 192.168.7.1
        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
