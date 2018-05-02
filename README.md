@@ -53,7 +53,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        auto lo
        iface lo inet loopback
 
-       # WiFi client w/ onboard device.
+       # WiFi w/ onboard device.
        auto wlan0
        iface wlan0 inet dhcp
        wpa-ssid "<your SSID>"
