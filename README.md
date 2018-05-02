@@ -68,7 +68,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        gateway 192.168.7.1
     Finally, reboot the BBBlue with: `sudo reboot`
     
-    After powering back on, type: `sudo ifup wlan0`. The green LED should come on, and you're connected.
+    After powering back on, type: `sudo ifup wlan0`. The green LED should come on. You're connected.
     
     If WiFi isn't an option, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
