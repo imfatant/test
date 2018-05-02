@@ -45,7 +45,29 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         (press Ctrl-D to exit back to the prompt)
     Wait a second and a prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router and looking there. Try SSHing to the BBBlue using its WiFi IP address. 192.168.7.2 will still work as well.
     
-    If you can't get WiFi to work, you still have options. You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
+    If you can't get WiFi to work with connman, or you simply don't want to use connman, you can use the following method. First, type: `sudo systemctl disable connman`. Then edit /etc/network/interfaces to read:
+
+       # The loopback network interface.
+       auto lo
+       iface lo inet loopback
+
+       # WiFi client w/ onboard device.
+       auto wlan0
+       iface wlan0 inet dhcp
+       wpa-ssid "<your SSID>"
+       wpa-psk "<your WiFi password>"
+       
+       # Ethernet/RNDIS gadget (g_ether).
+       # Used by: /opt/scripts/boot/autoconfigure_usb0.sh
+       iface usb0 inet static
+       address 192.168.7.2
+       netmask 255.255.255.252
+       network 192.168.7.0
+       gateway 192.168.7.1
+    Finally, reboot the BBBlue with: `sudo reboot`
+    
+    After powering up, type: `sudo ifup wlan0` 
+    You can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
        sudo /sbin/route add default gw 192.168.7.1
        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
