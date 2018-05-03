@@ -220,4 +220,37 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     Let's talk about the R/C receiver first. FrSky equipment, like the R-XSR, XR4SB or R9 Slim can be powered off any 5V pin and a GND. All that remains is to connect the receiver's SBUS OUT ... (in the process of writing) ... note to self: improve pinout diagram ...
 
+...
+
+sudo apt-get install i2c-tools
+
+sudo i2cdetect -r -y 0
+sudo i2cdetect -r -y 1
+sudo i2cdetect -r -y 2
+
+    $ sudo i2cdetect -r -y 2
+    0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+    00:          -- -- -- -- -- -- -- -- -- 0c -- -- -- 
+    10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- 
+    70: -- -- -- -- -- -- 76 --    
+68 = InvenSense MPU-9250 IMU (onboard)
+0c = AK8963 Compass (onboard)
+76 = Bosch BMP280 Barometer (onboard)
+
+    $ sudo i2cdetect -r -y 1
+    0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+    00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- 1e -- 
+    20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    70: -- -- -- -- -- -- -- --
+1e = HMC5883 Compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N GPS receiver/antenna modules
 -- Imf
