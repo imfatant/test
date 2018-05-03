@@ -239,8 +239,8 @@ sudo i2cdetect -r -y 2
     60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- 
     70: -- -- -- -- -- -- 76 --    
 68 = InvenSense MPU-9250 IMU (onboard)
-0c = AK8963 Compass (onboard)
-76 = Bosch BMP280 Barometer (onboard)
+0c = AK8963 compass (onboard)
+76 = Bosch BMP280 barometer (onboard)
 
     $ sudo i2cdetect -r -y 1
     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
@@ -252,5 +252,5 @@ sudo i2cdetect -r -y 2
     50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     70: -- -- -- -- -- -- -- --
-1e = HMC5883 Compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N GPS receiver/antenna modules
+1e = HMC5883 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N GPS receiver/antenna modules
 -- Imf
