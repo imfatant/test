@@ -86,7 +86,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     If internet sharing isn't an option, another possibility is a USB-to-Ethernet dongle like this one: http://accessories.ap.dell.com/sna/productdetail.aspx?c=sg&l=en&s=bsd&cs=sgbsd1&sku=470-ABNL). One can plug this into the BBBlue and then connect it directly to the router. Note that, in my case, I had to supply extra power to the BBBlue via its 2s LiPo connector or jack plug for the dongle to work. The BBBlue enumerates the dongle as device 'usb2', and sets it up automatically (well, sometimes it's necessary to reboot in order for `ip link` to show that the device is up).
     
-    Whichever way you go, you can verify you have internet by typing: `ping -c 3 www.google.com`
+    Whichever way you go, you can verify you have internet by typing: `ping -c 3 google.com`
 
 5) Update and install all required supporting software:
 
