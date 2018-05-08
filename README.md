@@ -34,7 +34,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         connmanctl services | grep '<your SSID>' | grep -Po 'wifi_[^ ]+'
     The response will be a hash that'll look something like 'wifi_38d279e099a8_4254487562142d4355434b_managed_psk'. If you see nothing, try it again - you probably made a typo.
     
-    Now, using this hash, we're going to enter a file directly from the keyboard (stdin) using cat, one line at a time:
+    Now, using this hash, we're going to enter a file directly from the keyboard (stdin) using `cat`, one line at a time:
     
         cat >/var/lib/connman/wifi.config
         [service_<your hash>]
