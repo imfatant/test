@@ -110,7 +110,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        sudo apt-get -y update
        sudo apt-get -y dist-upgrade
        sudo apt-get install -y cpufrequtils git
-6) Update Git: `cd /opt/scripts && git pull`
+6) Update scripts: `cd /opt/scripts && git pull`
 7) Specify Ti real-time kernel 4_9. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
 9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
