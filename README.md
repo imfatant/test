@@ -231,7 +231,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that all these items use.
 
-    A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution): https://github.com/imfatant/test/blob/master/docs/bbblue_pinouts.jpg. I will refer to it in the following paragraphs.
+    A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution): https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg. I will refer to it in the following paragraphs.
 
     Let's talk about the R/C receiver first. FrSky equipment, like the R-XSR, XR4SB or R9 Slim can be powered off any 5V pin and a GND. All that remains is to connect the receiver's SBUS OUT ... (in the process of writing) ... note to self: improve pinout diagram ...
 
