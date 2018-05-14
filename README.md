@@ -73,7 +73,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     If you then want the BBBlue to have a static IP (let's say 192.168.0.99), you'd make the following changes to section `# Wifi w/ onboard device.`:
     
-       # WiFi client w/ onboard device.
+       # WiFi w/ onboard device.
        auto wlan0
        iface wlan0 inet static
        wpa-ssid "<your SSID>"
