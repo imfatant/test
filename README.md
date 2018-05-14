@@ -237,7 +237,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 ![alt text](https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg)
 
-- The R/C receiver: FrSky equipment, like the R-XSR, XR4SB or R9 Slim can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will do too. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. Please contact me if you would like to add some information here about gear from other manuafacturers such as Spektrum, Futaba, etc.
+- The R/C receiver: FrSky equipment, like the R-XSR, XR4SB or R9 Slim can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will do too. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. A signal inverter is not necessary. Please contact me if you would like to add some information here about gear from other manufacturers such as Spektrum, Futaba, etc.
 
 ...
 ...
