@@ -71,7 +71,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     After powering back on, type: `sudo ifup wlan0`. The green LED should come on. You're connected.
     
-    If you then want a static IP (let's say 192.168.0.99), make the following changes to section `# Wifi w/ onboard device.`:
+    If you then want a static IP (let's say 192.168.0.99), you'd make the following changes to section `# Wifi w/ onboard device.`:
     
        # WiFi client w/ onboard device.
        auto wlan0
