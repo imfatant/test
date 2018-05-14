@@ -231,7 +231,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     - A GPS receiver (with or without integrated compass).
     - A radio modem for a bidirectional data link, particularly at longer ranges.
 
-    The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that all these items use.
+    (The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated radio data link is recommended. Also bear in mind the type and placement of antennas that all these items use.)
 
     A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution): https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg. I will refer to it in the following paragraphs.
 
