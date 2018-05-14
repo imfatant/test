@@ -233,7 +233,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     (The BBBlue's onboard WiFi is great for debugging and testing at close range if 2.4 GHz is available, but for anything more interesting, a dedicated bidirectional data link is recommended. Also bear in mind the type and placement of antennas that all these items use.)
 
-    A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution). I will refer to it in the following paragraphs.
+    A good place to begin is this quickstart pinout diagram (save the file and open it in an appropriate image viewer for better resolution). I will refer to it in the paragraphs that follow.
 
 ![alt text](https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg)
 
