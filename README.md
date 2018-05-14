@@ -12,7 +12,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     At the time of writing, I'm using https://rcn-ee.net/rootfs/bb.org/testing/2018-04-22/stretch-console/bone-debian-9.4-console-armhf-2018-04-22-1gb.img.xz.
     
-    PLEASE TRY USING THIS IMAGE FIRST BEFORE RAISING ISSUES!
+    PLEASE TRY USING THIS PRECISE IMAGE FIRST BEFORE RAISING ISSUES!
     
 2) Next you'll need to flash the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
 
