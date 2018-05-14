@@ -78,7 +78,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        iface wlan0 inet static
        wpa-ssid "<your SSID>"
        wpa-psk "<your WiFi password>"
-       address 192.168.0.99  # <--- The static IP address of the BBBlue.
+       address 192.168.0.99  # <--- The desired static IP address of the BBBlue.
        netmask 255.255.255.0
        gateway 192.168.0.1  # <--- The address of your router.
     If WiFi just isn't an option, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
