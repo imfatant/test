@@ -71,13 +71,13 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     After powering back on, type: `sudo ifup wlan0`. The green LED should come on. You're connected.
     
-    If you then want a static IP (let's say 192.168.0.99), you'd make the following changes to section `# Wifi w/ onboard device.`:
+    If you then want the BBBlue to have a static IP (let's say 192.168.0.99), you'd make the following changes to section `# Wifi w/ onboard device.`:
     
        # WiFi client w/ onboard device.
        auto wlan0
        iface wlan0 inet static
-       wpa-ssid "BTHub4-CUCK"
-       wpa-psk "y72eO5o8Gw2sj"
+       wpa-ssid "<your SSID>"
+       wpa-psk "<your WiFi password>"
        address 192.168.0.99
        netmask 255.255.255.0
        gateway 192.168.0.1
