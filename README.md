@@ -42,7 +42,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Security = wpa2
         Name = <your SSID>
         Passphrase = <your WiFi password>
-    Press `Ctrl-D` to exit back to the prompt, and then type: `exit`
+    Press `Ctrl-D` to quit out to the prompt, and then type: `exit`
     
     Wait a second and a prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router and looking there. Try SSHing to the BBBlue using its WiFi IP address.
     
