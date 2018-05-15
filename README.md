@@ -305,5 +305,5 @@ sudo i2cdetect -r -y 2
     50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     70: -- -- -- -- -- -- -- --
-1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N GPS modules
+1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules
 -- Imf
