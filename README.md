@@ -161,7 +161,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
         [Install]
         WantedBy=multi-user.target
-    And one for ArduCopter, /lib/systemd/system/arducopter.service:
+    One for ArduCopter, /lib/systemd/system/arducopter.service:
     
         [Unit]
         Description=ArduCopter Service
@@ -173,6 +173,24 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         EnvironmentFile=/etc/default/ardupilot
         ExecStartPre=/usr/bin/ardupilot/aphw
         ExecStart=/usr/bin/ardupilot/arducopter $TELEM1 $TELEM2 $GPS
+
+        Restart=on-failure
+        RestartSec=1
+
+        [Install]
+        WantedBy=multi-user.target
+   And one for ArduRover, /lib/systemd/system/ardurover.service:
+    
+        [Unit]
+        Description=ArduRover Service
+        After=networking.service
+        StartLimitIntervalSec=0
+        Conflicts=arducopter.service arduplane.service ardutracker.service
+
+        [Service]
+        EnvironmentFile=/etc/default/ardupilot
+        ExecStartPre=/usr/bin/ardupilot/aphw
+        ExecStart=/usr/bin/ardupilot/ardurover $TELEM1 $TELEM2 $GPS
 
         Restart=on-failure
         RestartSec=1
@@ -225,6 +243,9 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     Or:
 
         sudo systemctl enable arducopter.service
+    Or:
+
+        sudo systemctl enable ardurover.service
     After you reboot, your ArduPilot should inflate automatically.
 
 ## Part 3 - Connecting the peripherals
