@@ -77,7 +77,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
     The green LED should come on. You're connected.
     
-    If you then want the BBBlue to have a static IP (let's say 192.168.0.99), you'd make the following changes to section `# Wifi w/ onboard device.`:
+    If you want the BBBlue to have a static IP (let's say 192.168.0.99), alter the relevant section of /etc/network/interfaces to read:
     
        # WiFi w/ onboard device.
        auto wlan0
