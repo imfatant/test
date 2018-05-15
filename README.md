@@ -191,7 +191,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         /bin/echo out >/sys/class/gpio/gpio80/direction
         /bin/echo 1 >/sys/class/gpio/gpio80/value
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
-    You may want to use `sudo chmod 0744 /usr/bin/ardupilot/aphw` to set permissions for this file.
+    Use `sudo chmod 0744 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
 16) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/.
 
