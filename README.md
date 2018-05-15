@@ -179,7 +179,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
         [Install]
         WantedBy=multi-user.target
-   And one for ArduRover, /lib/systemd/system/ardurover.service:
+    And one for ArduRover, /lib/systemd/system/ardurover.service:
     
         [Unit]
         Description=ArduRover Service
