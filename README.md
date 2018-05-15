@@ -305,5 +305,5 @@ sudo i2cdetect -r -y 2
     50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     70: -- -- -- -- -- -- -- --
-1e = HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N GPS receiver/antenna modules
+1e = HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N GPS modules
 -- Imf
