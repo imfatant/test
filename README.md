@@ -241,7 +241,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     Again, be sure to set their permissions: `sudo chmod 0755 /usr/bin/ardupilot/ardu*`
     
-17) To get ArduPilot going, choose which flavour you want and type either:
+17) To get ArduPilot going, choose which flavour you want and type:
 
         sudo systemctl enable arduplane.service
     Or:
