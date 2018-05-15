@@ -292,7 +292,7 @@ sudo i2cdetect -r -y 2
     60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- 
     70: -- -- -- -- -- -- 76 --    
 68 = InvenSense MPU-9250 IMU (onboard)
-0c = AK8963 compass (onboard)
+0c = AKM AK8963 compass (onboard)
 76 = Bosch BMP280 barometer (onboard)
 
     $ sudo i2cdetect -r -y 1
