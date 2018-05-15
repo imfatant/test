@@ -213,7 +213,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
 16) Almost there! You must now obtain the latest ArduPlane, ArduCopter and ArduRover executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/.
 
-    Be sure to set their permissions with `sudo chmod 0755 /usr/bin/ardupilot/ardu*`.
+    Be sure to set their permissions with: `sudo chmod 0755 /usr/bin/ardupilot/ardu*`
 
     If you find that you need to build them from scratch yourself, do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own customized ArduPilot software.
 
@@ -238,6 +238,8 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         ./waf
          scp ./build/blue/bin/ardu* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
     Log in to the BBBlue and copy the executable(s) from /home/debian to /usr/bin/ardupilot with: `sudo cp /home/debian/ardu* /usr/bin/ardupilot`
+    
+    Again, Be sure to set their permissions: sudo chmod 0755 /usr/bin/ardupilot/ardu*
     
 17) To get ArduPilot going, choose which flavour you want and type either:
 
