@@ -199,7 +199,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         WantedBy=multi-user.target
 15) Pause for a moment to create a directory: `sudo mkdir -p /usr/bin/ardupilot`
     
-    Then, carry on with creating what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/aphw, which is run by the services prior to running the ArduPlane or ArduCopter executables:
+    Then, carry on with creating what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/aphw, which is run by the services prior to running the ArduPilot executables:
 
         #!/bin/bash
         # aphw
@@ -211,7 +211,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
     Use `sudo chmod 0744 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
-16) Almost there! You must now obtain the latest ArduPlane and ArduCopter executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/.
+16) Almost there! You must now obtain the latest ArduPlane, ArduCopter and ArduRover executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/.
 
     If you find that you need to build them from scratch yourself, do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own customized ArduPilot software.
 
