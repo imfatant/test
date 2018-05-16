@@ -213,6 +213,8 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
 16) Almost there! You must now obtain the latest ArduPlane, ArduCopter and ArduRover executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/.
 
+    They're also here in this repository: https://github.com/imfatant/test/blob/master/bin/
+
     Be sure to set their permissions with: `sudo chmod 0755 /usr/bin/ardupilot/ardu*`
 
     If you find that you need to build them from scratch yourself, do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own customized ArduPilot software.
