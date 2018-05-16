@@ -149,7 +149,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Description=ArduPlane Service
         After=networking.service
         StartLimitIntervalSec=0
-        Conflicts=arducopter.service ardurover.service ardutracker.service
+        Conflicts=arducopter.service ardurover.service antennatracker.service
 
         [Service]
         EnvironmentFile=/etc/default/ardupilot
@@ -167,7 +167,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Description=ArduCopter Service
         After=networking.service
         StartLimitIntervalSec=0
-        Conflicts=arduplane.service ardurover.service ardutracker.service
+        Conflicts=arduplane.service ardurover.service antennatracker.service
 
         [Service]
         EnvironmentFile=/etc/default/ardupilot
@@ -185,7 +185,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Description=ArduRover Service
         After=networking.service
         StartLimitIntervalSec=0
-        Conflicts=arducopter.service arduplane.service ardutracker.service
+        Conflicts=arducopter.service arduplane.service antennatracker.service
 
         [Service]
         EnvironmentFile=/etc/default/ardupilot
