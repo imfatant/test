@@ -271,9 +271,11 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     The (much) more expensive alternative to the NEO-M8N is the NEO-M8P. This receiver supports a mode of operation known as 'RTK', or Real-Time Kinematic. What that means is that we can achieve positional accuracies of a few centimetres in real-time. At the time of writing, this kind of performance comes at a cost, approximately ten times the cost of the NEO-M8N, and that's before you add in the base station. I will append a special section addressing the M8P later in the guide.
     
     Don't expect to be able to plug your chosen... under construction ...
-
-
-
+...
+The types of connectors used: JST SH, etc
+...
+The ArduPilot parameter settings file: /var/APM.ArduPlane.stg
+...
 
 sudo apt-get install i2c-tools
 
