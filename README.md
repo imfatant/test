@@ -215,7 +215,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
     And I've built my own copies here in this repository: https://github.com/imfatant/test/blob/master/bin/
 
-    Be sure to set their permissions with: `sudo chmod 0755 /usr/bin/ardupilot/ardu*`
+    Be sure to set their permissions with: `sudo chmod 0755 /usr/bin/ardupilot/a*`
 
     If you find that you need to build them from scratch yourself, do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own customized ArduPilot software.
 
