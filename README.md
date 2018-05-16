@@ -178,7 +178,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         RestartSec=1
 
         [Install]
-        WantedBy=multi-user.target
+        WantedBy=multi-user.target    
     And one for ArduRover, /lib/systemd/system/ardurover.service:
     
         [Unit]
@@ -191,6 +191,24 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         EnvironmentFile=/etc/default/ardupilot
         ExecStartPre=/usr/bin/ardupilot/aphw
         ExecStart=/usr/bin/ardupilot/ardurover $TELEM1 $TELEM2 $GPS
+
+        Restart=on-failure
+        RestartSec=1
+
+        [Install]
+        WantedBy=multi-user.target
+    While I'm here, how about AntennaTracker, too? Create /lib/systemd/system/antennatracker.service:
+    
+        [Unit]
+        Description=AntennaTracker Service
+        After=networking.service
+        StartLimitIntervalSec=0
+        Conflicts=arducopter.service arduplane.service ardurover.service
+
+        [Service]
+        EnvironmentFile=/etc/default/ardupilot
+        ExecStartPre=/usr/bin/ardupilot/aphw
+        ExecStart=/usr/bin/ardupilot/antennatracker $TELEM1 $TELEM2 $GPS
 
         Restart=on-failure
         RestartSec=1
@@ -211,7 +229,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
     Use `sudo chmod 0755 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
-16) Almost there! You must now obtain the latest ArduPlane, ArduCopter and ArduRover executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/.
+16) Almost there! You must now obtain the latest ArduPlane, ArduCopter, ArduRover, etc. executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/.
 
     And I've built my own copies here in this repository: https://github.com/imfatant/test/blob/master/bin/
 
