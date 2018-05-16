@@ -241,7 +241,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
          scp ./build/blue/bin/ardu* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
     Log in to the BBBlue and copy the executable(s) from /home/debian to /usr/bin/ardupilot with: `sudo cp /home/debian/ardu* /usr/bin/ardupilot`
     
-    Again, be sure to set their permissions: `sudo chmod 0755 /usr/bin/ardupilot/ardu*`
+    Again, be sure to set their permissions: `sudo chmod 0755 /usr/bin/ardupilot/a*`
     
 17) To get ArduPilot going, choose which flavour you want and type:
 
