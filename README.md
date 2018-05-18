@@ -288,6 +288,8 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     DigiKey, Mouser, RS Components, Farnell, and so on, are the places to shop for these components. Try to make one BIG order because they charge a small fortune for shipping. As for information on all the rest of the bits and pieces you'll need, go here to Joshua Bardwell's FPV website: https://www.fpvknowitall.com/ultimate-fpv-shopping-list/
     
+    So, back to connecting the peripherals:
+    
 ![alt text](https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg)
 
 - The R/C receiver: FrSky equipment (https://www.frsky-rc.com/), like the R-XSR, XR4SB, X6R, X8R or R9 Slim can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will of course do. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. A signal inverter is not necessary. Please contact me if you would like to add some information here about gear from other manufacturers such as Spektrum, Futaba, etc.
