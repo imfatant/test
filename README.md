@@ -56,7 +56,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        auto lo
        iface lo inet loopback
 
-       # WiFi w/ onboard device.
+       # WiFi w/ onboard device (dynamic IP).
        auto wlan0
        iface wlan0 inet dhcp
        wpa-ssid "<your SSID>"
@@ -79,7 +79,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     If you want the BBBlue to have a static IP (let's say 192.168.0.99), alter the relevant section of /etc/network/interfaces to read:
     
-       # WiFi w/ onboard device.
+       # WiFi w/ onboard device (static IP).
        auto wlan0
        iface wlan0 inet static
        wpa-ssid "<your SSID>"
