@@ -286,7 +286,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     I should also mention other connector types you'll come across (on the other end of the cables you'll be making up). The JST-GH 1.25 mm pitch is quite common, and I hope that it will be more widely adopted. It's my favourite connector - it is sturdy and has an integrated catch mechanism. You'll see 4, 5 and 6-way. Next, there's the Molex PicoBlade 1.25 mm pitch connector, also nice, and available in 'free floating' female (called a 'receptacle') and male (called a 'plug housing') varieties - great for field-pluggable cabling. Grab some from 2-way through to 6-way. Finally, there's the venerable Mini-PV 2.54 mm connector (a.k.a. Harwin M20 / Futaba / Hitec / 'standard black R/C-style connector'). Naturally, you'll need to buy the crimp contacts for all these (they're all different).
     
-    DigiKey, Mouser, RS Components, Farnell, and so on, are the places to go for these components. Try to make one BIG order because they charge a small fortune for shipping. As for information on all the rest of the bits and pieces you'll need, go here to Joshua Bardwell's FPV website: https://www.fpvknowitall.com/ultimate-fpv-shopping-list/
+    DigiKey, Mouser, RS Components, Farnell, and so on, are the places to shop for these components. Try to make one BIG order because they charge a small fortune for shipping. As for information on all the rest of the bits and pieces you'll need, go here to Joshua Bardwell's FPV website: https://www.fpvknowitall.com/ultimate-fpv-shopping-list/
     
 ![alt text](https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg)
 
