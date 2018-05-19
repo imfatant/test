@@ -143,26 +143,8 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Switch -F ---> Unnamed, SERIAL5, default 57600
     Consult the official ArduPilot documentation for more details on the various serial ports: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
     
-14) Next, we'll create the ArduPilot systemd service files, one for ArduPlane, /lib/systemd/system/arduplane.service:
-    
-        [Unit]
-        Description=ArduPlane Service
-        After=networking.service
-        StartLimitIntervalSec=0
-        Conflicts=arducopter.service ardurover.service antennatracker.service
-
-        [Service]
-        EnvironmentFile=/etc/default/ardupilot
-        ExecStartPre=/usr/bin/ardupilot/aphw
-        ExecStart=/usr/bin/ardupilot/arduplane $TELEM1 $TELEM2 $GPS
-
-        Restart=on-failure
-        RestartSec=1
-
-        [Install]
-        WantedBy=multi-user.target
-    One for ArduCopter, /lib/systemd/system/arducopter.service:
-    
+14) Next, we'll create the ArduPilot systemd service files, one for ArduCopter, /lib/systemd/system/arducopter.service:
+        
         [Unit]
         Description=ArduCopter Service
         After=networking.service
@@ -173,6 +155,24 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         EnvironmentFile=/etc/default/ardupilot
         ExecStartPre=/usr/bin/ardupilot/aphw
         ExecStart=/usr/bin/ardupilot/arducopter $TELEM1 $TELEM2 $GPS
+
+        Restart=on-failure
+        RestartSec=1
+
+        [Install]
+        WantedBy=multi-user.target
+    One for ArduPlane, /lib/systemd/system/arduplane.service:
+        
+        [Unit]
+        Description=ArduPlane Service
+        After=networking.service
+        StartLimitIntervalSec=0
+        Conflicts=arducopter.service ardurover.service antennatracker.service
+
+        [Service]
+        EnvironmentFile=/etc/default/ardupilot
+        ExecStartPre=/usr/bin/ardupilot/aphw
+        ExecStart=/usr/bin/ardupilot/arduplane $TELEM1 $TELEM2 $GPS
 
         Restart=on-failure
         RestartSec=1
