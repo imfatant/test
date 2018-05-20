@@ -744,7 +744,7 @@ sudo i2cdetect -r -y 2
 			chmod 0755 /home/$remote_default_user/stop-access /home/$remote_service_user/stop-access
 			chown $remote_default_user:$remote_default_user /home/$remote_default_user/stop-access
 			chown $remote_service_user:$remote_service_user /home/$remote_service_user/stop-access
-				cat <<-EOF120 | tee /home/$remote_default_user/.asoundrc >/home/$remote_service_user/.asoundrc
+			cat <<-EOF120 | tee /home/$remote_default_user/.asoundrc >/home/$remote_service_user/.asoundrc
 				pcm.!default {
 					type plug
 					slave {
