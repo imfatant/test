@@ -1,5 +1,5 @@
 # ArduPilot Blue - A beginner's guide
-This is my regularly updated (as of 18/05/2018, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
+This is my regularly updated (as of 20/05/2018, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
 
 I take a minimalistic approach. Only necessary steps are shown, excepting that I install Git for the sake of convenience. Information found elsewhere may indicate steps that are no longer necessary due to software updates, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
 
@@ -299,6 +299,8 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     The (much) more expensive alternative to the NEO-M8N is the NEO-M8P. This receiver supports a mode of operation known as 'RTK', or Real-Time Kinematic. What that means is that we can achieve positional accuracies of a few centimetres in real-time. At the time of writing, this kind of performance comes at a cost, approximately ten times the cost of the NEO-M8N, and that's before you add in the base station. I will append a special section addressing the M8P later in the guide.
     
     I highly recommend starting out with an M8N, if only just to get a feel for things. It's highly likely you'll have to chop off the connector(s) it comes with and break out the GPS lines to a 6-way JST-SH which you'll plug into the GPS serial UART on the BBBlue, and the external compass lines to a 4-way JST-SH which plugs into the I2C port. The niggle is that although you'll be powering the M8N with +5V, its GPS signal must not exceed +3.3V. I believe most M8N modules step the voltage down to +3.3V internally, so you're OK. But you should check, if necessary with an oscilloscope. Failure to do so could damage the BBBlue.
+    
+    ... under construction ... 
     
 The ArduPilot parameter settings files: /var/APM/{ArduCopter.stg,ArduPlane.stg,APMrover2.stg,AntennaTracker.stg}
 ...
