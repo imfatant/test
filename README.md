@@ -571,35 +571,6 @@ sudo i2cdetect -r -y 2
 			chmod 0755 /home/$remote_default_user/ap-stop /home/$remote_service_user/ap-stop
 			chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-stop
 			chown $remote_service_user:$remote_service_user /home/$remote_service_user/ap-stop
-			cat <<-EOF65 | tee /home/$remote_default_user/ap-clone >/home/$remote_service_user/ap-clone
-				#!/bin/bash
-				# ap-clone
-				# Clones ArduPilot and installs rangerfinder firmware.
-
-				git clone https://github.com/ArduPilot/ardupilot.git
-				cd ardupilot/Tools/Linux_HAL_Essentials/pru/rangefinderpru
-				sudo make install
-				EOF65
-			chmod 0755 /home/$remote_default_user/ap-clone /home/$remote_service_user/ap-clone
-			chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-clone
-			chown $remote_service_user:$remote_service_user /home/$remote_service_user/ap-clone
-			cat <<-EOF70 | tee /home/$remote_default_user/ap-build >/home/$remote_service_user/ap-build
-				#!/bin/bash
-				# ap-build
-				# Builds ArduPilot.
-
-				echo "This is going to take some time.."
-				cd ardupilot
-				git checkout Copter-3.5.5
-				# git checkout ArduPlane-3.8.4
-				git submodule update --init --recursive
-				./waf configure --board=blue
-				./waf
-				sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
-				EOF70
-			chmod 0755 /home/$remote_default_user/ap-build /home/$remote_service_user/ap-build
-			chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-build
-			chown $remote_service_user:$remote_service_user /home/$remote_service_user/ap-build
 			cat <<-EOF75 | tee /home/$remote_default_user/rt-kernel >/home/$remote_service_user/rt-kernel
 				#!/bin/bash
 				# rt-kernel
