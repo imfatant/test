@@ -619,14 +619,14 @@ sudo i2cdetect -r -y 2
 				# # WiFi w/ onboard device (dynamic IP).
 				# auto wlan0
 				# iface wlan0 inet dhcp
-				# wpa-ssid "<your SSID>"
-				# wpa-psk "<your WiFi password>"
+				# wpa-ssid "$remote_uses_SSID"
+				# wpa-psk "$remote_uses_pwd"
 
 				# # WiFi w/ onboard device (static IP).
 				# auto wlan0
 				# iface wlan0 inet static
-				# wpa-ssid "<your SSID>"
-				# wpa-psk "<your WiFi password>"
+				# wpa-ssid "$remote_uses_SSID"
+				# wpa-psk "$remote_uses_pwd"
 				# address 192.168.0.99  # <--- The desired static IP address of the BBBlue.
 				# netmask 255.255.255.0
 				# gateway 192.168.0.1  # <--- The address of your router.
