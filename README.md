@@ -371,118 +371,118 @@ sudo i2cdetect -r -y 2
 	local_protocol="udp"  # <--- SET THIS (for ArduPilot).
 	remote_default_user="debian"  # Mentioned only for reference. Do not change.
 	remote_default_user_old_pwd="temppwd"  # Be ready to enter this when the script is run. Do not change.
-remote_ip="192.168.7.2"  # Private or public IP as appropriate.
-remote_root_old_pwd="root"  # Mentioned only for reference. Do not change.
-remote_root_new_pwd="<new password for root>"  # <--- SET THIS.
-remote_default_user_new_pwd="<new password for debian user>"  # <--- SET THIS.
-remote_old_hostname="beaglebone"  # Mentioned only for reference. Do not change.
-remote_new_hostname="<new hostname>"  # <--- SET THIS.
-remote_service_user="<service username>"  # <--- SET THIS.
-remote_service_user_pwd="<service user's password>"  # <--- SET THIS.
-remote_uses_SSID="<WiFi SSID drone will connect to>"  # <--- SET THIS.
-remote_uses_pwd="<WiFi password>"  # <--- SET THIS.
-# User configuration ends here.
+	remote_ip="192.168.7.2"  # Private or public IP as appropriate.
+	remote_root_old_pwd="root"  # Mentioned only for reference. Do not change.
+	remote_root_new_pwd="<new password for root>"  # <--- SET THIS.
+	remote_default_user_new_pwd="<new password for debian user>"  # <--- SET THIS.
+	remote_old_hostname="beaglebone"  # Mentioned only for reference. Do not change.
+	remote_new_hostname="<new hostname>"  # <--- SET THIS.
+	remote_service_user="<service username>"  # <--- SET THIS.
+	remote_service_user_pwd="<service user's password>"  # <--- SET THIS.
+	remote_uses_SSID="<WiFi SSID drone will connect to>"  # <--- SET THIS.
+	remote_uses_pwd="<WiFi password>"  # <--- SET THIS.
+	# User configuration ends here.
 
 
-rm ~/.ssh/known_hosts
-local_pub_key="$(cat /etc/ssh/ssh_host_ecdsa_key.pub)"
-entry="$local_ip $local_pub_key"
-echo "$entry" >~/known
-ssh-copy-id $remote_default_user@$remote_ip
-scp ~/{.bash_profile,.bashrc,known} ~/{arducopter,arduplane,ardurover,antennatracker} /etc/DIR_COLORS $remote_default_user@$remote_ip:~
-cat <<-EOF5 >tmp1
-	ssh-keygen -C 'a&b.c' -b 4096 <<-EOF10  # Note that the three blank lines that follow are intentional!
+	rm ~/.ssh/known_hosts
+	local_pub_key="$(cat /etc/ssh/ssh_host_ecdsa_key.pub)"
+	entry="$local_ip $local_pub_key"
+	echo "$entry" >~/known
+	ssh-copy-id $remote_default_user@$remote_ip
+	scp ~/{.bash_profile,.bashrc,known} ~/{arducopter,arduplane,ardurover,antennatracker} /etc/DIR_COLORS 	$remote_default_user@$remote_ip:~
+	cat <<-EOF5 >tmp1
+		ssh-keygen -C 'a&b.c' -b 4096 <<-EOF10  # Note that the three blank lines that follow are intentional!
 
 
 
-		EOF10
-	sudo -kSs <<-EOF15
-		$remote_default_user_old_pwd
-		echo $remote_new_hostname >/etc/hostname
-		echo -e "127.0.1.1\t$remote_new_hostname.localdomain\t$remote_new_hostname" >>/etc/hosts
-		echo "$remote_default_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/$remote_default_user
-		echo "$remote_service_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/$remote_service_user
-		:>| /etc/motd
-		echo "root:$remote_root_new_pwd" | chpasswd
-		echo "$remote_default_user:$remote_default_user_new_pwd" | chpasswd
-		useradd -m -G sudo -s /bin/bash $remote_service_user
-		echo "$remote_service_user:$remote_service_user_pwd" | chpasswd
-		mv /home/$remote_default_user/DIR_COLORS /etc
-		cp /home/$remote_default_user/.bash_profile /root
-		cp /home/$remote_default_user/.bashrc /root
-		cp /home/$remote_default_user/.bash_profile /home/$remote_service_user
-		cp /home/$remote_default_user/.bashrc /home/$remote_service_user
-		# cp /home/$remote_default_user/known /root/.ssh/known_hosts
-		cp /home/$remote_default_user/known /home/$remote_default_user/.ssh/known_hosts
-		mkdir -p /home/$remote_service_user/.ssh
-		chmod 0700 /home/$remote_service_user/.ssh
-		cp /home/$remote_default_user/known /home/$remote_service_user/.ssh/known_hosts
-		cp /home/$remote_default_user/.ssh/authorized_keys /home/$remote_service_user/.ssh
-		chown root:root /etc/DIR_COLORS
-		chown $remote_default_user:$remote_default_user /home/$remote_default_user/.bash_profile
-		chown $remote_default_user:$remote_default_user /home/$remote_default_user/.bashrc
-		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.bash_profile
-		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.bashrc
-		chown $remote_default_user:$remote_default_user /home/$remote_default_user/.ssh/known_hosts
-		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.ssh /home/$remote_service_user/.ssh/known_hosts
-		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.ssh/authorized_keys
-		rm /home/$remote_default_user/known
-		mkdir -p /usr/bin/ardupilot
-		mv /home/$remote_default_user/{arducopter,arduplane,ardurover,antennatracker} /usr/bin/ardupilot
-		chmod 0755 /usr/bin/ardupilot/a*
-		echo "*/5 * * * * echo \"\\\\\\\$(hostname)    \\\\\\\$(id -un)    \\\\\\\$(date)    \\\\\\\$(ip route get 8.8.8.8 | awk '{print \\\\\\\$7; exit}')    \\\\\\\$(dig +short myip.opendns.com @resolver1.opendns.com)\" >~/$remote_default_user@$remote_new_hostname && scp ~/$remote_default_user@$remote_new_hostname $local_user@$local_ip:~" | tee -a /var/spool/cron/crontabs/$remote_default_user >/dev/null
-		echo "*/5 * * * * echo \"\\\\\\\$(hostname)    \\\\\\\$(id -un)    \\\\\\\$(date)    \\\\\\\$(ip route get 8.8.8.8 | awk '{print \\\\\\\$7; exit}')    \\\\\\\$(dig +short myip.opendns.com @resolver1.opendns.com)\" >~/$remote_service_user@$remote_new_hostname && scp ~/$remote_service_user@$remote_new_hostname $local_user@$local_ip:~" | tee -a /var/spool/cron/crontabs/$remote_service_user >/dev/null
-		chgrp crontab /var/spool/cron/crontabs/$remote_default_user /var/spool/cron/crontabs/$remote_service_user
-		chmod 0600 /var/spool/cron/crontabs/$remote_default_user /var/spool/cron/crontabs/$remote_service_user
-		cat <<-EOF20 >/var/lib/connman/wifi.config
-			[service_\\\$(connmanctl services | grep '$remote_uses_SSID' | grep -Po 'wifi_[^ ]+')]
-			Type = wifi
-			Security = wpa2
-			Name = $remote_uses_SSID
-			Passphrase = $remote_uses_pwd
-			EOF20
-		sleep 5
-		while true; do
-			if ping -c 1 google.com; then
-				echo "Internet connection established."
-				break
-			else
-				echo "Connecting.."; sleep 2
-			fi
-		done
-		DEBIAN_FRONTEND=noninteractive apt-get -y update
-		sleep 5
-		DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
-		sleep 5
-		DEBIAN_FRONTEND=noninteractive apt-get install -y cpufrequtils git
-		sleep 5
-		DEBIAN_FRONTEND=noninteractive apt-get install -y gawk dnsutils
-		sleep 5
-		# DEBIAN_FRONTEND=noninteractive apt-get install -y flite
-		# sleep 5
-		cat <<-EOF25 >/etc/default/ardupilot
-			TELEM1="-C /dev/ttyO1"
-			TELEM2="-A $local_protocol:$local_ip:$local_port"
-			GPS="-B /dev/ttyS2"
-			EOF25
-		cat <<-EOF30 >/lib/systemd/system/arducopter.service
-			[Unit]
-			Description=ArduCopter Service
-			After=networking.service
-			StartLimitIntervalSec=0
-			Conflicts=arduplane.service ardurover.service antennatracker.service
+			EOF10
+		sudo -kSs <<-EOF15
+			$remote_default_user_old_pwd
+			echo $remote_new_hostname >/etc/hostname
+			echo -e "127.0.1.1\t$remote_new_hostname.localdomain\t$remote_new_hostname" >>/etc/hosts
+			echo "$remote_default_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/$remote_default_user
+			echo "$remote_service_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/$remote_service_user
+			:>| /etc/motd
+			echo "root:$remote_root_new_pwd" | chpasswd
+			echo "$remote_default_user:$remote_default_user_new_pwd" | chpasswd
+			useradd -m -G sudo -s /bin/bash $remote_service_user
+			echo "$remote_service_user:$remote_service_user_pwd" | chpasswd
+			mv /home/$remote_default_user/DIR_COLORS /etc
+			cp /home/$remote_default_user/.bash_profile /root
+			cp /home/$remote_default_user/.bashrc /root
+			cp /home/$remote_default_user/.bash_profile /home/$remote_service_user
+			cp /home/$remote_default_user/.bashrc /home/$remote_service_user
+			# cp /home/$remote_default_user/known /root/.ssh/known_hosts
+			cp /home/$remote_default_user/known /home/$remote_default_user/.ssh/known_hosts
+			mkdir -p /home/$remote_service_user/.ssh
+			chmod 0700 /home/$remote_service_user/.ssh
+			cp /home/$remote_default_user/known /home/$remote_service_user/.ssh/known_hosts
+			cp /home/$remote_default_user/.ssh/authorized_keys /home/$remote_service_user/.ssh
+			chown root:root /etc/DIR_COLORS
+			chown $remote_default_user:$remote_default_user /home/$remote_default_user/.bash_profile
+			chown $remote_default_user:$remote_default_user /home/$remote_default_user/.bashrc
+			chown $remote_service_user:$remote_service_user /home/$remote_service_user/.bash_profile
+			chown $remote_service_user:$remote_service_user /home/$remote_service_user/.bashrc
+			chown $remote_default_user:$remote_default_user /home/$remote_default_user/.ssh/known_hosts
+			chown $remote_service_user:$remote_service_user /home/$remote_service_user/.ssh /home/$remote_service_user/.ssh/known_hosts
+			chown $remote_service_user:$remote_service_user /home/$remote_service_user/.ssh/authorized_keys
+			rm /home/$remote_default_user/known
+			mkdir -p /usr/bin/ardupilot
+			mv /home/$remote_default_user/{arducopter,arduplane,ardurover,antennatracker} /usr/bin/ardupilot
+			chmod 0755 /usr/bin/ardupilot/a*
+			echo "*/5 * * * * echo \"\\\\\\\$(hostname)    \\\\\\\$(id -un)    \\\\\\\$(date)    \\\\\\\$(ip route get 8.8.8.8 | awk '{print \\\\\\\$7; exit}')    \\\\\\\$(dig +short myip.opendns.com @resolver1.opendns.com)\" >~/$remote_default_user@$remote_new_hostname && scp ~/$remote_default_user@$remote_new_hostname $local_user@$local_ip:~" | tee -a /var/spool/cron/crontabs/$remote_default_user >/dev/null
+			echo "*/5 * * * * echo \"\\\\\\\$(hostname)    \\\\\\\$(id -un)    \\\\\\\$(date)    \\\\\\\$(ip route get 8.8.8.8 | awk '{print \\\\\\\$7; exit}')    \\\\\\\$(dig +short myip.opendns.com @resolver1.opendns.com)\" >~/$remote_service_user@$remote_new_hostname && scp ~/$remote_service_user@$remote_new_hostname $local_user@$local_ip:~" | tee -a /var/spool/cron/crontabs/$remote_service_user >/dev/null
+			chgrp crontab /var/spool/cron/crontabs/$remote_default_user /var/spool/cron/crontabs/$remote_service_user
+			chmod 0600 /var/spool/cron/crontabs/$remote_default_user /var/spool/cron/crontabs/$remote_service_user
+			cat <<-EOF20 >/var/lib/connman/wifi.config
+				[service_\\\$(connmanctl services | grep '$remote_uses_SSID' | grep -Po 'wifi_[^ ]+')]
+				Type = wifi
+				Security = wpa2
+				Name = $remote_uses_SSID
+				Passphrase = $remote_uses_pwd
+				EOF20
+			sleep 5
+			while true; do
+				if ping -c 1 google.com; then
+					echo "Internet connection established."
+					break
+				else
+					echo "Connecting.."; sleep 2
+				fi
+			done
+			DEBIAN_FRONTEND=noninteractive apt-get -y update
+			sleep 5
+			DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
+			sleep 5
+			DEBIAN_FRONTEND=noninteractive apt-get install -y cpufrequtils git
+			sleep 5
+			DEBIAN_FRONTEND=noninteractive apt-get install -y gawk dnsutils
+			sleep 5
+			# DEBIAN_FRONTEND=noninteractive apt-get install -y flite
+			# sleep 5
+			cat <<-EOF25 >/etc/default/ardupilot
+				TELEM1="-C /dev/ttyO1"
+				TELEM2="-A $local_protocol:$local_ip:$local_port"
+				GPS="-B /dev/ttyS2"
+				EOF25
+			cat <<-EOF30 >/lib/systemd/system/arducopter.service
+				[Unit]
+				Description=ArduCopter Service
+				After=networking.service
+				StartLimitIntervalSec=0
+				Conflicts=arduplane.service ardurover.service antennatracker.service
 
-			[Service]
-			EnvironmentFile=/etc/default/ardupilot
-			ExecStartPre=/usr/bin/ardupilot/aphw
-			ExecStart=/usr/bin/ardupilot/arducopter $TELEM1 $TELEM2 $GPS
+				[Service]
+				EnvironmentFile=/etc/default/ardupilot
+				ExecStartPre=/usr/bin/ardupilot/aphw
+				ExecStart=/usr/bin/ardupilot/arducopter $TELEM1 $TELEM2 $GPS
 
-			Restart=on-failure
-			RestartSec=1
+				Restart=on-failure
+				RestartSec=1
 
-			[Install]
-			WantedBy=multi-user.target
-			EOF30
+				[Install]
+				WantedBy=multi-user.target
+				EOF30
 		cat <<-EOF35 >/lib/systemd/system/arduplane.service
 			[Unit]
 			Description=ArduPlane Service
