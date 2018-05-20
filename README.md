@@ -270,6 +270,10 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     Or:
 
         sudo systemctl enable ardurover.service
+	
+	Or:
+	
+        sudo systemctl enable antennatracker.service
     After you reboot, your ArduPilot should inflate automatically.
 
 ## Part 3 - Connecting the peripherals
