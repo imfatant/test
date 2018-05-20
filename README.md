@@ -563,7 +563,7 @@ sudo i2cdetect -r -y 2
 				# ap-stop
 				# Stops ArduPilot manually.
 
-				sudo systemctl stop arducopter
+				sudo systemctl stop arducopter.service
 				EOF60
 			chmod 0755 /home/$remote_default_user/ap-stop /home/$remote_service_user/ap-stop
 			chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-stop
