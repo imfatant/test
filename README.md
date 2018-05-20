@@ -810,19 +810,4 @@ sudo i2cdetect -r -y 2
 	ssh $remote_default_user@$remote_ip '/bin/bash -s' <tmp2
 	rm tmp2
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Imf
