@@ -345,7 +345,7 @@ sudo i2cdetect -r -y 2
 	# Sets up ArduPilot on a BeagleBone Blue remote drone server over SSH, using 'console' or 'IoT' Debian image as a base.
 	# Additionally, sets up a squawk, and flashes everything to eMMC should you leave the relevent lines uncommented.
 	# NB: You may need to configure your router's port-forwarding to handle SSH traffic on port 22.
-	# NB: DO NOT ALTER THE FORMATTING OF THIS SCRIPT. IT USES TABBED HERE DOCUMENTS!
+	# NB: DO NOT ALTER THE FORMATTING OF THIS SCRIPT. IT USES TAB NESTED HERE DOCUMENTS!
 	# NB: SOME LINES ARE INTENTIONALLY LEFT BLANK!
 	
 	# Before running this script, you must do the following on the local machine:
