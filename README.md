@@ -358,7 +358,7 @@ sudo i2cdetect -r -y 2
 	# 4. Disable any VPN because $local-ip may be assigned the 'wrong' address.
 	# 5. If it already exists, delete the BBBlue's entry in ~/.ssh/known_hosts. Otherwise, script will fail with warnings of possible attack, etc.
 	# 6. If it exists, delete relevant entry in ~/.ssh/authorized_keys.
-	# 7. Consider whether the remote server needs a geo-tailored mirrorlist.
+	# 7. Consider whether the remote server needs a geo-tailored mirror list.
 	
 	# Comments:
 	# The Debian images have root login disabled, but the default user (debian) has sudo privs.
