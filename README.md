@@ -337,38 +337,40 @@ sudo i2cdetect -r -y 2
     70: -- -- -- -- -- -- -- --
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules
 
-#!/bin/bash
-# bbblue49-ardupilot-setup
-# We are user..
-# Sets up ArduPilot on a BeagleBone Blue remote drone server over SSH, using 'console' or 'IoT' Debian image as a base.
-# Additionally, sets up a squawk, and flashes everything to eMMC should you leave the relevent lines uncommented.
-# NB: You may need to configure your router's port-forwarding to handle SSH traffic on port 22.
-# NB: DO NOT ALTER THE FORMATTING OF THIS SCRIPT. IT USES TABBED HERE DOCUMENTS!
-# NB: SOME LINES ARE INTENTIONALLY LEFT BLANK!
 
-# Before running this script, you must do the following on the local machine:
-# 1. Have your SSH service ready & waiting for the remote server to squawk back at you - typically with `systemctl enable --now sshd.service`.
-# This is important because it will mean that /etc/ssh/ssh_host_ecdsa_key.pub actually exists, which is used in the script (alternatively, ssh-keygen -A).
-# 2. Run `ssh-keygen -b 4096` if you haven't yet created your personal SSH private/public key pair.
-# 3. Have the following files in your ~ directory: .bash_profile, .bashrc, arducopter, arduplane, ardurover and antennatracker. DIR_COLORS must be in /etc.
-# 4. Disable any VPN because $local-ip may be assigned the 'wrong' address.
-# 5. If it already exists, delete the BBBlue's entry in ~/.ssh/known_hosts. Otherwise, script will fail with warnings of possible attack, etc.
-# 6. If it exists, delete relevant entry in ~/.ssh/authorized_keys.
-# 7. Consider whether the remote server needs a geo-tailored mirrorlist.
 
-# Comments:
-# The Debian images have root login disabled, but the default user (debian) has sudo privs.
-# As it stands, I fetch the remote server's pub keys at the end.
-# I believe SSH key permissions are set correctly.
-# Debian enumerates the BBBlue's standard network link options as wlan0, usb0 and usb1.
-
-# User configuration starts here:
-local_user="<your username>"  # <--- SET THIS.
-local_ip="$(ip route get 8.8.8.8 | awk '{print $7; exit}')"  # Private or public IP as appropriate.
-local_port="14550"  # <--- SET THIS (for ArduPilot).
-local_protocol="udp"  # <--- SET THIS (for ArduPilot).
-remote_default_user="debian"  # Mentioned only for reference. Do not change.
-remote_default_user_old_pwd="temppwd"  # Be ready to enter this when the script is run. Do not change.
+	#!/bin/bash
+	# bbblue49-ardupilot-setup
+	# We are user..
+	# Sets up ArduPilot on a BeagleBone Blue remote drone server over SSH, using 'console' or 'IoT' Debian image as a base.
+	# Additionally, sets up a squawk, and flashes everything to eMMC should you leave the relevent lines uncommented.
+	# NB: You may need to configure your router's port-forwarding to handle SSH traffic on port 22.
+	# NB: DO NOT ALTER THE FORMATTING OF THIS SCRIPT. IT USES TABBED HERE DOCUMENTS!
+	# NB: SOME LINES ARE INTENTIONALLY LEFT BLANK!
+	
+	# Before running this script, you must do the following on the local machine:
+	# 1. Have your SSH service ready & waiting for the remote server to squawk back at you - typically with `systemctl enable --now sshd.service`.
+	# This is important because it will mean that /etc/ssh/ssh_host_ecdsa_key.pub actually exists, which is used in the script (alternatively, ssh-keygen -A).
+	# 2. Run `ssh-keygen -b 4096` if you haven't yet created your personal SSH private/public key pair.
+	# 3. Have the following files in your ~ directory: .bash_profile, .bashrc, arducopter, arduplane, ardurover and antennatracker. DIR_COLORS must be in /etc.
+	# 4. Disable any VPN because $local-ip may be assigned the 'wrong' address.
+	# 5. If it already exists, delete the BBBlue's entry in ~/.ssh/known_hosts. Otherwise, script will fail with warnings of possible attack, etc.
+	# 6. If it exists, delete relevant entry in ~/.ssh/authorized_keys.
+	# 7. Consider whether the remote server needs a geo-tailored mirrorlist.
+	
+	# Comments:
+	# The Debian images have root login disabled, but the default user (debian) has sudo privs.
+	# As it stands, I fetch the remote server's pub keys at the end.
+	# I believe SSH key permissions are set correctly.
+	# Debian enumerates the BBBlue's standard network link options as wlan0, usb0 and usb1.
+	
+	# User configuration starts here:
+	local_user="<your username>"  # <--- SET THIS.
+	local_ip="$(ip route get 8.8.8.8 | awk '{print $7; exit}')"  # Private or public IP as appropriate.
+	local_port="14550"  # <--- SET THIS (for ArduPilot).
+	local_protocol="udp"  # <--- SET THIS (for ArduPilot).
+	remote_default_user="debian"  # Mentioned only for reference. Do not change.
+	remote_default_user_old_pwd="temppwd"  # Be ready to enter this when the script is run. Do not change.
 remote_ip="192.168.7.2"  # Private or public IP as appropriate.
 remote_root_old_pwd="root"  # Mentioned only for reference. Do not change.
 remote_root_new_pwd="<new password for root>"  # <--- SET THIS.
