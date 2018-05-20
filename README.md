@@ -336,4 +336,491 @@ sudo i2cdetect -r -y 2
     60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     70: -- -- -- -- -- -- -- --
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules
+
+#!/bin/bash
+# bbblue49-ardupilot-setup
+# We are user..
+# Sets up ArduPilot on a BeagleBone Blue remote drone server over SSH, using 'console' or 'IoT' Debian image as a base.
+# Additionally, sets up a squawk, and flashes everything to eMMC should you leave the relevent lines uncommented.
+# NB: You may need to configure your router's port-forwarding to handle SSH traffic on port 22.
+# NB: DO NOT ALTER THE FORMATTING OF THIS SCRIPT. IT USES TABBED HERE DOCUMENTS!
+# NB: SOME LINES ARE INTENTIONALLY LEFT BLANK!
+
+# Before running this script, you must do the following on the local machine:
+# 1. Have your SSH service ready & waiting for the remote server to squawk back at you - typically with `systemctl enable --now sshd.service`.
+# This is important because it will mean that /etc/ssh/ssh_host_ecdsa_key.pub actually exists, which is used in the script (alternatively, ssh-keygen -A).
+# 2. Run `ssh-keygen -b 4096` if you haven't yet created your personal SSH private/public key pair.
+# 3. Have the following files in your ~ directory: .bash_profile, .bashrc, arducopter, arduplane, ardurover and antennatracker. DIR_COLORS must be in /etc.
+# 4. Disable any VPN because $local-ip may be assigned the 'wrong' address.
+# 5. If it already exists, delete the BBBlue's entry in ~/.ssh/known_hosts. Otherwise, script will fail with warnings of possible attack, etc.
+# 6. If it exists, delete relevant entry in ~/.ssh/authorized_keys.
+# 7. Consider whether the remote server needs a geo-tailored mirrorlist.
+
+# Comments:
+# The Debian images have root login disabled, but the default user (debian) has sudo privs.
+# As it stands, I fetch the remote server's pub keys at the end.
+# I believe SSH key permissions are set correctly.
+# Debian enumerates the BBBlue's standard network link options as wlan0, usb0 and usb1.
+
+# User configuration starts here:
+local_user="<your username>"  # <--- SET THIS.
+local_ip="$(ip route get 8.8.8.8 | awk '{print $7; exit}')"  # Private or public IP as appropriate.
+local_port="14550"  # <--- SET THIS (for ArduPilot).
+local_protocol="udp"  # <--- SET THIS (for ArduPilot).
+remote_default_user="debian"  # Mentioned only for reference. Do not change.
+remote_default_user_old_pwd="temppwd"  # Be ready to enter this when the script is run. Do not change.
+remote_ip="192.168.7.2"  # Private or public IP as appropriate.
+remote_root_old_pwd="root"  # Mentioned only for reference. Do not change.
+remote_root_new_pwd="<new password for root>"  # <--- SET THIS.
+remote_default_user_new_pwd="<new password for debian user>"  # <--- SET THIS.
+remote_old_hostname="beaglebone"  # Mentioned only for reference. Do not change.
+remote_new_hostname="<new hostname>"  # <--- SET THIS.
+remote_service_user="<service username>"  # <--- SET THIS.
+remote_service_user_pwd="<service user's password>"  # <--- SET THIS.
+remote_uses_SSID="<WiFi SSID drone will connect to>"  # <--- SET THIS.
+remote_uses_pwd="<WiFi password>"  # <--- SET THIS.
+# User configuration ends here.
+
+
+rm ~/.ssh/known_hosts
+local_pub_key="$(cat /etc/ssh/ssh_host_ecdsa_key.pub)"
+entry="$local_ip $local_pub_key"
+echo "$entry" >~/known
+ssh-copy-id $remote_default_user@$remote_ip
+scp ~/{.bash_profile,.bashrc,known} ~/{arducopter,arduplane,ardurover,antennatracker} /etc/DIR_COLORS $remote_default_user@$remote_ip:~
+cat <<-EOF5 >tmp1
+	ssh-keygen -C 'a&b.c' -b 4096 <<-EOF10  # Note that the three blank lines that follow are intentional!
+
+
+
+		EOF10
+	sudo -kSs <<-EOF15
+		$remote_default_user_old_pwd
+		echo $remote_new_hostname >/etc/hostname
+		echo -e "127.0.1.1\t$remote_new_hostname.localdomain\t$remote_new_hostname" >>/etc/hosts
+		echo "$remote_default_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/$remote_default_user
+		echo "$remote_service_user ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/$remote_service_user
+		:>| /etc/motd
+		echo "root:$remote_root_new_pwd" | chpasswd
+		echo "$remote_default_user:$remote_default_user_new_pwd" | chpasswd
+		useradd -m -G sudo -s /bin/bash $remote_service_user
+		echo "$remote_service_user:$remote_service_user_pwd" | chpasswd
+		mv /home/$remote_default_user/DIR_COLORS /etc
+		cp /home/$remote_default_user/.bash_profile /root
+		cp /home/$remote_default_user/.bashrc /root
+		cp /home/$remote_default_user/.bash_profile /home/$remote_service_user
+		cp /home/$remote_default_user/.bashrc /home/$remote_service_user
+		# cp /home/$remote_default_user/known /root/.ssh/known_hosts
+		cp /home/$remote_default_user/known /home/$remote_default_user/.ssh/known_hosts
+		mkdir -p /home/$remote_service_user/.ssh
+		chmod 0700 /home/$remote_service_user/.ssh
+		cp /home/$remote_default_user/known /home/$remote_service_user/.ssh/known_hosts
+		cp /home/$remote_default_user/.ssh/authorized_keys /home/$remote_service_user/.ssh
+		chown root:root /etc/DIR_COLORS
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/.bash_profile
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/.bashrc
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.bash_profile
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.bashrc
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/.ssh/known_hosts
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.ssh /home/$remote_service_user/.ssh/known_hosts
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.ssh/authorized_keys
+		rm /home/$remote_default_user/known
+		mkdir -p /usr/bin/ardupilot
+		mv /home/$remote_default_user/{arducopter,arduplane,ardurover,antennatracker} /usr/bin/ardupilot
+		chmod 0755 /usr/bin/ardupilot/a*
+		echo "*/5 * * * * echo \"\\\\\\\$(hostname)    \\\\\\\$(id -un)    \\\\\\\$(date)    \\\\\\\$(ip route get 8.8.8.8 | awk '{print \\\\\\\$7; exit}')    \\\\\\\$(dig +short myip.opendns.com @resolver1.opendns.com)\" >~/$remote_default_user@$remote_new_hostname && scp ~/$remote_default_user@$remote_new_hostname $local_user@$local_ip:~" | tee -a /var/spool/cron/crontabs/$remote_default_user >/dev/null
+		echo "*/5 * * * * echo \"\\\\\\\$(hostname)    \\\\\\\$(id -un)    \\\\\\\$(date)    \\\\\\\$(ip route get 8.8.8.8 | awk '{print \\\\\\\$7; exit}')    \\\\\\\$(dig +short myip.opendns.com @resolver1.opendns.com)\" >~/$remote_service_user@$remote_new_hostname && scp ~/$remote_service_user@$remote_new_hostname $local_user@$local_ip:~" | tee -a /var/spool/cron/crontabs/$remote_service_user >/dev/null
+		chgrp crontab /var/spool/cron/crontabs/$remote_default_user /var/spool/cron/crontabs/$remote_service_user
+		chmod 0600 /var/spool/cron/crontabs/$remote_default_user /var/spool/cron/crontabs/$remote_service_user
+		cat <<-EOF20 >/var/lib/connman/wifi.config
+			[service_\\\$(connmanctl services | grep '$remote_uses_SSID' | grep -Po 'wifi_[^ ]+')]
+			Type = wifi
+			Security = wpa2
+			Name = $remote_uses_SSID
+			Passphrase = $remote_uses_pwd
+			EOF20
+		sleep 5
+		while true; do
+			if ping -c 1 google.com; then
+				echo "Internet connection established."
+				break
+			else
+				echo "Connecting.."; sleep 2
+			fi
+		done
+		DEBIAN_FRONTEND=noninteractive apt-get -y update
+		sleep 5
+		DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
+		sleep 5
+		DEBIAN_FRONTEND=noninteractive apt-get install -y cpufrequtils git
+		sleep 5
+		DEBIAN_FRONTEND=noninteractive apt-get install -y gawk dnsutils
+		sleep 5
+		# DEBIAN_FRONTEND=noninteractive apt-get install -y flite
+		# sleep 5
+		cat <<-EOF25 >/etc/default/ardupilot
+			TELEM1="-C /dev/ttyO1"
+			TELEM2="-A $local_protocol:$local_ip:$local_port"
+			GPS="-B /dev/ttyS2"
+			EOF25
+		cat <<-EOF30 >/lib/systemd/system/arducopter.service
+			[Unit]
+			Description=ArduCopter Service
+			After=networking.service
+			StartLimitIntervalSec=0
+			Conflicts=arduplane.service ardurover.service antennatracker.service
+
+			[Service]
+			EnvironmentFile=/etc/default/ardupilot
+			ExecStartPre=/usr/bin/ardupilot/aphw
+			ExecStart=/usr/bin/ardupilot/arducopter $TELEM1 $TELEM2 $GPS
+
+			Restart=on-failure
+			RestartSec=1
+
+			[Install]
+			WantedBy=multi-user.target
+			EOF30
+		cat <<-EOF35 >/lib/systemd/system/arduplane.service
+			[Unit]
+			Description=ArduPlane Service
+			After=networking.service
+			StartLimitIntervalSec=0
+			Conflicts=arducopter.service ardurover.service antennatracker.service
+
+			[Service]
+			EnvironmentFile=/etc/default/ardupilot
+			ExecStartPre=/usr/bin/ardupilot/aphw
+			ExecStart=/usr/bin/ardupilot/arduplane $TELEM1 $TELEM2 $GPS
+
+			Restart=on-failure
+			RestartSec=1
+
+			[Install]
+			WantedBy=multi-user.target
+			EOF35
+		cat <<-EOF40 >/lib/systemd/system/ardurover.service
+			[Unit]
+			Description=ArduRover Service
+			After=networking.service
+			StartLimitIntervalSec=0
+			Conflicts=arducopter.service arduplane.service antennatracker.service
+
+			[Service]
+			EnvironmentFile=/etc/default/ardupilot
+			ExecStartPre=/usr/bin/ardupilot/aphw
+			ExecStart=/usr/bin/ardupilot/ardurover $TELEM1 $TELEM2 $GPS
+
+			Restart=on-failure
+			RestartSec=1
+
+			[Install]
+			WantedBy=multi-user.target
+			EOF40
+		cat <<-EOF45 >/lib/systemd/system/antennatracker.service
+			[Unit]
+			Description=AntennaTracker Service
+			After=networking.service
+			StartLimitIntervalSec=0
+			Conflicts=arducopter.service arduplane.service ardurover.service
+
+			[Service]
+			EnvironmentFile=/etc/default/ardupilot
+			ExecStartPre=/usr/bin/ardupilot/aphw
+			ExecStart=/usr/bin/ardupilot/antennatracker $TELEM1 $TELEM2 $GPS
+
+			Restart=on-failure
+			RestartSec=1
+
+			[Install]
+			WantedBy=multi-user.target
+			EOF45
+		cat <<-EOF50 >/usr/bin/ardupilot/aphw
+			#!/bin/bash
+			# aphw
+			# ArduPilot hardware configuration.
+
+			/bin/echo 80 >/sys/class/gpio/export
+			/bin/echo out >/sys/class/gpio/gpio80/direction
+			/bin/echo 1 >/sys/class/gpio/gpio80/value
+			/bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
+			EOF50
+		chmod 0755 /usr/bin/ardupilot/aphw
+		cat <<-EOF55 | tee /home/$remote_default_user/ap-start >/home/$remote_service_user/ap-start
+			#!/bin/bash
+			# ap-start
+			# Starts ArduPilot manually.
+
+			sudo /usr/bin/ardupilot/arducopter -C /dev/ttyO1 -A udp:192.168.0.41:14550 -B /dev/ttyS2 &
+			EOF55
+		chmod 0755 /home/$remote_default_user/ap-start /home/$remote_service_user/ap-start
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-start
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/ap-start
+		cat <<-EOF60 | tee /home/$remote_default_user/ap-stop >/home/$remote_service_user/ap-stop
+			#!/bin/bash
+			# ap-stop
+			# Stops ArduPilot manually.
+
+			sudo kill "\\\\\\\$(ps -a | grep 'arducopter' | cut -d ' ' -f 2)"
+			sudo kill -9 "\\\\\\\$(ps -ax | grep 'arducopter' | grep -v 'grep' | cut -d ' ' -f 3)"
+			# sudo systemctl stop arducopter
+			EOF60
+		chmod 0755 /home/$remote_default_user/ap-stop /home/$remote_service_user/ap-stop
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-stop
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/ap-stop
+		cat <<-EOF65 | tee /home/$remote_default_user/ap-clone >/home/$remote_service_user/ap-clone
+			#!/bin/bash
+			# ap-clone
+			# Clones ArduPilot and installs rangerfinder firmware.
+
+			git clone https://github.com/ArduPilot/ardupilot.git
+			cd ardupilot/Tools/Linux_HAL_Essentials/pru/rangefinderpru
+			sudo make install
+			EOF65
+		chmod 0755 /home/$remote_default_user/ap-clone /home/$remote_service_user/ap-clone
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-clone
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/ap-clone
+		cat <<-EOF70 | tee /home/$remote_default_user/ap-build >/home/$remote_service_user/ap-build
+			#!/bin/bash
+			# ap-build
+			# Builds ArduPilot.
+
+			echo "This is going to take some time.."
+			cd ardupilot
+			git checkout Copter-3.5.5
+			# git checkout ArduPlane-3.8.4
+			git submodule update --init --recursive
+			./waf configure --board=blue
+			./waf
+			sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
+			EOF70
+		chmod 0755 /home/$remote_default_user/ap-build /home/$remote_service_user/ap-build
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-build
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/ap-build
+		cat <<-EOF75 | tee /home/$remote_default_user/rt-kernel >/home/$remote_service_user/rt-kernel
+			#!/bin/bash
+			# rt-kernel
+			# Install real-time kernel.
+
+			/opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9
+			# /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_14
+			reboot
+			EOF75
+		chmod 0755 /home/$remote_default_user/rt-kernel /home/$remote_service_user/rt-kernel
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/rt-kernel
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/rt-kernel
+		cat <<-EOF80 >/etc/network/interfaces
+			# The loopback network interface.
+			auto lo
+			iface lo inet loopback
+
+			# # WiFi w/ onboard device (dynamic IP).
+			# auto wlan0
+			# iface wlan0 inet dhcp
+			# wpa-ssid "<your SSID>"
+			# wpa-psk "<your WiFi password>"
+
+			# # WiFi w/ onboard device (static IP).
+			# auto wlan0
+			# iface wlan0 inet static
+			# wpa-ssid "<your SSID>"
+			# wpa-psk "<your WiFi password>"
+			# address 192.168.0.99  # <--- The desired static IP address of the BBBlue.
+			# netmask 255.255.255.0
+			# gateway 192.168.0.1  # <--- The address of your router.
+
+			# Ethernet/RNDIS gadget (g_ether).
+			# Used by: /opt/scripts/boot/autoconfigure_usb0.sh
+			iface usb0 inet static
+			address 192.168.7.2
+			netmask 255.255.255.252
+			network 192.168.7.0
+			gateway 192.168.7.1
+
+			# # WiFi AP w/ USB adapter (thanks to Patrick Poirier).
+			# auto wlan1
+			# allow-hotplug wlan1
+			# iface wlan1 inet static
+			# hostapd /etc/hostapd/hostapd.conf
+			# address 192.168.8.1
+			# netmask 255.255.255.0
+			EOF80
+		cat <<-EOF85 >/etc/hostapd/hostapd.conf
+			interface=wlan1
+			driver=nl80211
+			ssid=BBBlue-AP
+			channel=1
+			ignore_broadcast_ssid=0
+			country_code=US
+			ieee80211d=1
+			hw_mode=g
+			macaddr_acl=0
+			max_num_sta=10
+			auth_algs=1
+			ignore_broadcast_ssid=0
+			rsn_preauth=1
+			rsn_preauth_interfaces=wlan1
+			wpa=3
+			wpa_passphrase=123456789
+			wpa_key_mgmt=WPA-PSK
+			wpa_pairwise=TKIP
+			rsn_pairwise=CCMP
+			EOF85
+		cat <<-EOF90 >/etc/dnsmasq.conf
+			interface=lo,wlan1
+			no-dhcp-interface=lo
+			dhcp-range=192.168.8.20,192.168.8.40,255.255.255.0,12h
+
+			interface=usb0
+			dhcp-range=192.168.7.1,192.168.7.1,12h
+			EOF90
+		cat <<-EOF95 >/etc/network/interfaces2
+			allow-hotplug wlan1
+			auto wlan1
+			iface wlan1 inet static
+			hostapd /etc/hostapd/hostapd.conf
+			address 192.168.8.1
+			netmask 255.255.255.0
+			EOF95
+		cat <<-EOF100 | tee /home/$remote_default_user/start-wifi >/home/$remote_service_user/start-wifi
+			#!/bin/bash
+			# start-wifi
+			# Starts WiFi (using connman).
+
+			echo "Starting WiFi.."
+			connmanctl enable wifi &>/dev/null
+			while true; do
+				if [ "\\\\\\\$(connmanctl state | grep 'State = ' | cut -d ' ' -f 5)" == "online" ]; then
+					echo "WiFi up."
+					break
+				else
+					echo "\\\\\\\$(connmanctl state | grep 'State = ' | cut -d ' ' -f 5)"$'..'; sleep 1
+				fi
+			done
+			EOF100
+		chmod 0755 /home/$remote_default_user/start-wifi /home/$remote_service_user/start-wifi
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/start-wifi
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/start-wifi
+		cat <<-EOF105 | tee /home/$remote_default_user/stop-wifi >/home/$remote_service_user/stop-wifi
+			#!/bin/bash
+			# stop-wifi
+			# Stops WiFi (using connman).
+
+			echo "Stopping WiFi.."
+			connmanctl disable wifi &>/dev/null
+			while true; do
+				if [ "\\\\\\\$(connmanctl state | grep 'State = ' | cut -d ' ' -f 5)" == "idle" ]; then
+					echo "WiFi down."
+					break
+				else
+					echo "\\\\\\\$(connmanctl state | grep 'State = ' | cut -d ' ' -f 5)"$'..'; sleep 1
+				fi
+			done
+			EOF105
+		chmod 0755 /home/$remote_default_user/stop-wifi /home/$remote_service_user/stop-wifi
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/stop-wifi
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/stop-wifi
+		cat <<-EOF110 | tee /home/$remote_default_user/start-access >/home/$remote_service_user/start-access
+			#!/bin/bash
+			# start-access
+			# Enables WiFi Access Point (wlan1).
+
+			echo "Enabling WiFi Access Point.."
+			sudo systemctl start hostapd.service
+			EOF110
+		chmod 0755 /home/$remote_default_user/start-access /home/$remote_service_user/start-access
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/start-access
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/start-access
+		cat <<-EOF115 | tee /home/$remote_default_user/stop-access >/home/$remote_service_user/stop-access
+			#!/bin/bash
+			# stop-access
+			# Disables WiFi Access Point (wlan1).
+
+			echo "Disabling WiFi Access Point.."
+			sudo systemctl stop hostapd.service
+			EOF115
+		chmod 0755 /home/$remote_default_user/stop-access /home/$remote_service_user/stop-access
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/stop-access
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/stop-access
+			cat <<-EOF120 | tee /home/$remote_default_user/.asoundrc >/home/$remote_service_user/.asoundrc
+			pcm.!default {
+				type plug
+				slave {
+					pcm "hw:1,0"
+				}
+			}
+
+			ctl.!default {
+				type hw
+				card 1
+			}
+			EOF120
+		chown $remote_default_user:$remote_default_user /home/$remote_default_user/.asoundrc
+		chown $remote_service_user:$remote_service_user /home/$remote_service_user/.asoundrc
+		cd /opt/scripts && git pull
+		/opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9
+		# /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_14
+		sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt
+		sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils
+		sudo systemctl disable bb-wl18xx-bluetooth.service
+		sleep 5
+		systemctl enable arducopter.service
+		# systemctl enable arduplane.service
+		# systemctl enable ardurover.service
+		# systemctl enable antennatracker.service
+		sleep 5
+		# systemctl disable connman.service
+		# sleep 5
+		# systemctl enable hostapd.service
+		# sleep 5
+		/opt/scripts/tools/grow_partition.sh
+		su - $remote_service_user <<-EOF125
+			ssh-keygen -C 'a&b.c' -b 4096 <<-EOF130  # Note that the three blank lines that follow are intentional!
+
+
+
+				EOF130
+			EOF125
+		EOF15
+	EOF5
+ssh $remote_default_user@$remote_ip '/bin/bash -s' <tmp1
+rm tmp1
+
+
+ssh-copy-id $remote_default_user@$remote_ip
+ssh-copy-id $remote_service_user@$remote_ip
+scp $remote_default_user@$remote_ip:~/.ssh/id_rsa.pub ~
+cat ~/id_rsa.pub >>~/.ssh/authorized_keys
+scp $remote_service_user@$remote_ip:~/.ssh/id_rsa.pub ~
+cat ~/id_rsa.pub >>~/.ssh/authorized_keys
+rm ~/id_rsa.pub
+rm ~/known
+
+
+cat <<-EOF135 >tmp2
+	sudo -kSs <<-EOF140  # Added $remote_default_user & $remote_service_user to sudoers, so no password needed this time.
+		# userdel -rf debian  # But I'm logging in as $remote_default_user at the moment..
+		sed -i 's/#cmdline=init=/cmdline=init=/g' /boot/uEnv.txt  # Comment out to prevent flashing to eMMC.
+		echo -e "\nRebooting remote device. Press Ctrl-Z if connection hangs."
+		reboot
+		EOF140
+	EOF135
+ssh $remote_default_user@$remote_ip '/bin/bash -s' <tmp2
+rm tmp2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Imf
