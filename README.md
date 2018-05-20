@@ -554,8 +554,9 @@ sudo i2cdetect -r -y 2
 				#!/bin/bash
 				# ap-start
 				# Starts ArduPilot manually.
-
-				sudo /usr/bin/ardupilot/arducopter -C /dev/ttyO1 -A udp:192.168.0.41:14550 -B /dev/ttyS2 &
+				
+				sudo systemctl restart arducopter.service
+				# sudo /usr/bin/ardupilot/arducopter -C /dev/ttyO1 -A udp:192.168.0.41:14550 -B /dev/ttyS2 &
 				EOF55
 			chmod 0755 /home/$remote_default_user/ap-start /home/$remote_service_user/ap-start
 			chown $remote_default_user:$remote_default_user /home/$remote_default_user/ap-start
