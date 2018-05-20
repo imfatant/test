@@ -378,7 +378,7 @@ sudo i2cdetect -r -y 2
 	remote_root_new_pwd="<new password for root>"  # <--- SET THIS.
 	remote_default_user_new_pwd="<new password for debian user>"  # <--- SET THIS.
 	remote_old_hostname="beaglebone"  # Mentioned only for reference. Do not change.
-	remote_new_hostname="<new hostname>"  # <--- SET THIS.
+	remote_new_hostname="<drone's name>"  # <--- SET THIS.
 	remote_service_user="<service username>"  # <--- SET THIS.
 	remote_service_user_pwd="<service user's password>"  # <--- SET THIS.
 	remote_uses_SSID="<WiFi SSID drone will connect to>"  # <--- SET THIS.
