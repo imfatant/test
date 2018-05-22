@@ -604,6 +604,7 @@ sudo i2cdetect -r -y 2
 				# iface wlan0 inet dhcp
 				# wpa-ssid "$remote_uses_SSID"
 				# wpa-psk "$remote_uses_pwd"
+				# dns-nameservers 8.8.8.8 1.1.1.1
 
 				# # WiFi w/ onboard device (static IP).
 				# auto wlan0
@@ -613,6 +614,7 @@ sudo i2cdetect -r -y 2
 				# address 192.168.0.99  # <--- The desired static IP address of the BBBlue.
 				# netmask 255.255.255.0
 				# gateway 192.168.0.1  # <--- The address of your router.
+				# dns-nameservers 8.8.8.8 1.1.1.1
 
 				# Ethernet/RNDIS gadget (g_ether).
 				# Used by: /opt/scripts/boot/autoconfigure_usb0.sh
@@ -621,6 +623,8 @@ sudo i2cdetect -r -y 2
 				netmask 255.255.255.252
 				network 192.168.7.0
 				gateway 192.168.7.1
+				# post-up route add default gw 192.168.7.1
+				# dns-nameservers 8.8.8.8 1.1.1.1
 
 				# # WiFi AP w/ USB adapter (thanks to Patrick Poirier).
 				# auto wlan1
