@@ -50,7 +50,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
     192.168.7.2 will still work as well.
     
-    If you can't get WiFi to work with connman, or you simply don't want to use connman, you can use the following method. First, type: `sudo systemctl disable connman`. Then edit /etc/network/interfaces to read:
+    If you can't get WiFi to work with connman, or you simply don't want to use connman, you can use the following method. First, type: `sudo systemctl disable connman`. Then, with your SSID and WiFi password handy, edit /etc/network/interfaces to read:
 
        # The loopback network interface.
        auto lo
