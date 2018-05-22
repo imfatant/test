@@ -95,7 +95,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     If WiFi just isn't an option, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
        sudo /sbin/route add default gw 192.168.7.1
-       echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
+       echo "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf >/dev/null
     Incidentally, these changes can be made permanent by altering the '`# Ethernet/RNDIS gadget (g_ether).`' section of /etc/network/interfaces to this:
     
        # Ethernet/RNDIS gadget (g_ether).
