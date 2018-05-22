@@ -94,7 +94,18 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
        sudo /sbin/route add default gw 192.168.7.1
        echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf >/dev/null
-    You can then tell your Linux computer to share with the BBBlue by typing (at the computer's command prompt):
+    Incidentally, these changes can be made permanent by altering the '`# Ethernet/RNDIS gadget (g_ether).`' section of /etc/network/interfaces to this:
+    
+       # Ethernet/RNDIS gadget (g_ether).
+       # Used by: /opt/scripts/boot/autoconfigure_usb0.sh
+       iface usb0 inet static
+       address 192.168.7.2
+       netmask 255.255.255.252
+       network 192.168.7.0
+       gateway 192.168.7.1
+       post-up route add default gw 192.168.7.1
+       dns-nameservers 8.8.8.8 1.1.1.1
+   You can then tell your Linux computer to share with the BBBlue by typing (at the computer's command prompt):
     
        sudo sysctl net.ipv4.ip_forward=1
        sudo iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
