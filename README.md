@@ -30,7 +30,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        udevadm control --reload-rules
        exit
 
-4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. We'll start by allowing the debian user to use sudo without having to enter the password every time:
+4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. We'll start by allowing the debian user to sudo without having to enter the password every time:
 
        sudo -s
        echo "debian ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/debian
