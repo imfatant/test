@@ -61,6 +61,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        iface wlan0 inet dhcp
        wpa-ssid "<your SSID>"
        wpa-psk "<your WiFi password>"
+       dns-nameservers 8.8.8.8 1.1.1.1
        
        # Ethernet/RNDIS gadget (g_ether).
        # Used by: /opt/scripts/boot/autoconfigure_usb0.sh
@@ -84,6 +85,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        iface wlan0 inet static
        wpa-ssid "<your SSID>"
        wpa-psk "<your WiFi password>"
+       dns-nameservers 8.8.8.8 1.1.1.1
        address 192.168.0.99  # <--- The desired static IP address of the BBBlue.
        netmask 255.255.255.0
        gateway 192.168.0.1  # <--- The address of your router.
