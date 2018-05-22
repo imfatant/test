@@ -72,9 +72,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        gateway 192.168.7.1
     Now, reboot the BBBlue with: `sudo reboot`
     
-    After powering back on, type:
-    
-       sudo ifup wlan0
+    After powering back on, type: `sudo ifup wlan0`
     The green LED should come on. You're connected.
     
     If you want the BBBlue to have a static IP (let's say 192.168.0.99), alter the '`# WiFi w/ onboard device (dynamic IP).`' section of /etc/network/interfaces to read:
