@@ -397,7 +397,7 @@ sudo i2cdetect -r -y 2
 	# User configuration ends here.
 
 
-	rm ~/.ssh/known_hosts
+	mv ~/.ssh/known_hosts ~/.ssh/known_hosts~
 	local_pub_key="$(cat /etc/ssh/ssh_host_ecdsa_key.pub)"
 	entry="$local_ip $local_pub_key"
 	echo "$entry" >~/known
