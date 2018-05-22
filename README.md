@@ -66,6 +66,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        # Ethernet/RNDIS gadget (g_ether).
        # Used by: /opt/scripts/boot/autoconfigure_usb0.sh
        iface usb0 inet static
+       dns-nameservers 8.8.8.8 1.1.1.1
        address 192.168.7.2
        netmask 255.255.255.252
        network 192.168.7.0
