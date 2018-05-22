@@ -382,24 +382,7 @@ sudo i2cdetect -r -y 2
 	# I believe SSH key permissions are set correctly.
 	# Debian enumerates the BBBlue's standard network link options as wlan0, usb0 and usb1.
 	
-	# User configuration starts here:
-	local_user="<your username>"  # <--- SET THIS.
-	local_ip="$(ip route get 8.8.8.8 | awk '{print $7; exit}')"  # Private or public IP as appropriate.
-	local_port="14550"  # <--- SET THIS (for ArduPilot).
-	local_protocol="udp"  # <--- SET THIS (for ArduPilot).
-	remote_default_user="debian"  # Mentioned only for reference. Do not change.
-	remote_default_user_old_pwd="temppwd"  # Be ready to enter this when the script is run. Do not change.
-	remote_ip="192.168.7.2"  # Private or public IP as appropriate.
-	remote_root_old_pwd="root"  # Mentioned only for reference. Do not change.
-	remote_root_new_pwd="<new password for root>"  # <--- SET THIS.
-	remote_default_user_new_pwd="<new password for debian user>"  # <--- SET THIS.
-	remote_old_hostname="beaglebone"  # Mentioned only for reference. Do not change.
-	remote_new_hostname="<drone's name>"  # <--- SET THIS.
-	remote_service_user="<service username>"  # <--- SET THIS.
-	remote_service_user_pwd="<service user's password>"  # <--- SET THIS.
-	remote_uses_SSID="<WiFi SSID drone will connect to>"  # <--- SET THIS.
-	remote_uses_pwd="<WiFi password>"  # <--- SET THIS.
-	# User configuration ends here.
+	
 
 
 	cp --backup=numbered ~/.ssh/known_hosts ~/.ssh/known_hosts_backup
