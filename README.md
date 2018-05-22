@@ -66,11 +66,11 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        # Ethernet/RNDIS gadget (g_ether).
        # Used by: /opt/scripts/boot/autoconfigure_usb0.sh
        iface usb0 inet static
-       dns-nameservers 8.8.8.8 1.1.1.1
        address 192.168.7.2
        netmask 255.255.255.252
        network 192.168.7.0
        gateway 192.168.7.1
+       dns-nameservers 8.8.8.8 1.1.1.1
     Finally, reboot the BBBlue with: `sudo reboot`
     
     After powering back on, type:
@@ -86,10 +86,10 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        iface wlan0 inet static
        wpa-ssid "<your SSID>"
        wpa-psk "<your WiFi password>"
-       dns-nameservers 8.8.8.8 1.1.1.1
        address 192.168.0.99  # <--- The desired static IP address of the BBBlue.
        netmask 255.255.255.0
        gateway 192.168.0.1  # <--- The address of your router.
+       dns-nameservers 8.8.8.8 1.1.1.1
     If WiFi just isn't an option, you can tell the BBBlue that it'll be sharing your computer's internet connection by typing (at the BBBlue's command prompt):
     
        sudo /sbin/route add default gw 192.168.7.1
