@@ -138,6 +138,8 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
 
 13) When the BBBlue comes back up, we need to create a few text files. Use your favourite text editor. Personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
+
+	(Hint: type `sudoedit /etc/default/ardupilot`)
         
         TELEM1="-C /dev/ttyO1"
         TELEM2="-A udp:192.168.0.13:14550"
