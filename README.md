@@ -29,7 +29,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
        EOF
        udevadm control --reload-rules
        exit
-    Perhaps now is the perfect time to bring up the subject of editing text files in Linux from the command line. Naturally, you use your favourite text editor. But personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
+    Perhaps now is the perfect time to bring up the subject of editing text files in Linux. Naturally, you can use your favourite text editor. But personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
 
 4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. We'll start by allowing the debian user to sudo without having to enter the password every (subsequent) time:
 
