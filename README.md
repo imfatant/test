@@ -49,9 +49,12 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
         Passphrase = <your WiFi password>
     Press `Ctrl-D` to quit out to the prompt, and then type: `exit`
     
-    Wait a second and a prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its address on your WiFi network can be found using programs like nmap: `sudo nmap 192.168.0.0/24`. It's also possible that you can find the address by logging in to your router and looking there. Try SSHing to the BBBlue using its WiFi IP address.
+    Wait a second and a prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its address on your WiFi network can be found using:
     
-    192.168.7.2 will still work as well.
+       ip addr show wlan0
+    Other less direct ways to find the BBBlue's IP address are programs like nmap (`sudo nmap 192.168.0.0/24`) or by logging in to your router and looking there.
+    
+    Now try SSHing to the BBBlue using its WiFi IP address. Remember that 192.168.7.2 will still work as well.
     
     If you can't get WiFi to work with connman, or you simply don't want to use connman, you can use the following method. First, type: `sudo systemctl disable connman`. Then, with your SSID and WiFi password handy, edit /etc/network/interfaces to read:
 
