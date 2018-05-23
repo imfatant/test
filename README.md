@@ -97,7 +97,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
     
        sudo /sbin/route add default gw 192.168.7.1
        echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf >/dev/null
-    Incidentally, these changes can be made permanent by altering the '`# Ethernet/RNDIS gadget (g_ether).`' section of /etc/network/interfaces to this:
+    Incidentally, these changes can be made permanent by altering the '`# Ethernet/RNDIS gadget (g_ether).`' section of /etc/network/interfaces to:
     
        # Ethernet/RNDIS gadget (g_ether).
        # Used by: /opt/scripts/boot/autoconfigure_usb0.sh
