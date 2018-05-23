@@ -141,7 +141,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 	(Hint: type `sudoedit /etc/default/ardupilot`)
         
         TELEM1="-C /dev/ttyO1"  # <--- BBBlue's UART1.
-        TELEM2="-A udp:<the ground control station computer's IP address>:14550"  # <--- i.e. udp:192.168.0.13:14550
+        TELEM2="-A udp:<some target IP address>:14550"  # <--- for example: udp:192.168.0.13:14550
         GPS="-B /dev/ttyS2"  # <--- BBBlue's UART2 (confusingly, marked 'GPS' on the board itself).
     This is a pretty typical config. It breaks down like this:
     
