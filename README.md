@@ -141,7 +141,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 	(Hint: type `sudoedit /etc/default/ardupilot`)
         
         TELEM1="-C /dev/ttyO1"
-        TELEM2="-A udp:<the ground station computer's IP address>:14550"
+        TELEM2="-A udp:<the ground control station computer's IP address>:14550"
         GPS="-B /dev/ttyS2"
     This is a pretty typical config. It breaks down like this:
     
