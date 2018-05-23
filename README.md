@@ -32,9 +32,7 @@ I take a minimalistic approach. Only necessary steps are shown, excepting that I
 
 4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. We'll start by allowing the debian user to sudo without having to enter the password every time:
 
-       sudo -s
-       echo "debian ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers.d/debian
-       exit
+       echo "debian ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/debian >/dev/null
     The next job is to update and install some software using an available internet connection, so it's time to set up connman for WiFi access. I do it the following way because it's easier to automate in a script later on. First, make a note of your router's SSID and WiFi password. Then type the following:
 
         sudo -s
