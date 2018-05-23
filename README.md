@@ -79,9 +79,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
        gateway 192.168.7.1
     Now, reboot the BBBlue with: `sudo reboot`
     
-    After logging back in, type: `sudo ifup wlan0`
-    
-    The green LED should come on. You're connected.
+    After logging back in, type: `sudo ifup wlan0`. The green LED should come on. You're connected.
     
     If you want the BBBlue to have a static IP (let's say 192.168.0.99), alter the '`# WiFi w/ onboard device (dynamic IP).`' section of /etc/network/interfaces to read:
     
