@@ -14,7 +14,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     PLEASE TRY USING THIS PRECISE IMAGE FIRST BEFORE RAISING ISSUES!
     
-    Incidentally, on the subject of editing text files in Linux: Naturally, you can use your favourite text editor. Personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
+    On the subject of editing text files in Linux: Naturally, you can use your favourite text editor. Personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
     
 2) Next you'll need to flash the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
 
