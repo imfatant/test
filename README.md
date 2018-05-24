@@ -14,6 +14,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     PLEASE TRY USING THIS PRECISE IMAGE FIRST BEFORE RAISING ISSUES!
     
+    Incidentally, on the subject of editing text files in Linux: Naturally, you can use your favourite text editor. Personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
+    
 2) Next you'll need to flash the image to a microSD card. Whether you are using Linux or Windows, I highly recommend a program called Etcher for this task (https://etcher.io/).
 
 3) It should now be possible to boot up the BeagleBone Blue from the microSD card. It's beyond the scope of this document to detail all the ways of interacting with the BBBlue, but often it's accomplished by plugging in a Micro-USB cable and either using SSH (to 'debian@192.168.7.2', password 'temppwd') or establishing a serial link over a COM port (user 'debian', password 'temppwd)' in a program like Minicom or PuTTY. More information can be found here: https://beagleboard.org/blue
@@ -29,8 +31,6 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
        EOF
        udevadm control --reload-rules
        exit
-    Perhaps now is the perfect time to bring up the subject of editing text files in Linux. Naturally, you can use your favourite text editor. But personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
-
 4) Hopefully, you now find yourself logged in to the BBBlue and at the command prompt. We'll start by allowing the debian user to sudo without having to enter the password every (subsequent) time:
 
        echo "debian ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/debian >/dev/null
@@ -138,7 +138,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
 13) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
 
-	(Hint: type `sudoedit /etc/default/ardupilot`, and insert your own target IP address)
+	(Hint: type `sudoedit /etc/default/ardupilot`, and insert your own target IP address.)
         
         TELEM1="-C /dev/ttyO1"
         TELEM2="-A udp:<some target IP address>:14550"
