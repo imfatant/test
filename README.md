@@ -53,7 +53,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     Wait a second and a prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its IP address on your WiFi network can be found using:
     
        ip addr show wlan0
-    If, for whatever reason, you find you're unable to query the BBBlue directly, other ways to find the BBBlue's IP address are programs like nmap (`sudo nmap 192.168.0.0/24`) or by logging in to your router and looking there.
+    If, for whatever reason, you find yourself unable to query the BBBlue directly, other ways to find its IP address are programs like nmap (`sudo nmap 192.168.0.0/24`) or by logging in to your router and looking there.
     
     Now try SSHing to the BBBlue using its WiFi IP address. Remember that 192.168.7.2 will still work as well.
     
