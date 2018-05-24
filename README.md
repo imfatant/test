@@ -138,7 +138,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
 13) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
 
-	(Hint: type `sudoedit /etc/default/ardupilot`, and insert your own target IP address.)
+	(Hint: type `sudoedit /etc/default/ardupilot`, and insert your own target IP address, e.g. 192.168.0.13)
         
         TELEM1="-C /dev/ttyO1"
         TELEM2="-A udp:<some target IP address>:14550"
