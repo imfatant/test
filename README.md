@@ -261,8 +261,9 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo pip install future
         git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
+	git checkout Copter-3.5.5  # <--- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.8.5
         git submodule update --init --recursive
-        ./waf configure --board=blue
+        ./waf configure --board=blue  # <--- BeagleBone Blue.
         ./waf
         cp ./build/blue/bin/a* /home/debian
 	
