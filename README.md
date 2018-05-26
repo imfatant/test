@@ -264,7 +264,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         git submodule update --init --recursive
         ./waf configure --board=blue
         ./waf
-	cp ./build/blue/bin/a* /home/debian
+        cp ./build/blue/bin/a* /home/debian
 	
     Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
 
