@@ -141,13 +141,13 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 	(Hint: type `sudoedit /etc/default/ardupilot`, and insert your own target IP address, e.g. 192.168.0.13)
         
         TELEM1="-C /dev/ttyO1"
-        TELEM2="-A udp:<some target IP address>:14550"
+        TELEM2="-A udp:<target IP address>:14550"
         GPS="-B /dev/ttyS2"
     This is a pretty typical config. It breaks down like this:
     
     Switch -C maps ArduPilot's "Telem1" serial port (SERIAL1, default 57600) to the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to UART1. It is the bidirectional data link with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
     
-    Switch -A maps ArduPilot's "Console" serial port (SERIAL0, default 115200) to a protocol, IP address and port number of one's choosing. For example, this allows me to have MAVLink data coming over WiFi for test purposes. Really useful, especially since it seems to be reliably auto-sensed by ground control station software like Mission Planner and QGroundControl.
+    Switch -A maps ArduPilot's "Console" serial port (SERIAL0, default 115200) to a protocol, target IP address and port number of one's choosing. For example, this allows me to have MAVLink data coming over WiFi for test purposes. Really useful, especially since it seems to be reliably auto-sensed by ground control station software like Mission Planner and QGroundControl.
     
     Switch -B maps ArduPilot's "GPS" serial port (SERIAL3, default 57600) to the BBBlue's UART2 (the UART confusingly marked 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to UART2.
     
