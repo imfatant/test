@@ -246,6 +246,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         /bin/echo 1 >/sys/class/gpio/gpio80/value
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
     Lines 5 to 7 power on the BBBlue's +5V servo rail. Line 8 enables the PRU.
+    
     Use `sudo chmod 0755 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
 16) Almost there! You must now obtain the latest ArduCopter, ArduPlane, etc. executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/
