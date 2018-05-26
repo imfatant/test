@@ -245,7 +245,9 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         /bin/echo out >/sys/class/gpio/gpio80/direction
         /bin/echo 1 >/sys/class/gpio/gpio80/value
         /bin/echo pruecapin_pu >/sys/devices/platform/ocp/ocp:P8_15_pinmux/state
-    Lines 5 to 7 power on the BBBlue's +5V servo rail. Line 8 enables the PRU.
+    Lines 5 to 7 switch on power to the BBBlue's +5V servo rail - i.e. for when you're using mechanical servos.
+    
+    Line 8 enables the PRU.
     
     Use `sudo chmod 0755 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
