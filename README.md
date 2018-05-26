@@ -286,8 +286,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         ./waf configure --board=blue  # <--- BeagleBone Blue.
         ./waf
          scp ./build/blue/bin/a* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
-    On the BBBlue, copy the executable(s) from /home/debian to /usr/bin/ardupilot.
-    Again, be sure to set their permissions: `sudo chmod 0755 /usr/bin/ardupilot/a*`
+    On the BBBlue, copy the executable(s) from /home/debian to /usr/bin/ardupilot. Again, be sure to set their permissions.
     
 17) To get ArduPilot going, choose which flavour you want and type:
 
