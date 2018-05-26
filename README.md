@@ -264,6 +264,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         git submodule update --init --recursive
         ./waf configure --board=blue
         ./waf
+	cp ./build/blue/bin/a* /home/debian
 	
     Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
 
@@ -284,7 +285,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         git submodule update --init --recursive
         ./waf configure --board=blue  # <--- BeagleBone Blue.
         ./waf
-         scp ./build/blue/bin/ardu* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
+         scp ./build/blue/bin/a* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
     Log in to the BBBlue and copy the executable(s) from /home/debian to /usr/bin/ardupilot with: `sudo cp /home/debian/ardu* /usr/bin/ardupilot`
     
     Again, be sure to set their permissions: `sudo chmod 0755 /usr/bin/ardupilot/a*`
