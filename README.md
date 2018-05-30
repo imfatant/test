@@ -403,4 +403,4 @@ Then finally:
     pacmd set-card-profile 0 a2dp_sink
     aplay /usr/share/sounds/alsa/Front_Center.wav
 
-That's all there is to it.
+That's all there is to it. By the way, if you're going to use a speech synth, I recommend Festival.
