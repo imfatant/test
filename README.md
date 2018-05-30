@@ -382,7 +382,7 @@ Next, ensure that /etc/pulse/default.pa contains the following lines (i.e. comme
 
     ### Automatically suspend sinks/sources that become idle for too long
     # load-module module-suspend-on-idle
-And type: `sudo reboot`
+Then restart: `sudo reboot`
 
 When the BBBlue is back up, carry on with:
     
