@@ -400,7 +400,7 @@ Then finally, hook it all up:
     
     echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl  # <--- Use this to 'bump' the device after a reboot, etc.
     pactl list  # <--- Use this to check that your Bluetooth device is listed as available to PulseAudio.
-    pacmd set-card-profile 0 a2dp_sink
+    pacmd set-card-profile 0 a2dp_sink  # <--- Also set this after a reboot.
     aplay /usr/share/sounds/alsa/Front_Center.wav
 
 That's all there is to it. By the way, if you're going to use a speech synth, I recommend Festival.
