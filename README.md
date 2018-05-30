@@ -384,7 +384,7 @@ Next, ensure that /etc/pulse/default.pa contains the following lines (i.e. comme
     # load-module module-suspend-on-idle
 Then restart: `sudo reboot`
 
-When the BBBlue is back up, carry on with:
+When the BBBlue is back up, pair your Bluetooth speaker with the BBBlue thus:
     
     bluetoothctl
     scan on
