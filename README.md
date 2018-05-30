@@ -396,7 +396,7 @@ When the BBBlue is back up, pair your Bluetooth speaker with the BBBlue thus:
     scan off
     exit
 
-Then finally:
+Then finally, hook it all up:
     
     echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl  # <--- Use this to 'bump' the device after a reboot, etc.
     pactl list  # <--- Use this to check that your Bluetooth device is listed as available to PulseAudio.
