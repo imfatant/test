@@ -135,7 +135,6 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 12) Reboot now: `sudo reboot`
 
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
-
 13) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
 
 	(Hint: type `sudoedit /etc/default/ardupilot`, and insert your own target IP address, e.g. 192.168.0.13)
@@ -371,4 +370,40 @@ sudo i2cdetect -r -y 2
     60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
     70: -- -- -- -- -- -- -- --
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules.
+
+## Extras
+a) Connecting your BBBlue-based drone to a bluetooth speaker.
+    This turns out to be much simpler than I thought. There's a bunch of info out there, but fortunately, it's rather simple.
+    First, install the necessary software (whether using console or IoT image):
+    
+    sudo apt-get install -y bluetooth pulseaudio pulseaudio-module-bluetooth alsa-utils
+    sudo systemctl enable bb-wl18xx-bluetooth.service
+    
+    sudoedit /etc/pulse/default.pa:
+    ### Automatically suspend sinks/sources that become idle for too long
+    # load-module module-suspend-on-idle
+
+    Now: sudo reboot
+
+bluetoothctl
+scan on
+agent on
+default-agent
+pair FC:58:FA:5C:0B:07
+pair 00:00:00:00:55:91
+# connect FC:58:FA:5C:0B:07
+# connect 00:00:00:00:55:91
+trust FC:58:FA:5C:0B:07
+trust 00:00:00:00:55:91
+scan off
+exit
+
+echo connect FC:58:FA:5C:0B:07 | bluetoothctl
+echo connect 00:00:00:00:55:91 | bluetoothctl
+pactl list  <--- check to ensure your bluetooth device is listed
+# pactl set-default-sink bluez_sink.FC_58_FA_5C_0B_07.headset_head_unit  <--- need sudo?
+# pactl set-default-sink bluez_sink.00_00_00_00_55_91.headset_head_unit
+pacmd set-card-profile 0 a2dp_sink
+aplay /usr/share/sounds/alsa/Front_Center.wav
+
 
