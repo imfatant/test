@@ -399,7 +399,7 @@ When the BBBlue is back up, pair your Bluetooth speaker with the BBBlue thus:
 Then finally:
     
     echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl  # <--- Use this to 'bump' the device after a reboot, etc.
-    pactl list  # <--- Use this to check to your Bluetooth device is listed as an available to pulseaudio.
+    pactl list  # <--- Use this to check that your Bluetooth device is listed as available to pulseaudio.
     pacmd set-card-profile 0 a2dp_sink
     aplay /usr/share/sounds/alsa/Front_Center.wav
 
