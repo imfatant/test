@@ -394,7 +394,7 @@ When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do
     scan on
     agent on
     default-agent
-    pair <Bluetooth speaker's MAC address>
+    pair <Bluetooth speaker's MAC address>  # <--- MAC address will be something like AB:58:EC:5C:0C:03
     connect <Bluetooth speaker's MAC address>  # <--- Sometimes unnecessary.
     trust <Bluetooth speaker's MAC address>
     scan off
