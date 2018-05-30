@@ -384,7 +384,7 @@ Next, ensure that /etc/pulse/default.pa contains the following lines (i.e. comme
     # load-module module-suspend-on-idle
 Then restart: `sudo reboot`
 
-When the BBBlue is back up, put your Bluetooth speaker in pairing mode, and do:
+When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do:
     
     bluetoothctl
     scan on
@@ -398,7 +398,6 @@ When the BBBlue is back up, put your Bluetooth speaker in pairing mode, and do:
 
 Then finally, hook it all up:
     
-    echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
     pactl list  # <--- Use this to check that your Bluetooth device is listed as available to PulseAudio.
     pacmd set-card-profile 0 a2dp_sink
     aplay /usr/share/sounds/alsa/Front_Center.wav
