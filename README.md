@@ -372,7 +372,7 @@ sudo i2cdetect -r -y 2
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules.
 
 ## Extras
-a) Equipping your BBBlue-based drone with a Bluetooth speaker can be fun. There's a bunch of info out there on BlueZ/ALSA/PulseAudio, but fortunately, it all boils down to something pretty simple.
+a) Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/ALSA/PulseAudio, but fortunately, it all boils down to something pretty simple.
 
 First, install the necessary software (whether using a console or IoT image):
 
