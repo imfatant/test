@@ -390,15 +390,15 @@ When the BBBlue is back up, carry on with:
     scan on
     agent on
     default-agent
-    pair <bluetooth speaker's MAC address>
-    connect <bluetooth speaker's MAC address>  # <--- Sometimes unnecessary.
-    trust <bluetooth speaker's MAC address>
+    pair <Bluetooth speaker's MAC address>
+    connect <Bluetooth speaker's MAC address>  # <--- Sometimes unnecessary.
+    trust <Bluetooth speaker's MAC address>
     scan off
     exit
 
 Then finally:
     
-    echo connect <bluetooth speaker's MAC address> | bluetoothctl  # <--- Use this to 'bump' the device after a reboot, etc.
+    echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl  # <--- Use this to 'bump' the device after a reboot, etc.
     pactl list  # <--- Use this to check to your Bluetooth device is listed as an available to pulseaudio.
     pacmd set-card-profile 0 a2dp_sink
     aplay /usr/share/sounds/alsa/Front_Center.wav
