@@ -400,7 +400,7 @@ When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do
     scan off
     exit
 
-Then finally (or after booting up), do:
+Then finally (or after booting up):
     
     pulseaudio --start
     echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
