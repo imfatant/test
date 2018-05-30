@@ -400,16 +400,11 @@ When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do
     scan off
     exit
 
-Then finally, hook it all up:
+Then finally, hook it all up (or after booting up):
     
+    pulseaudio --start
     echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
     pactl list  # <--- Use this to check that your Bluetooth device is listed as available to PulseAudio.
     pacmd set-card-profile 0 a2dp_sink
     aplay /usr/share/sounds/alsa/Front_Center.wav
-    
-After a reboot, you need only type:
-
-    pulseaudio --start
-    echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
-    pacmd set-card-profile 0 a2dp_sink
 That's all there is to it. By the way, if you're going to use a speech synthesizer, I recommend Festival.
