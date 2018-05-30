@@ -372,37 +372,35 @@ sudo i2cdetect -r -y 2
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules.
 
 ## Extras
-a) Equipping your BBBlue-based drone to a bluetooth speaker can be fun. There's a bunch of info out there on bluez/alsa/pulseaudio, but fortunately, it all boils down to something pretty simple.
-    First, install the necessary software (whether using console or IoT image):
-    
+a) Equipping your BBBlue-based drone with a Bluetooth speaker can be fun. There's a bunch of info out there on bluez/alsa/pulseaudio, but fortunately, it all boils down to something pretty simple.
+
+First, install the necessary software (whether using a console or IoT image):
+
     sudo apt-get install -y bluetooth pulseaudio pulseaudio-module-bluetooth alsa-utils
     sudo systemctl enable bb-wl18xx-bluetooth.service
-    
-    sudoedit /etc/pulse/default.pa:
+Next, esnure that /etc/pulse/default.pa contains the following lines (i.e. commented out):
+
     ### Automatically suspend sinks/sources that become idle for too long
     # load-module module-suspend-on-idle
+And type: `sudo reboot`
 
-    Now: sudo reboot
+When the BBBlue is back up, carry on with:
+    
+    bluetoothctl
+    scan on
+    agent on
+    default-agent
+    pair <bluetooth speaker's MAC address>
+    connect <bluetooth speaker's MAC address>  # <--- Sometimes unnecessary.
+    trust <bluetooth speaker's MAC address>
+    scan off
+    exit
 
-bluetoothctl
-scan on
-agent on
-default-agent
-pair FC:58:FA:5C:0B:07
-pair 00:00:00:00:55:91
-# connect FC:58:FA:5C:0B:07
-# connect 00:00:00:00:55:91
-trust FC:58:FA:5C:0B:07
-trust 00:00:00:00:55:91
-scan off
-exit
+Then finally:
+    
+    echo connect <bluetooth speaker's MAC address> | bluetoothctl  # <--- Use this to 'bump' the device after a reboot, etc.
+    pactl list  # <--- Use this to check to your Bluetooth device is listed as an available to pulseaudio.
+    pacmd set-card-profile 0 a2dp_sink
+    aplay /usr/share/sounds/alsa/Front_Center.wav
 
-echo connect FC:58:FA:5C:0B:07 | bluetoothctl
-echo connect 00:00:00:00:55:91 | bluetoothctl
-pactl list  <--- check to ensure your bluetooth device is listed
-# pactl set-default-sink bluez_sink.FC_58_FA_5C_0B_07.headset_head_unit  <--- need sudo?
-# pactl set-default-sink bluez_sink.00_00_00_00_55_91.headset_head_unit
-pacmd set-card-profile 0 a2dp_sink
-aplay /usr/share/sounds/alsa/Front_Center.wav
-
-
+That's all there is to it.
