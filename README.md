@@ -380,6 +380,7 @@ First, install the necessary software (whether using a console or IoT image):
     sudo apt-get install -y bluetooth pulseaudio pulseaudio-module-bluetooth alsa-utils
 
 Enable Bluetooth (if disabled): `sudo systemctl enable bb-wl18xx-bluetooth.service`
+
 Next, ensure that /etc/pulse/default.pa contains the following lines (i.e. commented out):
 
     ### Automatically suspend sinks/sources that become idle for too long
