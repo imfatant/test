@@ -372,6 +372,13 @@ sudo i2cdetect -r -y 2
     70: -- -- -- -- -- -- -- --
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules.
 
+## Getting started with Ground Control Station (GCS) software
+Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi) for Windows or QGroundControl http://qgroundcontrol.com/ for Linux & Windows. Both these programs will connect to a streams of MAVLink data coming over the network (via UDP on port 14550, for example) or over a COM port. Some trivial configuration may be required, but QGroundControl will often do a great job of auto-sensing and auto-connecting to the traffic.
+
+If you're having difficult establishing a link, pay attention to the following:
+1) Ensure you have opened the necessary ports in GCS computer's firewall , and be absolutely certain of the computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each OS.
+2) If you're geting a 'port is already open'-type error, turn off the GCS software's auto-connect feature.
+
 ## Extras
 a) Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
 
