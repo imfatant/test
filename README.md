@@ -376,7 +376,7 @@ sudo i2cdetect -r -y 2
 Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi) for Windows or QGroundControl (http://qgroundcontrol.com/) for Linux & Windows. Both these programs will connect to streams of MAVLink data coming over the network (via UDP on port 14550, for example) or over COM ports. Some trivial configuration may be required, but QGroundControl often does a great job of auto-sensing and auto-connecting to traffic all by itself.
 
 If you're having difficulty establishing a link, look at the following:
-1) Ensure you have opened the necessary ports in GCS computer's firewall, and be absolutely certain of the computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each OS.
+1) Ensure you've opened the necessary ports in the GCS computer's firewall. Perhaps even disable the firewall temporarily. Also, be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
 2) If you're geting a 'port is already open'-type error, turn off the GCS software's auto-connect feature.
 
 ## Extras
