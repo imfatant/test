@@ -373,7 +373,7 @@ sudo i2cdetect -r -y 2
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules.
 
 ## Getting started with Ground Control Station (GCS) software
-Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi) for Windows or QGroundControl (http://qgroundcontrol.com/) for Linux & Windows. Both these programs will connect to streams of MAVLink data coming over the network (via UDP on port 14550, for example) or over COM ports. Some trivial configuration may be required, but QGroundControl often does a great job of auto-sensing and auto-connecting traffic all by itself.
+Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi) for Windows or QGroundControl (http://qgroundcontrol.com/) for Linux & Windows. Both these programs will connect to streams of MAVLink data coming over the network (via UDP on port 14550, for example) or over COM ports. Some trivial configuration may be required, but QGroundControl often does a great job of auto-sensing and auto-connecting to traffic all by itself.
 
 If you're having difficulty establishing a link, look at the following:
 1) Ensure you have opened the necessary ports in GCS computer's firewall, and be absolutely certain of the computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each OS.
