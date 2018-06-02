@@ -377,7 +377,7 @@ Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlan
 
 If you're having difficulty establishing a link, look at the following:
 1) Ensure you've opened the necessary ports in the GCS computer's firewall. Perhaps even disable the firewall temporarily. Also, be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
-2) If you're geting a 'port is already open'-type error, turn off the GCS software's auto-connect feature.
+2) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, and try again.
 
 ## Extras
 a) Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
