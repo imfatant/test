@@ -380,7 +380,7 @@ If you're having difficulty establishing a link, look at the following:
 2) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again.
 
 ## Extras
-a) Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
+Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
 
 First, install the necessary software (whether using a console or IoT image):
 
