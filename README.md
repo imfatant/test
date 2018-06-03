@@ -377,7 +377,7 @@ Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlan
 
 If you're having difficulty establishing a link, look at the following:
 1) Ensure you've opened the necessary ports in the GCS computer's firewall. Perhaps even disable the firewall temporarily.
-2)be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
+2) Be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
 2) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again.
 
 ## Extras
