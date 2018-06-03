@@ -377,41 +377,40 @@ Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlan
 
 If you're having difficulty establishing a link, look at the following:
 1) Ensure you've opened the necessary ports in the GCS computer's firewall. Perhaps even disable the firewall temporarily.
+
 2) Be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
+
 3) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again.
 
 ## Extras
 Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
 
-First, install the necessary software (whether using a console or IoT image):
+1) First, install the necessary software (whether using a console or IoT image):
 
-    sudo apt-get install -y bluetooth pulseaudio pulseaudio-module-bluetooth alsa-utils
+       sudo apt-get install -y bluetooth pulseaudio pulseaudio-module-bluetooth alsa-utils
+2) Enable Bluetooth (if disabled): `sudo systemctl enable bb-wl18xx-bluetooth.service`
+3) Next, ensure that /etc/pulse/default.pa contains the following lines (i.e. commented out):
 
-Enable Bluetooth (if disabled): `sudo systemctl enable bb-wl18xx-bluetooth.service`
-
-Next, ensure that /etc/pulse/default.pa contains the following lines (i.e. commented out):
-
-    ### Automatically suspend sinks/sources that become idle for too long
-    # load-module module-suspend-on-idle
-Then restart: `sudo reboot`
-
-When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do:
+       ### Automatically suspend sinks/sources that become idle for too long
+       # load-module module-suspend-on-idle
+4) Then restart: `sudo reboot`
+5) When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do:
     
-    bluetoothctl
-    scan on
-    agent on
-    default-agent
-    pair <Bluetooth speaker's MAC address>  # <--- e.g. AB:58:EC:5C:0C:03
-    connect <Bluetooth speaker's MAC address>  # <--- Sometimes unnecessary.
-    trust <Bluetooth speaker's MAC address>
-    scan off
-    exit
+       bluetoothctl
+       scan on
+       agent on
+       default-agent
+       pair <Bluetooth speaker's MAC address>  # <--- e.g. AB:58:EC:5C:0C:03
+       connect <Bluetooth speaker's MAC address>  # <--- Sometimes unnecessary.
+       trust <Bluetooth speaker's MAC address>
+       scan off
+       exit
 
-Then finally (or after booting up):
+6) Then finally (or after booting up):
     
-    pulseaudio --start
-    echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
-    pactl list  # <--- Use this to check that your Bluetooth device is listed as available to PulseAudio.
-    pacmd set-card-profile 0 a2dp_sink
-    aplay /usr/share/sounds/alsa/Front_Center.wav
+       pulseaudio --start
+       echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
+       pactl list  # <--- Use this to check that your Bluetooth device is listed as available to PulseAudio.
+       pacmd set-card-profile 0 a2dp_sink
+       aplay /usr/share/sounds/alsa/Front_Center.wav
 That's all there is to it. By the way, if you're going to use a speech synthesizer, I recommend Festival.
