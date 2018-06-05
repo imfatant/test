@@ -410,7 +410,7 @@ Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing
     
        pulseaudio --start
        echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
-       pactl list  # <--- Use this to check that your Bluetooth device is listed as available to PulseAudio.
+       pactl list  # <--- Use this to check that your Bluetooth device has been picked up by PulseAudio.
        pacmd set-card-profile 0 a2dp_sink
        aplay /usr/share/sounds/alsa/Front_Center.wav
 That's all there is to it. By the way, if you're going to use a speech synthesizer, I recommend Festival.
