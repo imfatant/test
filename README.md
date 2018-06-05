@@ -389,7 +389,7 @@ Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing
 
        sudo apt-get install -y bluetooth pulseaudio pulseaudio-module-bluetooth alsa-utils
 2) Enable Bluetooth (if disabled): `sudo systemctl enable bb-wl18xx-bluetooth.service`
-3) Next, ensure that /etc/pulse/default.pa contains the following lines (i.e. commented out):
+3) Next, edit /etc/pulse/default.pa to contain the following lines (i.e. commented out):
 
        ### Automatically suspend sinks/sources that become idle for too long
        # load-module module-suspend-on-idle
