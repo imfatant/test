@@ -382,10 +382,10 @@ If you're having difficulty establishing a link, look at the following:
 
 3) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again.
 
-Once you have the link working, I suggest you run ArduPlane specifically (as opposed to Arducopter, etc) and get a servo moving in the 'Manual' flightmode. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
+Once you have the link working, I suggest you run ArduPlane specifically (as opposed to Arducopter, etc) and get a servo moving in the 'Manual' flight mode. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
 Under 'Advanced':
-    FLTMODE_CH: 5 (or leave it on channel 8 if you so wish)
+    FLTMODE_CH: 5
 Under 'Standard':
     FLTMODE1: Manual
     FLTMODE2: Manual
@@ -394,7 +394,7 @@ Under 'Standard':
     FLTMODE5: Manual
     FLTMODE6: Manual
 
-Here, I've set every switch position to Manual, so you're guaranteed to get a straightforward pass-through signal to your test servo. I've also set the Flightmode channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons which aren't that interesting).
+Notice I've set every switch position to Manual, so you're absolutely guaranteed to get a straightforward pass-through signal to your test servo. I've also set the flight mode channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons which aren't that interesting).
 
 ## Extras
 Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
