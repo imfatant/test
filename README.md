@@ -341,7 +341,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
 - The R/C receiver: FrSky equipment (https://www.frsky-rc.com/) like the R-XSR, X6R and X8R (R9 Mini, R9 Slim and XR4SB are currently under test) can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will of course do. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. Please contact me if you would like to add some information here about gear from other manufacturers such as Spektrum, Futaba, etc.
 
-    Incidentally, you may hear a lot of about the 'inverted SBUS' signal on the web, and perhaps find it confusing. To be clear: SBUS is simply a serial data communication protocol Futaba came up with, and which FrSky copied. It's inverted compared to the UART 'standard'. Fortunately, ArduPilot Blue expects this inverted SBUS signal, so there's no need for a signal inverter or a hack, etc.
+    Incidentally, you may hear a lot of about the 'inverted SBUS' signal on the web, and perhaps find it confusing. To be clear: SBUS is simply a serial data communication protocol Futaba came up with, and which FrSky copied. It's inverted compared to the UART 'standard'. Fortunately, ArduPilot Blue expects this inverted SBUS signal, so there's no need for a signal inverter or a hack.
 
 - The GPS receiver: Most people use the u-blox receivers, particularly the NEO-M8N and NEO-M8P. The former can be easily and cheaply obtained online from Chinese companies like HobbyKing (https://hobbyking.com/en_us/catalogsearch/result/?cat=&q=ublox), in a variety of usually disk-shaped packages. Conveniently, these packages contain the receiver itself, a very small ceramic patch antenna, and often include a compass chip. While the BBBlue already has an onboard compass (the AKM AK8963), ArduPilot can be configured to use this 'external' compass instead, something to consider if it's positioned in a less (electro)magnetically noisy location on the drone.
 
@@ -409,6 +409,7 @@ With the link established, you'll see the GCS program's artificial horizon movin
 Notice that every flight mode switch position is set to Manual so that you're absolutely guaranteed an unadulterated pass-through signal to your test servo as you move the transmitter's stick. I've also set the flight mode switching channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons that aren't interesting).
 
 The servo should be plugged into the bottom-most servomotor output header (oriented as on the pinout diagram).
+
 ## Extras
 Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
 
