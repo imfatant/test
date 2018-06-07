@@ -384,9 +384,6 @@ If you're having difficulty establishing a link, look at the following:
 
 Once you have the link working, I suggest you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
-    Under 'Advanced':
-      FLTMODE_CH        5
-      
     Under 'Standard':
       FLTMODE1          Manual
       FLTMODE2          Manual
