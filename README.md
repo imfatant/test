@@ -382,7 +382,7 @@ If you're having difficulty establishing a link, look at the following:
 
 3) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again.
 
-Once you have the link working, I suggest you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. This is also a convenient way to test that your receiver is working with ArduPilot Blue. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
+Once you're happy with the link, I suggest you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. This is also a convenient way to test that your receiver is working with ArduPilot Blue. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
     Under 'Standard':
         FLTMODE1          Manual
