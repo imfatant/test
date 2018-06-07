@@ -421,6 +421,7 @@ sudo i2cdetect -r -y 2
            ### Automatically suspend sinks/sources that become idle for too long
            # load-module module-suspend-on-idle
     d) Then restart: `sudo reboot`
+    
     e) When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do:
     
            bluetoothctl
