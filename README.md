@@ -306,7 +306,13 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 	
         sudo systemctl enable antennatracker.service
     After you reboot, your ArduPilot should inflate automatically.
-
+    
+    It'll help to familiarise yourself with `systemctl` (https://www.freedesktop.org/software/systemd/man/systemctl.html). Here's a few useful example commands:
+    
+        sudo systemctl disable ...
+        sudo systemctl start ...
+        sudo systemctl stop ...
+	
 ## Part 3 - Connecting the peripherals
 19) A basic minimum configuration is likely to include:
     - An R/C receiver.
