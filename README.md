@@ -404,7 +404,7 @@ sudo i2cdetect -r -y 2
       
         Under 'Advanced':
           FLTMODE_CH        5
-    Notice that every flight mode switch position is set to Manual so that you're absolutely guaranteed an unadulterated pass-through signal to your test servo as you move the transmitter's stick. I've also set the flight mode switching channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons that aren't interesting).
+    Notice that every flight mode switch position is set to Manual so that you're absolutely guaranteed a clean pass-through signal to your test servo as you move the transmitter's stick. I've also set the flight mode switching channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons that aren't interesting).
 
     The servo should be plugged into the bottom-most servomotor output header (oriented as on the pinout diagram).
 
