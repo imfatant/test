@@ -386,7 +386,7 @@ If you're having difficulty establishing a link, look at the following:
 
 2) Be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
 
-3) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again.
+3) If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again manually.
 
 With the link established, you'll see the GCS program's artificial horizon moving as you turn and tilt the BBBlue. Now I suggest that you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. This is a convenient way to test that your receiver is working properly with ArduPilot Blue. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
