@@ -415,6 +415,7 @@ sudo i2cdetect -r -y 2
 
            sudo apt-get install -y bluetooth pulseaudio pulseaudio-module-bluetooth alsa-utils
     b) Enable Bluetooth (if disabled): `sudo systemctl enable bb-wl18xx-bluetooth.service`
+    
     c) Next, edit /etc/pulse/default.pa to contain the following lines (i.e. commented out):
 
            ### Automatically suspend sinks/sources that become idle for too long
