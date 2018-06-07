@@ -385,15 +385,15 @@ If you're having difficulty establishing a link, look at the following:
 Once you have the link working, I suggest you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
     Under 'Standard':
-      FLTMODE1          Manual
-      FLTMODE2          Manual
-      FLTMODE3          Manual
-      FLTMODE4          Manual
-      FLTMODE5          Manual
-      FLTMODE6          Manual
+        FLTMODE1          Manual
+        FLTMODE2          Manual
+        FLTMODE3          Manual
+        FLTMODE4          Manual
+        FLTMODE5          Manual
+        FLTMODE6          Manual
       
-      Under 'Advanced':
-      FLTMODE_CH        5
+    Under 'Advanced':
+        FLTMODE_CH        5
 Notice that every switch position is set to Manual so that you're absolutely guaranteed an unadulterated pass-through signal to your test servo as you move the transmitter's stick. I've also set the flight mode channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons that aren't that interesting).
 
 Plug a servo in to the bottom-most servomotor output header (oriented as on the pinout diagram).
