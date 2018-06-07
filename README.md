@@ -394,7 +394,7 @@ Once you have the link working, I suggest you run ArduPlane specifically (as opp
       FLTMODE5:         Manual
       FLTMODE6:         Manual
 
-Notice I've set every switch position to Manual so that you're absolutely guaranteed to get a straightforward pass-through signal to your test servo. I've also set the flight mode channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons that aren't that interesting).
+Notice I've set every switch position to Manual so that you're absolutely guaranteed to get a straight pass-through signal to your test servo. I've also set the flight mode channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons that aren't that interesting).
 
 ## Extras
 Equipping your BBBlue-based drone with a Bluetooth speaker can be fun, providing that the Bluetooth RF transmissions don't interfere with any other systems. There's a bunch of info out there on BlueZ/PulseAudio/ALSA, but fortunately, it all boils down to something pretty simple.
