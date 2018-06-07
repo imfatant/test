@@ -419,8 +419,8 @@ sudo i2cdetect -r -y 2
 
            ### Automatically suspend sinks/sources that become idle for too long
            # load-module module-suspend-on-idle
-    e) Then restart: `sudo reboot`
-    f) When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do:
+    d) Then restart: `sudo reboot`
+    e) When the BBBlue is back up, put your Bluetooth speaker into pairing mode, and do:
     
            bluetoothctl
            scan on
@@ -432,7 +432,7 @@ sudo i2cdetect -r -y 2
            scan off
            exit
 
-    g) Then finally (or after booting up):
+    f) Then finally (or after booting up):
     
            pulseaudio --start
            echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
