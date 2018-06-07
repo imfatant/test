@@ -391,18 +391,19 @@ sudo i2cdetect -r -y 2
     - Ensure you've opened the necessary ports in the GCS computer's firewall. Perhaps even disable the firewall temporarily.
     - Be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
     - If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again manually.
+    
     With the link established, you'll see the GCS program's artificial horizon moving as you turn and tilt the BBBlue. Now I suggest that you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. This is a convenient way to test that your receiver is working properly with ArduPilot Blue. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
-    Under 'Standard':
-        FLTMODE1          Manual
-        FLTMODE2          Manual
-        FLTMODE3          Manual
-        FLTMODE4          Manual
-        FLTMODE5          Manual
-        FLTMODE6          Manual
+        Under 'Standard':
+          FLTMODE1          Manual
+          FLTMODE2          Manual
+          FLTMODE3          Manual
+          FLTMODE4          Manual
+          FLTMODE5          Manual
+          FLTMODE6          Manual
       
-    Under 'Advanced':
-        FLTMODE_CH        5
+        Under 'Advanced':
+          FLTMODE_CH        5
     Notice that every flight mode switch position is set to Manual so that you're absolutely guaranteed an unadulterated pass-through signal to your test servo as you move the transmitter's stick. I've also set the flight mode switching channel to 5. ArduCopter defaults to 5, but ArduPlane defaults to 8 (for various reasons that aren't interesting).
 
     The servo should be plugged into the bottom-most servomotor output header (oriented as on the pinout diagram).
