@@ -438,7 +438,7 @@ sudo i2cdetect -r -y 2
     
            pulseaudio --start
            echo "connect <Bluetooth speaker's MAC address>" | bluetoothctl
-           pactl list  # <--- Use this to check that your Bluetooth device has been picked up by PulseAudio.
+           pactl list  # <--- Use this to check that your Bluetooth speaker has been picked up by PulseAudio.
            pacmd set-card-profile 0 a2dp_sink
            aplay /usr/share/sounds/alsa/Front_Center.wav
     That's all there is to it. By the way, if you're going to use a speech synthesizer, I recommend Festival.
