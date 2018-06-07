@@ -339,7 +339,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
 ![alt text](https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg)
 
-- The R/C receiver: FrSky equipment (https://www.frsky-rc.com/) like the R-XSR, X6R and X8R (R9 Mini, R9 Slim and XR4SB are currently under test) can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will of course do. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. Please contact me if you would like to add some information here about gear from other manufacturers such as Spektrum, Futaba, etc.
+- The R/C receiver: FrSky equipment (https://www.frsky-rc.com/) like the R-XSR, XR4SB, X6R and X8R (R9 Slim and R9 Mini are currently under test) can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will of course do. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. Please contact me if you would like to add some information here about gear from other manufacturers such as Spektrum, Futaba, etc.
 
     Incidentally, you may hear a lot about the 'inverted SBUS' signal on the web, and perhaps find it confusing. To be clear: SBUS is simply a serial data communication protocol Futaba came up with, and which FrSky copied. It's inverted compared to the UART 'standard'. Fortunately, ArduPilot Blue expects this inverted SBUS signal, so there's no need for a signal inverter or a hack.
 
