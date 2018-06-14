@@ -343,7 +343,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
 	FrSky (https://www.frsky-rc.com/): R-XSR, XR4SB, X6R and X8R (R9 Slim and R9 Mini are currently under test).
 	
-	Spektrum (https://www.spektrumrc.com/): AR7700 DSMX w/ PPM/SRXL/Remote Rx.
+	Spektrum (https://www.spektrumrc.com/): AR7700 DSMX with PPM/SRXL/Remote Rx.
 	
 	Please contact me if you would like to add some information here about your own gear.
 
