@@ -277,7 +277,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         pacaur -S arm-linux-gnueabihf-gcc  # <--- Note that I'm using pacaur instead of yaourt. Also, ensure you haven't set any C/C++ env variables.
         sudo ln -s pkg-config /usr/bin/arm-linux-gnueabihf-pkg-config
         sudo pip install future
-        git clone https://github.com/diydrones/ardupilot.git
+        git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
         git config user.name <your username>
         sed -i 's/command -v yaourt/command -v pacaur/g' ./Tools/scripts/install-prereqs-arch.sh  # <--- Skip this if using yaourt.
