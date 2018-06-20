@@ -9,7 +9,7 @@ Universal:
 RTK:
 ![alt text](https://github.com/imfatant/test/blob/master/supercruise_octo/resources/images/rtk.jpg)
 
-![GitHub Logo](/supercruise_octo/images/sco_lower_frame.pdf)
+![GitHub Logo](https://github.com/imfatant/test/blob/master/supercruise_octo/resources/drawings/sco_lower_frame.pdf)
 sco_motor_mount_a.pdf
 sco_upper_frame_racing.pdf
 sco_upper_frame_universal.pdf
