@@ -7,7 +7,7 @@ Universal:
 ![alt text](https://github.com/imfatant/test/blob/master/supercruise_octo/resources/images/universal.jpg)
 
 RTK:
-![alt text](https://github.com/imfatant/test/blob/master/supercruise_octo/resources/images/rtk.jpg)
+![alt text](/supercruise_octo/resources/images/rtk.jpg)
 
 ![](https://github.com/imfatant/test/blob/master/supercruise_octo/resources/drawings/sco_lower_frame.pdf)
 
