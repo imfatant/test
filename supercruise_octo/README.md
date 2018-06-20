@@ -1,4 +1,4 @@
-Webber Electro SuperCruise Octo
+SuperCruise Octo
 
 Racing:
 ![alt text](https://github.com/imfatant/test/blob/master/supercruise_octo/racer.jpg)
