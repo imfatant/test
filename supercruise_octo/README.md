@@ -1,10 +1,10 @@
 ## SuperCruise Octo
 
-Racing:
+### Racing:
 ![alt text](/supercruise_octo/resources/images/racer.jpg)
 
-Universal:
+### Universal:
 ![alt text](/supercruise_octo/resources/images/universal.jpg)
 
-RTK:
+### RTK:
 ![alt text](/supercruise_octo/resources/images/rtk.jpg)
