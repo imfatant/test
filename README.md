@@ -153,12 +153,12 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     Other possibilities exist, namely:
     
-        Switch -A ---> "Console", SERIAL0, default 115200
-        Switch -B ---> "GPS", SERIAL3, default 57600
-        Switch -C ---> "Telem1", SERIAL1, default 57600
-        Switch -D ---> "Telem2", SERIAL2, default 38400
-        Switch -E ---> Unnamed, SERIAL4, default 38400
-        Switch -F ---> Unnamed, SERIAL5, default 57600
+        Switch -A  -->  "Console", SERIAL0, default 115200
+        Switch -B  -->  "GPS", SERIAL3, default 57600
+        Switch -C  -->  "Telem1", SERIAL1, default 57600
+        Switch -D  -->  "Telem2", SERIAL2, default 38400
+        Switch -E  -->  Unnamed, SERIAL4, default 38400
+        Switch -F  -->  Unnamed, SERIAL5, default 57600
     Consult the official ArduPilot documentation for more details on the various serial ports: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
     
 15) Next, we'll create the ArduPilot systemd service files, one for ArduCopter, /lib/systemd/system/arducopter.service:
@@ -401,12 +401,12 @@ sudo i2cdetect -r -y 2
     With the link established, you'll see the GCS program's artificial horizon moving as you turn and tilt the BBBlue. Now I suggest that you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. This is a convenient way to test that your receiver is working properly with ArduPilot Blue. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
         Under 'Standard':
-          FLTMODE1 ---> Manual
-          FLTMODE2 ---> Manual
-          FLTMODE3 ---> Manual
-          FLTMODE4 ---> Manual
-          FLTMODE5 ---> Manual
-          FLTMODE6 ---> Manual
+          FLTMODE1  -->  Manual
+          FLTMODE2  -->  Manual
+          FLTMODE3  -->  Manual
+          FLTMODE4  -->  Manual
+          FLTMODE5  -->  Manual
+          FLTMODE6  -->  Manual
       
         Under 'Advanced':
           FLTMODE_CH ---> 5
