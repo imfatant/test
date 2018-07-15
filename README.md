@@ -265,31 +265,34 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo pip install future
         git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
-        git checkout Copter-3.5.5  # <--- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.8.5
+        git checkout Copter-3.6  # <--- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.9.
         git submodule update --init --recursive
         ./waf configure --board=blue  # <--- BeagleBone Blue.
         ./waf
-        sudo cp ./build/blue/bin/a* /usr/bin/ardupilot	
+        sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
     Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
-
+    
         sudo pacman -Syu
-        gpg --recv-keys 79BE3E4300411886 38DBBDC86092693E 79C43DFBF1CF2187
-        pacaur -S arm-linux-gnueabihf-gcc  # <--- Note that I'm using pacaur instead of yaourt. Also, ensure you haven't set any C/C++ env variables.
+        gpg --recv-keys 79BE3E4300411886 38DBBDC86092693E 79C43DFBF1CF2187 13FCEF89DD9E3C4F 16792B4EA25340F8
+        yay -S arm-linux-gnueabihf-glibc-headers  # <-- Note that I'm using yay instead of yaourt. Also, ensure you haven't set any C/C++ env variables.
+        yay -S arm-linux-gnueabihf-glibc
+        yay -S arm-linux-gnueabihf-gcc
         sudo ln -s pkg-config /usr/bin/arm-linux-gnueabihf-pkg-config
+        sudo pacman -S --noconfirm python-pip
         sudo pip install future
         git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
         git config user.name <your username>
-        sed -i 's/command -v yaourt/command -v pacaur/g' ./Tools/scripts/install-prereqs-arch.sh  # <--- Skip this if using yaourt.
-        sed -i 's/yaourt -S --noconfirm --needed/pacaur -S --noconfirm --noedit/g' ./Tools/scripts/install-prereqs-arch.sh  # <--- Skip if using yaourt.
-        git commit -a --allow-empty-message -m ''  # <--- The lazy option.
+        sed -i 's/command -v yaourt/command -v yay/g' ./Tools/scripts/install-prereqs-arch.sh  # <-- Skip this if using yaourt.
+        sed -i 's/yaourt -S --noconfirm --needed/yay -S --noconfirm/g' ./Tools/scripts/install-prereqs-arch.sh  # <-- Skip if using yaourt.
+        git commit -a --allow-empty-message -m ''  # <-- The lazy option.
         ./Tools/scripts/install-prereqs-arch.sh
-        git fetch --prune  # <--- Updates the repository.
-        git checkout Copter-3.5.5  # <--- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.8.5
+        git fetch --prune  # <-- Updates the repository.
+        git checkout Copter-3.6  # <-- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.9.
         git submodule update --init --recursive
-        ./waf configure --board=blue  # <--- BeagleBone Blue.
+        ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
-         scp ./build/blue/bin/a* debian@192.168.7.2:/home/debian  # <--- Finally, copy the built executable(s) over to the BBBlue.
+        scp ./build/blue/bin/a* debian@192.168.7.2:/home/debian  # <-- Finally, copy the built executable(s) over to the BBBlue.
     On the BBBlue, copy the executable(s) from /home/debian to /usr/bin/ardupilot. Again, be sure to set their permissions.
     
 18) To get ArduPilot going, choose which flavour you want and type:
