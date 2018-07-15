@@ -265,9 +265,9 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo pip install future
         git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
-        git checkout Copter-3.6  # <--- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.9.
+        git checkout Copter-3.6  # <-- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.9.
         git submodule update --init --recursive
-        ./waf configure --board=blue  # <--- BeagleBone Blue.
+        ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
         sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
     Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
