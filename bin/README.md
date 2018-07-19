@@ -1,4 +1,4 @@
-#### Versions of the executables in this directory:
+### Versions of the executables in this directory:
 
 ArduCopter 3.6
 
