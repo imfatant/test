@@ -12,7 +12,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2018-07-15/stretch-console/bone-debian-9.5-console-armhf-2018-07-15-1gb.img.xz.
     
-    ---+++ PLEASE TRY USING THIS PRECISE IMAGE FIRST BEFORE RAISING ISSUES! +++---
+    ---+++ Please try using this precise image first before raising issues! +++---
     
     And quickly on the subject of editing text files in Linux: naturally, you can use your favourite text editor. Personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
     
@@ -282,7 +282,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
     Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
     
-    ---+++ THIS METHOD WILL NOT CURRENTLY WORK BECAUSE ARCH AND DEBIAN STRETCH USE DIFFERENT VERSIONS OF GLIBC +++---
+    ---+++ This method doesn't currently work because Arch Linux and Debian Stretch use different glibc versions. +++---
     
         sudo pacman -Syu
         gpg --recv-keys 79BE3E4300411886 38DBBDC86092693E 79C43DFBF1CF2187 13FCEF89DD9E3C4F 16792B4EA25340F8
