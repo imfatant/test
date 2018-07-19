@@ -132,12 +132,11 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
 7) Specify Ti real-time kernel 4_4. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_4`
    
-    Then:
     `sudo sed -i 's|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|g' /boot/uEnv.txt`
     
     `sudo sed -i 's|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo|g' /boot/uEnv.txt`
    
-       Finally, copy am335x-boneblue.dtb (from the bin directory in this repo) to /boot/dtbs/4.4.113-ti-rt-r149
+    Finally, copy am335x-boneblue.dtb (from the bin directory in this repo) to /boot/dtbs/4.4.113-ti-rt-r149
    
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
 9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
