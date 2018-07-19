@@ -128,10 +128,11 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
        sudo apt-get install -y cpufrequtils git
 6) Update scripts: `cd /opt/scripts && git pull`
 
-    ---+++ Real-time kernel is currently broken! Use the following fix: +++---
+    ---+++ The real-time kernel is currently broken! Use the following fix: +++---
 
 7) Specify Ti real-time kernel 4_4. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_4`
    
+    Then:
     `sudo sed -i 's|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|g' /boot/uEnv.txt`
     
     `sudo sed -i 's|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo|g' /boot/uEnv.txt`
