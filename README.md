@@ -10,7 +10,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     Don't assume that the latest image is the best, or even that it works. Afterall, this is the 'testing' repository, so be warned. However, I will endeavour to keep abreast of what seems to be the latest functional image and mention it here.
 
-    I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2018-04-22/stretch-console/bone-debian-9.4-console-armhf-2018-04-22-1gb.img.xz.
+    I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2018-07-15/stretch-console/bone-debian-9.5-console-armhf-2018-07-15-1gb.img.xz.
     
     ---+++ PLEASE TRY USING THIS PRECISE IMAGE FIRST BEFORE RAISING ISSUES! +++---
     
@@ -127,7 +127,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
        sudo apt-get -y dist-upgrade
        sudo apt-get install -y cpufrequtils git
 6) Update scripts: `cd /opt/scripts && git pull`
-7) Specify Ti real-time kernel 4_9. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_9`
+7) Specify Ti real-time kernel 4_4. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_4`
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
 9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
 10) Adjust bb-wl18xx-wlan0.service: `sudo sed -i 's/RestartSec=5/RestartSec=1/g' /lib/systemd/system/bb-wl18xx-wlan0.service`
