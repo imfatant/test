@@ -271,12 +271,11 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         ./waf
         sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
     Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
+    ---+++ NOTE: THIS METHOD WILL NOT CURRENTLY WORK BECAUSE ARCH AND DEBIAN STRETCH USE DIFFERENT VERSIONS OF GLIBC +++---
     
         sudo pacman -Syu
         gpg --recv-keys 79BE3E4300411886 38DBBDC86092693E 79C43DFBF1CF2187 13FCEF89DD9E3C4F 16792B4EA25340F8
-        yay -S arm-linux-gnueabihf-glibc-headers  # <-- Note that I'm using yay instead of yaourt. Also, ensure you haven't set any C/C++ env variables.
-        yay -S arm-linux-gnueabihf-glibc
-        yay -S arm-linux-gnueabihf-gcc
+        yay -S arm-linux-gnueabihf-glibc-headers arm-linux-gnueabihf-glibc arm-linux-gnueabihf-gcc  # <-- Note that I'm using yay instead of yaourt. Also, ensure you haven't set any C/C++ env variables.
         sudo ln -s pkg-config /usr/bin/arm-linux-gnueabihf-pkg-config
         sudo pacman -S --noconfirm python-pip
         sudo pip install future
