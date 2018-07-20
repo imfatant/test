@@ -298,7 +298,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         git commit -a --allow-empty-message -m ''  # <-- The lazy option.
         ./Tools/scripts/install-prereqs-arch.sh
         git fetch --prune  # <-- Updates the repository.
-        git checkout Copter-3.6  # <-- For ArduCopter. For ArduPlane, use: git checkout ArduPlane-3.9.
+        git checkout Copter-3.6  # <-- For ArduCopter.
         git submodule update --init --recursive
         ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
