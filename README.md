@@ -318,7 +318,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 	Or:
 	
         sudo systemctl enable antennatracker.service
-    After you reboot, your ArduPilot should inflate automatically.
+    After you reboot, your ArduPilot should inflate automatically. Look for the flashing red LED!
     
     It'll help to familiarise yourself with `systemctl` (https://www.freedesktop.org/software/systemd/man/systemctl.html). Some useful example commands:
     
