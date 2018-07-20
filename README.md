@@ -1,5 +1,5 @@
 # ArduPilot Blue - A beginner's guide
-This is my regularly updated (as of 19/07/2018, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
+This is my regularly updated (as of 20/07/2018, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
 
 Only necessary steps are shown, excepting that I install Git for the sake of convenience. Information found elsewhere may indicate steps that are no longer necessary due to software updates, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
 
@@ -354,7 +354,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
 - The R/C receiver: This can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will of course do. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. The following receivers have been tested and are known to work:
 
-	FrSky (https://www.frsky-rc.com/): R-XSR, XR4SB, X6R and X8R (R9 Slim and R9 Mini are currently under test).
+	FrSky (https://www.frsky-rc.com/): R-XSR, XR4SB, X6R, X8R, R9 Slim and R9 Mini (both 868 and 900 MHz).
 	
 	Spektrum (https://www.spektrumrc.com/): AR7700 DSMX with PPM/SRXL/Remote Rx.
 	
