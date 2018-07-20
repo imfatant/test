@@ -271,7 +271,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick Poirier explains the process for the BBBMINI (based on a BeagleBone Black) on his site. Here's the BBBlue-specific procedure, assuming you've followed all the Steps so far, and are in the /home/debian directory:
     
-        sudo apt-get install g++ make python python-dev python-lxml python-pip
+        sudo apt-get install g++ make pkg-config python python-dev python-lxml python-pip
         sudo pip install future
         git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
