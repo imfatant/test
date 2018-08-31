@@ -352,11 +352,13 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
 ![alt text](https://github.com/imfatant/test/blob/master/docs/BBBlue-ArduPilot.jpg)
 
-- The R/C receiver: This can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will of course do. All that remains is to connect the receiver's SBUS OUT to one of the two SBUS pins marked on the diagram. The following receivers have been tested and are known to work:
+- The R/C receiver: This can be powered off any +5V pin and a GND. The +5V servo rail, providing it's powered, will of course do. All that remains is to connect the receiver's SBUS OUT, DSM OUT or PPM OUT to one of the two SBUS pins marked on the diagram. The following receivers have been tested and are known to work:
 
 	FrSky (https://www.frsky-rc.com/): R-XSR, XR4SB, X6R, X8R, R9 Slim and R9 Mini (both 868 and 900 MHz).
 	
 	Spektrum (https://www.spektrumrc.com/): AR7700 DSMX with PPM/SRXL/Remote Rx.
+	
+	TBS (http://team-blacksheep.com/): 'Full' Crossfire with Nano Rx (Rx set to SBUS mode).
 	
 	Please contact me if you would like to add some information here about your own gear.
 
