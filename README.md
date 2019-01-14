@@ -1,5 +1,5 @@
 # ArduPilot Blue - A beginner's guide
-This is my regularly updated (as of 20/10/2018, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
+This is my regularly updated (as of 14/01/2019, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
 
 Only necessary steps are shown, excepting that I install Git for the sake of convenience. Information found elsewhere may indicate steps that are no longer necessary due to software updates, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
 
@@ -127,17 +127,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
        sudo apt-get -y dist-upgrade
        sudo apt-get install -y cpufrequtils git
 6) Update scripts: `cd /opt/scripts && git pull`
-
-    ---+++ The real-time kernel is currently broken! Use the following fix: +++---
-
-7) Specify Ti real-time kernel 4_4. Do NOT use 4_14: `sudo /opt/scripts/tools/update_kernel.sh --ti-rt-channel --lts-4_4`
-   
-    `sudo sed -i 's|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|g' /boot/uEnv.txt`
-    
-    `sudo sed -i 's|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-4-TI-00A0.dtbo|g' /boot/uEnv.txt`
-   
-    Finally, copy am335x-boneblue.dtb (from the bin directory in this repo) to /boot/dtbs/4.4.113-ti-rt-r149
-   
+7) Specify real-time kernel 4_19: `sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-rt-channel`
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
 9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
 10) Adjust bb-wl18xx-wlan0.service: `sudo sed -i 's/RestartSec=5/RestartSec=1/g' /lib/systemd/system/bb-wl18xx-wlan0.service`
