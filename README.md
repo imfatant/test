@@ -10,7 +10,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     Don't assume that the latest image is the best, or even that it works. Afterall, this is the 'testing' repository, so be warned. However, I will endeavour to keep abreast of what seems to be the latest functional image and mention it here.
 
-    I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2018-10-07/stretch-console/bone-debian-9.5-console-armhf-2018-10-07-1gb.img.xz.
+    I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2019-01-13/stretch-console/bone-debian-9.6-console-armhf-2019-01-13-1gb.img.xz.
     
     ---+++ Please try using this precise image first before raising issues! +++---
     
