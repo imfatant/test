@@ -363,7 +363,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     And things are evolving! You might want to check out the new RTK-capable ZED-F9P receiver, again from u-blox. Interestingly, it seems that u-blox are making their own antenna for it, the ANN-MB.
     
 The ArduPilot parameter settings files: /var/APM/{ArduCopter.stg,ArduPlane.stg,APMrover2.stg,AntennaTracker.stg}
-...
+
+UNDER CONSTRUCTION!
 
 sudo apt-get install i2c-tools
 
