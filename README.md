@@ -130,7 +130,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 7) Specify real-time kernel 4_19: `sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-rt-channel`
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
 9) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
-10) Adjust bb-wl18xx-wlan0.service: `sudo sed -i 's/RestartSec=5/RestartSec=1/g' /lib/systemd/system/bb-wl18xx-wlan0.service`
+10) Adjust bb-wl18xx-wlan0.service: `sudo sed -i 's/RestartSec=5/RestartSec=2/g' /lib/systemd/system/bb-wl18xx-wlan0.service`
 11) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
 12) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 13) Reboot now: `sudo reboot`
