@@ -1,5 +1,5 @@
 # ArduPilot Blue - A beginner's guide
-This is my regularly updated (as of 14/01/2019, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
+This is my regularly updated (as of 18/03/2019, DD/MM/20YY) beginner's guide to setting up the BeagleBone Blue with Mirko Denecke's port of ArduPilot (https://github.com/mirkix/ardupilotblue). It is based in great part upon similar documents at Patrick Poirier's PocketPilot project (https://github.com/PocketPilot/PocketPilot). Many thanks to both these fine individuals, and others too @https://gitter.im/mirkix/BBBMINI, for their superb work!
 
 Only necessary steps are shown, excepting that I install Git for the sake of convenience. Information found elsewhere may indicate steps that are no longer necessary due to software updates, or steps that only apply to other platforms (BBBMINI or PocketPilot, etc).
 
@@ -10,7 +10,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     Don't assume that the latest image is the best, or even that it works. Afterall, this is the 'testing' repository, so be warned. However, I will endeavour to keep abreast of what seems to be the latest functional image and mention it here.
 
-    I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2019-01-13/stretch-console/bone-debian-9.6-console-armhf-2019-01-13-1gb.img.xz.
+    I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2019-03-17/stretch-console/bone-debian-9.8-console-armhf-2019-03-17-1gb.img.xz
     
     ---+++ Please try using this precise image first before raising issues! +++---
     
