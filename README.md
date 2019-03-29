@@ -137,6 +137,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 14) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 15) Reboot now: `sudo reboot`
 
+    ---+++ Please note that if you perform Step 14, fill the microSD card with lots of extra data and then attempt to flash the resulting oversize image to the eMMC, you may experience problems. Avoid doing this. If you want to force the BBBlue to boot off the microSD card you can do so by intentionally corrupting the eMMC's boot sector with: `sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10` +++---
+
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
 16) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
 
