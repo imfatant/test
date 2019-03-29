@@ -131,14 +131,14 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
 9) Specify device tree overlay: `sed -i 's|#dtb_overlay=/lib/firmware/<file8>.dtbo|dtb_overlay=/lib/firmware/BB-I2C1-00A0.dtbo|g' /boot/uEnv.txt`
 10) Specify U-Boot overlay: `sed -i 's|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|g' /boot/uEnv.txt`
-11) (cont...) `sed -i 's|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|g' /boot/uEnv.txt`
+11) (cont.) `sed -i 's|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|g' /boot/uEnv.txt`
 12) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
 13) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
 14) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 15) Reboot now: `sudo reboot`
 
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
-15) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
+16) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
 
 	(Hint: type `sudoedit /etc/default/ardupilot`, and insert your own target IP address, e.g. 192.168.0.13)
         
@@ -163,7 +163,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         Switch -F  -->  Unnamed, SERIAL5, default 57600
     Consult the official ArduPilot documentation for more details on the various serial ports: http://ardupilot.org/plane/docs/parameters.html?highlight=parameters
     
-16) Next, we'll create the ArduPilot systemd service files, one for ArduCopter, /lib/systemd/system/arducopter.service:
+17) Next, we'll create the ArduPilot systemd service files, one for ArduCopter, /lib/systemd/system/arducopter.service:
         
         [Unit]
         Description=ArduCopter Service
@@ -235,7 +235,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
         [Install]
         WantedBy=multi-user.target
-17) Pause for a moment to create a directory: `sudo mkdir -p /usr/bin/ardupilot`
+18) Pause for a moment to create a directory: `sudo mkdir -p /usr/bin/ardupilot`
     
     Then, carry on with creating what I call the ArduPilot hardware configuration file, /usr/bin/ardupilot/aphw, which is run by the services prior to running the ArduPilot executables:
 
@@ -253,7 +253,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     Use `sudo chmod 0755 /usr/bin/ardupilot/aphw` to set permissions for this file.
     
-18) Almost there! You must now obtain the latest ArduCopter, ArduPlane, etc. executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/
+19) Almost there! You must now obtain the latest ArduCopter, ArduPlane, etc. executables, built specifically for the BBBlue's Arm architecture, and place them in the /usr/bin/ardupilot directory. Mirko Denecke has them on his site here: http://bbbmini.org/download/blue/
 
     And I've built my own copies here in this repository: https://github.com/imfatant/test/blob/master/bin/
 
@@ -297,7 +297,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         scp ./build/blue/bin/a* debian@192.168.7.2:/home/debian  # <-- Finally, copy the built executable(s) over to the BBBlue.
     On the BBBlue, copy the executable(s) from /home/debian to /usr/bin/ardupilot. Again, be sure to set their permissions.
     
-19) To get ArduPilot going, choose which flavour you want and type:
+20) To get ArduPilot going, choose which flavour you want and type:
 
         sudo systemctl enable arducopter.service
     Or:
@@ -319,7 +319,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo systemctl stop ...
 	
 ## Part 3 - Connecting the peripherals
-20) A basic minimum configuration is likely to include:
+21) A basic minimum configuration is likely to include:
     - An R/C receiver.
     - A GPS receiver (with or without integrated compass).
     - A radio modem for a bidirectional data link, particularly at longer ranges.
@@ -399,7 +399,7 @@ sudo i2cdetect -r -y 2
 1e = Honeywell HMC5843 compass (external) - often comes integrated into the inexpensive u-blox NEO-M8N-based GPS modules.
 
 ## Getting started with Ground Control Station (GCS) software
-21) Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi) for Windows or QGroundControl (http://qgroundcontrol.com/) for Linux & Windows. Both these programs will connect to streams of MAVLink data coming over the network (via UDP on port 14550, for example) or over COM ports. Some trivial configuration may be required, but both programs do a great job of auto-sensing and auto-connecting to traffic all by themselves.
+22) Download either Mission Planner (http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-latest.msi) for Windows or QGroundControl (http://qgroundcontrol.com/) for Linux & Windows. Both these programs will connect to streams of MAVLink data coming over the network (via UDP on port 14550, for example) or over COM ports. Some trivial configuration may be required, but both programs do a great job of auto-sensing and auto-connecting to traffic all by themselves.
 
     If you're having difficulty establishing a link, look at the following:
     - Ensure you've opened the necessary ports in the GCS computer's firewall. Perhaps even disable the firewall temporarily.
