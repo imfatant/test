@@ -12,7 +12,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     I'm currently using: https://rcn-ee.net/rootfs/bb.org/testing/2019-03-24/stretch-console/bone-debian-9.8-console-armhf-2019-03-24-1gb.img.xz
     
-    ---+++ Please try using this precise image first before raising issues! +++---
+    *Please try using this precise image first before raising issues!*
     
     And quickly on the subject of editing text files in Linux: naturally, you can use your favourite text editor. Personally, I like nano, which, owing to the way these Debian images have been configured, is invoked by default if you use the `sudoedit` command.
     
@@ -137,7 +137,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 14) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
 15) Reboot now: `sudo reboot`
 
-    ---+++ Please note that if you perform Step 14, then fill the microSD card with lots of extra data and attempt to flash the resulting oversize image to the eMMC, you may experience problems. Avoid doing this. If you want to force the BBBlue to boot off the microSD card you can do so by intentionally corrupting the eMMC's boot sector with: `sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10`. BE SURE TO BACK UP ANY VALUABLE DATA ON THE eMMC FIRST! +++---
+    *Please note that if you perform Step 14, then fill the microSD card with lots of extra data and attempt to flash the resulting oversize image to the eMMC, you may experience problems. Avoid doing this. If you want to force the BBBlue to boot off the microSD card you can do so by intentionally corrupting the eMMC's boot sector with: `sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10`. BE SURE TO BACK UP ANY VALUABLE DATA ON THE eMMC FIRST!*
 
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
 16) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
