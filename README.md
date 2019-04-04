@@ -48,7 +48,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         Security = wpa2
         Name = <your SSID>
         Passphrase = <your WiFi password>
-    Press `Ctrl-D` to quit out to the prompt, and then type: `exit`
+    Press 'Ctrl-D' to quit out to the prompt, and then type: `exit`
     
     A prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its IP address on your WiFi network can be found using:
     
