@@ -129,7 +129,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 6) Update scripts: `cd /opt/scripts && git pull`
 7) Specify real-time kernel 4_19: `sudo /opt/scripts/tools/update_kernel.sh --lts-4_19 --bone-rt-channel`
 8) Specify device tree binary to be used at startup: `sudo sed -i 's/#dtb=/dtb=am335x-boneblue.dtb/g' /boot/uEnv.txt`
-9) Specify device tree overlay: `sudo sed -i 's|#dtb_overlay=/lib/firmware/<file8>.dtbo|dtb_overlay=/lib/firmware/BB-I2C1-00A0.dtbo|g' /boot/uEnv.txt`
+9) Specify device tree overlays: `sed -i "s|#dtb_overlay=/lib/firmware/<file8>.dtbo|dtb_overlay=/lib/firmware/BB-I2C1-00A0.dtbo\ndtb_overlay=/lib/firmware/BB-UART4-00A0.dtbo|g" /boot/uEnv.txt`
 10) Specify U-Boot overlay: `sudo sed -i 's|uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-RPROC-4-14-TI-00A0.dtbo|g' /boot/uEnv.txt`
 11) (cont.) `sudo sed -i 's|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|g' /boot/uEnv.txt`
 12) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
