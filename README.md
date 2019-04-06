@@ -134,7 +134,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 11) (cont.) `sudo sed -i 's|#uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo|g' /boot/uEnv.txt`
 12) Set clock frequency: `sudo sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils`
 13) Disable Bluetooth (optional): `sudo systemctl disable bb-wl18xx-bluetooth.service`
-14) Maximize the microSD card's existing partition (which is /dev/mmcblk0p1): `sudo /opt/scripts/tools/grow_partition.sh`
+14) Maximize the microSD card's existing partition (optional): `sudo /opt/scripts/tools/grow_partition.sh`
 15) Reboot now: `sudo reboot`
 
     *Please note that if you perform Step 14, then fill the microSD card with lots of extra data and attempt to flash the resulting oversize image to the eMMC, you may experience problems. Avoid doing this. If you want to force the BBBlue to boot off the microSD card you can do so by intentionally corrupting the eMMC's boot sector with: `sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10`. BE SURE TO BACK UP ANY VALUABLE DATA ON THE eMMC FIRST!*
