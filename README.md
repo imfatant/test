@@ -156,7 +156,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     Switch -B maps ArduPilot's "GPS" serial port (SERIAL3, default 57600) to the BBBlue's UART2 (the UART confusingly marked 'GPS' on the board itself). For example, I have a u-blox NEO-M8P connected to UART2.
     
-    Switch -F maps one of ArduPilot's "Unnamed" serial ports (SERIAL5, default 57600) to the BBBlue's UART5. This is for a laser rangefinder.
+    Switch -F maps one of ArduPilot's "Unnamed" serial ports (SERIAL5, default 57600) to the BBBlue's UART5. In my case, this is for a laser rangefinder.
     
     Other possibilities exist, namely:
     
