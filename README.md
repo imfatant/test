@@ -147,7 +147,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         TELEM1="-C /dev/ttyO1"
         TELEM2="-A udp:<target IP address>:14550"
         GPS="-B /dev/ttyO2"
-	RANGER="-F /dev/ttyO5"
+        RANGER="-F /dev/ttyO5"
     This is a pretty typical config. It breaks down like this:
     
     Switch -C maps ArduPilot's "Telem1" serial port (SERIAL1, default 57600) to the BBBlue's UART1. For example, I have a RFDesign 868x radio modem connected to UART1. It is the bidirectional data link with my drone. It sends various telemetry data to the base station, and receives commands and RTK differential corrections from the base station.
