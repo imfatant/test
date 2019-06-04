@@ -367,7 +367,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
     
     I highly recommend starting out with an M8N, if only to get a feel for things. It's likely you'll have to chop off the connector(s) it comes with and break out the GPS lines to a 6-way JST-SH which you'll plug into the GPS serial UART on the BBBlue, and the external compass lines to a 4-way JST-SH which plugs into the I2C port. The niggle is that although you'll be powering the M8N with +5V, its GPS signal to the BBBlue must not exceed +3.3V. I believe most M8N modules step the voltage down to +3.3V internally, so you're OK. But you should check, if necessary with an oscilloscope. Failure to do so could damage the BBBlue.
     
-    And things are evolving! You might want to check out the new RTK-capable ZED-F9P receiver, again from u-blox. Interestingly, it seems that u-blox are making their own antenna for it, the ANN-MB.
+    And things are evolving! You might want to check out the triple-band RTK-capable ZED-F9P receiver, again from u-blox. Interestingly, it seems that u-blox are making their own antenna for it, the ANN-MB. Personally though, I'd like a _really_ small, lightweight antenna, so if you know of one, please let me know.
     
 The ArduPilot parameter settings files: /var/APM/{ArduCopter.stg,ArduPlane.stg,APMrover2.stg,AntennaTracker.stg}
 
