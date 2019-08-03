@@ -278,8 +278,6 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
         sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
-    (This method also happens to work in Windows WSL Ubuntu x64.)
-    
     Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu proper, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
     
     ---+++ This method doesn't currently work because Arch Linux and Debian Stretch use different glibc versions. +++---
