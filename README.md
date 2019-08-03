@@ -272,7 +272,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo pip install future
         git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
-        git checkout Copter-3.6  # <-- For ArduCopter.
+	git branch -a  # <-- See all available branches.
+        git checkout Copter-3.6  # <-- Select one of the ArduCopter branches.
         git submodule update --init --recursive
         ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
@@ -295,7 +296,8 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         git commit -a --allow-empty-message -m ''  # <-- The lazy option.
         ./Tools/scripts/install-prereqs-arch.sh
         git fetch --prune  # <-- Updates the repository.
-        git checkout Copter-3.6  # <-- For ArduCopter.
+        git branch -a  # <-- See all available branches.
+        git checkout Copter-3.6  # <-- Select one of the ArduCopter branches.
         git submodule update --init --recursive
         ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
