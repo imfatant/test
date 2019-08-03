@@ -278,8 +278,9 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
         sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
-    Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu proper, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
+    Copy the executable(s) from /home/debian to /usr/bin/ardupilot. Again, be sure to set their permissions.
     
+    Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu proper, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
     ---+++ This method doesn't currently work because Arch Linux and Debian Stretch use different glibc versions. +++---
     
         sudo pacman -Syu
@@ -302,7 +303,6 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
         scp ./build/blue/bin/a* debian@192.168.7.2:/home/debian  # <-- Finally, copy the built executable(s) over to the BBBlue.
-    On the BBBlue, copy the executable(s) from /home/debian to /usr/bin/ardupilot. Again, be sure to set their permissions.
     
 20) To get ArduPilot going, choose which flavour you want and type ONE of these:
 
