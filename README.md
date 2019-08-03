@@ -266,7 +266,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     If you find that you need to build them from scratch yourself, do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own customized ArduPilot software.
 
-    Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick Poirier explains the process for the BBBMINI (based on a BeagleBone Black) on his site. Here's the BBBlue-specific procedure (and, as it happens, Windows WSL Ubuntu), assuming you've followed all the Steps so far, and are in the /home/debian directory:
+    Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick Poirier explains the process for the BBBMINI (based on a BeagleBone Black) on his site. Here's the BBBlue-specific procedure assuming you've followed all the Steps so far, and are in the /home/debian directory:
     
         sudo apt-get install g++ make pkg-config python python-dev python-lxml python-pip
         sudo pip install future
@@ -278,7 +278,9 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         ./waf configure --board=blue  # <-- BeagleBone Blue.
         ./waf
         sudo cp ./build/blue/bin/a* /usr/bin/ardupilot
-    Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
+    (This method also happens to work in Windows WSL Ubuntu x64.)
+    
+    Patrick also provides instructions to cross-compile them on a relatively powerful desktop x64 PC in Ubuntu proper, which is much, much faster. Here, I will run through the process of cross-compiling them in Arch Linux (which happens to be God's Own Linux Distro):
     
     ---+++ This method doesn't currently work because Arch Linux and Debian Stretch use different glibc versions. +++---
     
