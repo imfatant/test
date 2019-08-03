@@ -266,7 +266,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 
     If you find that you need to build them from scratch yourself, do not be intimidated - this is not too difficult. Plus it means you'll be able to build your own customized ArduPilot software.
 
-    Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick Poirier explains the process for the BBBMINI (based on a BeagleBone Black) on his site. Here's the BBBlue-specific procedure assuming you've followed all the Steps so far, and are in the /home/debian directory:
+    Compiling them on the BBBlue itself is an option, but takes an absolute age. Patrick Poirier explains the process for the BBBMINI (based on a BeagleBone Black) on his site. Here's the BBBlue-specific procedure assuming you've followed all the steps so far, and are in the /home/debian directory:
     
         sudo apt-get install g++ make pkg-config python python-dev python-lxml python-pip
         sudo pip install future
