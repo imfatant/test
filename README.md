@@ -272,7 +272,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         sudo pip install future
         git clone https://github.com/ArduPilot/ardupilot
         cd ardupilot
-	git branch -a  # <-- See all available branches.
+        git branch -a  # <-- See all available branches.
         git checkout Copter-3.6  # <-- Select one of the ArduCopter branches.
         git submodule update --init --recursive
         ./waf configure --board=blue  # <-- BeagleBone Blue.
