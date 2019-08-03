@@ -304,26 +304,19 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         scp ./build/blue/bin/a* debian@192.168.7.2:/home/debian  # <-- Finally, copy the built executable(s) over to the BBBlue.
     On the BBBlue, copy the executable(s) from /home/debian to /usr/bin/ardupilot. Again, be sure to set their permissions.
     
-20) To get ArduPilot going, choose which flavour you want and type:
+20) To get ArduPilot going, choose which flavour you want and type ONE of these:
 
         sudo systemctl enable arducopter.service
-    Or:
-
         sudo systemctl enable arduplane.service
-    Or:
-
         sudo systemctl enable ardurover.service
-	
-	Or:
-	
         sudo systemctl enable antennatracker.service
     After you reboot, your ArduPilot should inflate automatically. Look for the flashing red LED!
     
     It'll help to familiarise yourself with `systemctl` (https://www.freedesktop.org/software/systemd/man/systemctl.html). Some useful example commands:
     
-        sudo systemctl disable ...
-        sudo systemctl start ...
-        sudo systemctl stop ...
+        sudo systemctl disable <name of service>
+        sudo systemctl start <name of service>
+        sudo systemctl stop <name of service>
 	
 ## Part 3 - Connecting the peripherals
 21) A basic minimum configuration is likely to include:
