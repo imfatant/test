@@ -137,7 +137,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
 14) Maximize the microSD card's existing partition (optional): `sudo /opt/scripts/tools/grow_partition.sh`
 15) Reboot now: `sudo reboot`
 
-    *Please note that if you experience an RCOutputAioPRU.cpp:SIGBUS error, please try running `sudo /opt/scripts/tools/developers/update_bootloader.sh`.*
+    *Please note that if you experience an RCOutputAioPRU.cpp:SIGBUS error, please try running `sudo /opt/scripts/tools/developers/update_bootloader.sh`, and completely erase the eMMC (destroy the boot sector, if necessary). Then start from scratch.*
 
 ## Part 2 - Putting ArduPilot on the BeagleBone Blue
 16) When the BBBlue comes back up, we need to create a few text files. First, the ArduPilot environment configuration file, /etc/default/ardupilot:
