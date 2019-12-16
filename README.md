@@ -50,7 +50,7 @@ Only necessary steps are shown, excepting that I install Git for the sake of con
         Passphrase = <your WiFi password>
     Press 'Ctrl-D' to quit out to the prompt, and then type: `exit`
     
-    A prominent green LED will come on, signifying that WiFi is up. The BBBlue is connected to your router, and its IP address on your WiFi network can be found using:
+    A prominent green LED will have come on, signifying that WiFi is up. The BBBlue is connected to your router, and its IP address on your WiFi network can be found using:
     
        ip addr show wlan0
     If, for whatever reason, you find yourself unable to query the BBBlue directly, other ways to find its IP address are programs like nmap (`sudo nmap 192.168.0.0/24`) or by logging in to your router and looking there.
