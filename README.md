@@ -405,7 +405,8 @@ sudo i2cdetect -r -y 2
     - Ensure you've opened the necessary ports in the GCS computer's firewall. Perhaps even disable the firewall temporarily.
     - Be absolutely certain of the GCS computer's IP address, because if you happen to be 'dualing' Windows and Linux on the same machine, routers will sometimes assign different IPs to each of the OSes.
     - If you're getting a 'port is already open'-type error, turn off the GCS software's auto-connect feature, restart the program, and try again manually.
-    
+    - Remember that a server set to listen on the loopback address (127.0.0.1) won't see external nodes on your network.
+
     With the link established, you'll see the GCS program's artificial horizon moving as you turn and tilt the BBBlue. Now I suggest that you run ArduPlane specifically (as opposed to ArduCopter, etc) and get a servo moving in the 'Manual' flight mode. This is a convenient way to test that your receiver is working properly with ArduPilot Blue. Use QGoundControl's 'Parameters' page to set the following, and then reboot the BBBlue:
 
         Under 'Standard':
